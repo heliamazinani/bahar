@@ -13,21 +13,24 @@ function NavbarMenu() {
     <>
       <Navbar className="nav rounded" variant="light" expand="lg">
         <Container fluid>
-          
-          <Button >
-            <Basket2 className="icon" />
+          <Button>
+            <Basket2 />
           </Button>
           {/* Search Toggle */}
           <div className="me-auto ms-3">
             {showSearch ? (
               <Form className="d-flex">
-                <Form.Control
-                  type="search"
-                  placeholder="Search"
-                  className="me-2"
-                  autoFocus
-                  aria-label="Search"
-                />
+                <div className="group">
+                  <Search className="icon" />
+                  <Form.Control
+                    type="search"
+                    placeholder="Search"
+                    className="input me-2"
+                    autoFocus
+                    aria-label="Search"
+                  />
+                </div>
+
                 <Button
                   variant="outline-dark"
                   onClick={() => setShowSearch(false)}
@@ -63,7 +66,7 @@ function NavbarMenu() {
             </Offcanvas.Body>
           </Navbar.Offcanvas>
           <div className="lg-ms-auto">
-            <Navbar.Brand href="#"> Bahar Beautiy</Navbar.Brand>
+            <Navbar.Brand className="logo" href="#"> Bahar Beautiy</Navbar.Brand>
           </div>
         </Container>
       </Navbar>
