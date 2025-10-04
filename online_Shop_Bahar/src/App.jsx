@@ -8,8 +8,10 @@ function App() {
 
   return (
     <>
-    <Home></Home>
-     
+      <div className=" px-lg-5 px-2">
+        {" "}
+        <Home></Home>
+      </div>
     </>
   );
 }

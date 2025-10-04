@@ -1,0 +1,68 @@
+body {
+  color: rgb(33, 33, 33);
+}
+
+/* navbar */
+.nav {
+  background-color: rgb(255, 249, 251);
+  margin-top: 2%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  
+  position: sticky;
+}
+.nav Button {
+  border: 1px solid rgba(0, 0, 0, 0);
+  background-color: rgba(0, 0, 0, 0);
+  color: rgb(52, 52, 52);
+}
+.nav Button:hover {
+  border: 1px solid rgba(0, 0, 0, 0);
+  background-color: rgba(57, 73, 87, 0);
+  color: rgb(245, 123, 186);
+}
+.nav Button:active {
+  border: 1px solid rgba(0, 0, 0, 0) !important;
+  background-color: rgba(57, 73, 87, 0) !important;
+  color: rgb(181, 50, 118) !important;
+}
+
+.rounded {
+  border-radius: 5px;
+}
+
+.bg-img {
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 90vh; /* default for large screens */
+}
+
+/* Large and down (below 992px) */
+@media (max-width: 992px) {
+  .bg-img {
+    height: 70vh;
+  }
+}
+
+/* Medium and down (below 768px) */
+@media (max-width: 768px) {
+  .bg-img {
+    height: 50vh;
+  }
+}
+
+/* Small and down (below 576px) */
+@media (max-width: 576px) {
+  .bg-img {
+    height: 40vh;
+  }
+}
+
+.card-title {
+  font-size: clamp(0.9rem, 1.2vw, 1.25rem);
+  font-weight: 600;
+}
+
+.card-text {
+  font-size: clamp(0.8rem, 1vw, 1rem);
+}
