@@ -6,23 +6,23 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
-import S1 from "../assets/images/Slider/Slider1.jpg";
+import S1 from "../assets/images/Slider/S1.png";
 import S2 from "../assets/images/Slider/Slider2.jpg";
 import S3 from "../assets/images/Slider/Slider3.jpg";
 
 
 const Slider = () => {
-  const slides = [S1, S2, S3];
+  const slides = [S1,S2,S3];
 
   return (
-    <header className="slider slider-prlx o-hidden my-5 my-md-4 my-sm-3">
+    <header className="Slider slider slider-prlx o-hidden ">
       <div className="container-fluid p-0">
         <Swiper
           className="parallax-slider"
           modules={[Autoplay, Pagination, Navigation, Parallax]}
           speed={1000}
           loop={true}
-          autoplay={{ delay: 3000 }}
+          autoplay={{ delay: 4000 }}
           parallax={true}
           pagination={{ clickable: true }}
           navigation={{

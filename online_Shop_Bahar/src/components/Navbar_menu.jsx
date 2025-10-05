@@ -5,13 +5,18 @@ import Offcanvas from "react-bootstrap/Offcanvas";
 import { Form,Button } from "react-bootstrap";
 import { Search } from "react-bootstrap-icons";
 import { Basket2 } from "react-bootstrap-icons";
+import { ChevronDown } from "react-bootstrap-icons"; 
+import Dropdown from "react-bootstrap/Dropdown";
+import Logov from "../assets/Logo/Logo-vertical.png";
+import Logos from "../assets/Logo/Logo-small.png";
 import { useState } from "react";
+
 
 function NavbarMenu() {
     const [showSearch, setShowSearch] = useState(false);
   return (
     <>
-      <Navbar className="nav rounded" variant="light" expand="lg">
+      <Navbar className="nav rounded " sticky="top" variant="light" expand="lg">
         <Container fluid>
           <Button>
             <Basket2 />
@@ -23,7 +28,7 @@ function NavbarMenu() {
                 <div className="group">
                   <Search className="icon" />
                   <Form.Control
-                    type="search"
+                    type="text"
                     placeholder="Search"
                     className="input me-2"
                     autoFocus
@@ -59,14 +64,50 @@ function NavbarMenu() {
             </Offcanvas.Header>
             <Offcanvas.Body>
               <Nav className="justify-content-end flex-grow-1 pe-3">
-                <Nav.Link href="#home">Home</Nav.Link>
-                <Nav.Link href="#products">Products</Nav.Link>
-                <Nav.Link href="#about">About</Nav.Link>
+                <Nav.Link className="menu-item" href="#home">
+                  {" "}
+                  پوستی
+                </Nav.Link>
+                <Nav.Link className="menu-item" href="#products">
+                  آرایشی
+                </Nav.Link>
+                <div dir="rtl">
+                  <Dropdown>
+                    <Dropdown.Toggle
+                      className="dropdown-custom menu-item "
+                      id="dropdown-basic"
+                    >
+                      محصولات
+                      <ChevronDown className="dropdown-icon" />
+                    </Dropdown.Toggle>
+
+                    <Dropdown.Menu>
+                      <Dropdown.Item className="menu-item" href="#/action-1">
+                        Action
+                      </Dropdown.Item>
+                      <Dropdown.Item className="menu-item" href="#/action-2">
+                        Another action
+                      </Dropdown.Item>
+                      <Dropdown.Item className="menu-item" href="#/action-3">
+                        Something else
+                      </Dropdown.Item>
+                    </Dropdown.Menu>
+                  </Dropdown>
+                </div>
+                <Nav.Link className="menu-item" href="#about">
+                  {" "}
+                  خانه
+                </Nav.Link>
               </Nav>
             </Offcanvas.Body>
           </Navbar.Offcanvas>
           <div className="lg-ms-auto">
-            <Navbar.Brand className="logo" href="#"> Bahar Beautiy</Navbar.Brand>
+            <Navbar.Brand href="#" className="d-none d-lg-block">
+              <img src={Logov} className="logo" alt="bahar-logo" />
+            </Navbar.Brand>
+            <Navbar.Brand href="#" className="d-lg-none">
+              <img src={Logos} className="logos" alt="bahar-logo" />
+            </Navbar.Brand>
           </div>
         </Container>
       </Navbar>
