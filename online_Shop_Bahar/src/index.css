@@ -1,8 +1,7 @@
 body {
-
 }
 
-.home{
+.home {
   color: rgb(33, 33, 33);
   margin-left: 10%;
   margin-right: 10%;
@@ -13,34 +12,30 @@ body {
   top: 0px;
   left: 0;
   width: 100%;
-  z-index: -1; 
+  z-index: -1;
   line-height: 0;
-
 }
 
 .wave-container svg {
-  min-height: 200px;    /* keeps it tall enough on small screens */
-  max-height: 400px;    /* prevents it from getting too tall on large screens */
+  min-height: 200px; /* keeps it tall enough on small screens */
+  max-height: 400px; /* prevents it from getting too tall on large screens */
   display: block;
 }
-
 
 /* navbar */
 .nav {
   background-color: rgba(255, 255, 255, 0.9);
   margin-top: 2%;
-  
+
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
   font-size: medium;
   position: sticky;
 }
-.nav .logo{
-    height: 70px;
-
+.nav .logo {
+  height: 70px;
 }
-.nav .logos{
-    height: 30px;
-
+.nav .logos {
+  height: 30px;
 }
 .nav Button {
   border: 1px solid rgba(0, 0, 0, 0);
@@ -55,7 +50,8 @@ body {
 .nav Button:focus {
   border: 1px solid rgba(0, 0, 0, 0) !important;
   background-color: rgba(57, 73, 87, 0) !important;
- color: rgb(52, 52, 52) !important;
+  color: rgb(52, 52, 52) !important;
+  box-shadow: none !important;
 }
 .nav Button:active {
   border: 1px solid rgba(0, 0, 0, 0) !important;
@@ -67,7 +63,7 @@ body {
   border: 1px solid rgba(0, 0, 0, 0);
   background-color: rgba(0, 0, 0, 0);
   color: rgb(52, 52, 52);
-    display: flex;
+  display: flex;
   align-items: center; /* vertically centers text and icon */
   gap: 0.4rem;
 }
@@ -79,14 +75,13 @@ body {
 .nav .menu-item:focus {
   border: 1px solid rgba(0, 0, 0, 0) !important;
   background-color: rgba(57, 73, 87, 0) !important;
- color: rgb(52, 52, 52) !important;
+  color: rgb(52, 52, 52) !important;
 }
 .nav .menu-item:active {
   border: 1px solid rgba(0, 0, 0, 0) !important;
   background-color: rgba(57, 73, 87, 0) !important;
   color: rgb(252, 102, 179) !important;
 }
-
 
 .dropdown-custom:hover,
 .dropdown-custom:focus,
@@ -97,7 +92,6 @@ body {
 }
 .dropdown-custom::after {
   display: none !important;
-
 }
 .dropdown-custom,
 .menu-item {
@@ -112,69 +106,174 @@ body {
   height: 0.8rem;
   position: relative;
   top: 1px;
-
 }
-
+/* Search */
 .group {
- display: flex;
- line-height: 28px;
- align-items: center;
- position: relative;
- max-width: 190px;
+  display: flex;
+  line-height: 28px;
+  align-items: center;
+  position: relative;
+  max-width: 190px;
 }
 
 .input {
- width: 100%;
- height: 40px;
- line-height: 28px;
- padding: 0 1rem;
- padding-left: 2.5rem;
- border: 2px solid transparent;
- border-radius: 8px;
- outline: none;
- background-color: #f3f3f4;
- color: #0d0c22;
- transition: .3s ease;
- 
+  width: 100%;
+  height: 40px;
+  line-height: 28px;
+  padding: 0 1rem;
+  padding-left: 2.5rem;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  outline: none;
+  background-color: #f3f3f4;
+  color: #0d0c22;
+  transition: 0.3s ease;
 }
 
 .input::placeholder {
- color: #9e9ea7;
+  color: #9e9ea7;
 }
 
-.input:focus, input:hover {
- outline: none;
- border-color: rgba(234,76,137,0.4);
- background-color: #fff;
- box-shadow: 0 0 0 4px rgb(234 76 137 / 10%);
+.input:focus,
+input:hover {
+  outline: none;
+  border-color: rgba(234, 76, 137, 0.4);
+  background-color: #fff;
+  box-shadow: 0 0 0 4px rgb(234 76 137 / 10%);
 }
 
 .icon {
- position: absolute;
- left: 1rem;
- fill: #9e9ea7;
- width: 1rem;
- height: 1rem;
+  position: absolute;
+  left: 1rem;
+  fill: #9e9ea7;
+  width: 1rem;
+  height: 1rem;
 }
-
 
 /* Slider */
-.Slider{
-    margin-top: 50px;
+.Slider {
+  margin-top: 50px;
+  border-radius: 100px;
 }
-.Slider span{
-    background-color: #fbb2ce;
+.Slider span {
+  background-color: #fbb2ce;
 }
+.Slider .container {
+  border-radius: 100px;
+}
+
+/* Discounted */
+.product-carousel {
+  margin-top: 50px;
+}
+.product-carousel .title {
+  font-size: clamp(1rem, 1.4vw, 1.95rem);
+  text-align: center;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+ 
+}
+.product-carousel .title p {
+border-radius:5px ;
+display: inline;
+border-bottom: 4px solid rgb(255, 177, 217) ;
+
+}
+.product-carousel .products-container {
+  margin-top: 50px;
+}
+
+.card-title {
+  font-size: clamp(0.9rem, 1.2vw, 1.25rem);
+  font-weight: 600;
+}
+
+.card-text {
+  font-size: clamp(0.7rem, 2vw, 3rem);
+  text-align: center;
+ 
+}
+
+.product-card {
+  position: relative;
+  overflow: hidden; /* So buttons don’t spill outside */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+}
+
+/* Buttons container (invisible by default) */
+.product-card .hover-buttons {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  display: flex;
+  gap: 0.5rem;
+  opacity: 0;
+  pointer-events: none; 
+  transition: all 0.3s ease;
+}
+.overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    background-color: rgb(249, 254, 255);
+}
+
+/* Appear on hover */
+.product-card:hover .hover-buttons {
+  opacity: 1;
+  transform: translateX(-50%) translateY(100%);
+  pointer-events: auto;
+}
+.product-card:hover .overlay {
+  opacity: 0.1;
+
+}
+
+.old-price {
+  text-decoration: line-through;
+  color: rgb(130, 130, 130);
+}
+.product-img {
+  height: 30vh;
+}
+.product-carousel .text-container {
+  position: absolute;
+  color: white;
+  left: 5%;
+  top: 5%;
+  background-color: #fbb2ce;
+  padding: clamp(4px, 0.6vw, 10px) clamp(12px, 1vw, 18px);
+  border-radius: 50px;
+  font-size: clamp(0.9rem, 1vw, 1rem);
+  display: flex;               /* centers text horizontally + vertically */
+  align-items: center;
+  justify-content: center;
+  line-height: 1;              /* removes extra vertical space from <p> */
+}
+
+.product-carousel .text-container p {
+  margin: 0;                   /* removes default p tag margins */
+}
+
 .rounded {
   border-radius: 5px;
 }
 
 .bg-img {
-
   background-size: cover;
   background-position: center;
   width: 100%;
-  height: 70vh; /* default for large screens */
+  height: 70vh;
 }
 
 /* Large and down (below 992px) */
@@ -189,20 +288,19 @@ body {
   .bg-img {
     height: 50vh;
   }
+  .home {
+    margin-left: 6%;
+    margin-right: 6%;
+  }
 }
 
 /* Small and down (below 576px) */
 @media (max-width: 576px) {
   .bg-img {
-    height: 40vh;
+    height: 30vh;
   }
-}
-
-.card-title {
-  font-size: clamp(0.9rem, 1.2vw, 1.25rem);
-  font-weight: 600;
-}
-
-.card-text {
-  font-size: clamp(0.8rem, 1vw, 1rem);
+  .home {
+    margin-left: 1%;
+    margin-right: 1%;
+  }
 }

@@ -31,7 +31,7 @@ const Slider = () => {
           }}
         >
           {slides.map((bgImage, index) => (
-            <SwiperSlide key={index}>
+            <SwiperSlide className="Slide" key={index}>
               <div
                 className="bg-img valign rounded"
                 style={{
