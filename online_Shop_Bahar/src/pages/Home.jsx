@@ -1,6 +1,7 @@
 import Navbar_menu from "../components/Navbar_menu";
 import Slider from "../components/Slider";
 import Discounted from "../components/Discounted";
+import Footer from "../components/Footer";
 function Home(){
     return (
       <div>
@@ -8,6 +9,7 @@ function Home(){
         <Slider></Slider>
         <Discounted></Discounted>
         <Discounted></Discounted>
+  
       </div>
     );
 }

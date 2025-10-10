@@ -1,4 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&display=swap');
+@font-face {
+  font-family: 'Estedad';
+  src: url('./assets/fonts/estedad/Estedad-Medium.woff2') format('woff2');
+
+  font-weight: 700;
+  font-style: normal;
+}
+
+
+
 body {
+  font-family: 'Vazirmatn', sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  color: #333;
 }
 
 .home {
@@ -9,18 +24,20 @@ body {
 
 .wave-container {
   position: absolute;
-  top: 0px;
+  top: 0;
   left: 0;
   width: 100%;
+  overflow: hidden; /* crop sides when screen is smaller */
   z-index: -1;
   line-height: 0;
 }
 
 .wave-container svg {
-  min-height: 200px; /* keeps it tall enough on small screens */
-  max-height: 400px; /* prevents it from getting too tall on large screens */
-  display: block;
+  width: 105%; /* make the wave wider than the viewport */
+height: 100%;
+  object-fit: cover; /* ensures it fills without shrinking height */
 }
+
 
 /* navbar */
 .nav {
@@ -87,7 +104,7 @@ body {
 .dropdown-custom:focus,
 .dropdown-custom:active {
   background: none !important;
-  color: #ea4c89; /* or your accent color */
+  color: rgb(255, 144, 201); /* or your accent color */
   box-shadow: none !important;
 }
 .dropdown-custom::after {
@@ -165,23 +182,41 @@ input:hover {
 /* Discounted */
 .product-carousel {
   margin-top: 50px;
+   margin-bottom: 100px;
 }
-.product-carousel .title {
-  font-size: clamp(1rem, 1.4vw, 1.95rem);
-  text-align: center;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
- 
-}
-.product-carousel .title p {
-border-radius:5px ;
-display: inline;
-border-bottom: 4px solid rgb(255, 177, 217) ;
 
+ .title-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
 }
-.product-carousel .products-container {
-  margin-top: 50px;
+ .title {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+}
+
+ .title p {
+  position: relative;
+  font-family: 'Estedad', 'Vazirmatn', sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
+  color: #333;
+  margin: 0;
+  z-index: 1;
+}
+
+.title::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0.6em; /* height of the pink bar */
+background: #FFD8ED;
+background: linear-gradient(nulldeg, rgba(255, 216, 237, 1) 0%, rgba(252, 159, 226, 1) 100%);
+  z-index: 0;
+  transform: translateY(30%); /* pushes the bar a bit lower */
 }
 
 .card-title {
@@ -192,7 +227,6 @@ border-bottom: 4px solid rgb(255, 177, 217) ;
 .card-text {
   font-size: clamp(0.7rem, 2vw, 3rem);
   text-align: center;
- 
 }
 
 .product-card {
@@ -209,34 +243,62 @@ border-bottom: 4px solid rgb(255, 177, 217) ;
 /* Buttons container (invisible by default) */
 .product-card .hover-buttons {
   position: absolute;
-  top: 10%;
+  top: 30%;
   left: 50%;
   transform: translateX(-50%) translateY(10px);
   display: flex;
   gap: 0.5rem;
   opacity: 0;
-  pointer-events: none; 
+  pointer-events: none;
   transition: all 0.3s ease;
 }
-.overlay{
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    opacity: 0;
-    background-color: rgb(249, 254, 255);
+
+.product-card .hover-buttons .buy {
+  background-color: rgb(255, 144, 201);
+  border: none;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  color: white;
+  font-size: 1rem;
+  line-height: 1;
+}
+.product-card .hover-buttons .basket {
+  background-color: rgb(255, 144, 201);
+  border: none;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 10%;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  background-color: rgba(198, 211, 255, 0.244);
 }
 
 /* Appear on hover */
 .product-card:hover .hover-buttons {
   opacity: 1;
-  transform: translateX(-50%) translateY(100%);
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  align-content: center;
   pointer-events: auto;
+  z-index: 10;
 }
 .product-card:hover .overlay {
-  opacity: 0.1;
-
+  opacity: 0.4;
 }
 
 .old-price {
@@ -255,15 +317,133 @@ border-bottom: 4px solid rgb(255, 177, 217) ;
   padding: clamp(4px, 0.6vw, 10px) clamp(12px, 1vw, 18px);
   border-radius: 50px;
   font-size: clamp(0.9rem, 1vw, 1rem);
-  display: flex;               /* centers text horizontally + vertically */
+  display: flex; /* centers text horizontally + vertically */
   align-items: center;
   justify-content: center;
-  line-height: 1;              /* removes extra vertical space from <p> */
+  line-height: 1; /* removes extra vertical space from <p> */
 }
 
 .product-carousel .text-container p {
-  margin: 0;                   /* removes default p tag margins */
+  margin: 0; /* removes default p tag margins */
 }
+
+
+.footer {
+  background-color: #ffffff;
+  color: #333;
+  position: relative;
+  overflow: hidden;
+ 
+  padding: 10px;
+}
+
+/* 👇 Wave Top */
+.footer-wave {
+  position: relative;
+  top: -1px;
+  width: 100%;
+  line-height: 0;
+}
+
+.footer-wave svg {
+  display: block;
+  width: 100%;
+  height: 120px;
+  min-height: 100px;
+}
+
+.footer-title {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: rgb(255, 144, 201);
+  margin-bottom: 1rem;
+}
+
+.footer-text {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: #555;
+}
+
+.footer-links a {
+  color: #555;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: rgb(255, 144, 201);
+}
+
+.social-icons a {
+  color: rgb(255, 144, 201);
+  font-size: 1.4rem;
+  margin: 0 0.4rem;
+  transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: #333;
+}
+
+.footer-divider {
+  border-top: 1px solid #ffffff00;
+  margin: 1.5rem 0;
+}
+.copyright{
+  color: rgba(255, 255, 255, 0.648);
+  font-size: clamp(0.7rem, 2vw, 1rem);
+
+}
+
+.footer-background-wave {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  line-height: 0;
+  z-index: 0;
+}
+
+.footer-background-wave svg {
+  display: block;
+  width: 100%;
+  height: 150px;
+}
+
+.footer *:not(.footer-background-wave) {
+  position: relative;
+  z-index: 1; /* make text appear on top of wave */
+}
+
+@media (max-width: 576px) {
+  .footer {
+    text-align: center;
+  }
+
+  .social-icons {
+    margin-top: 0.5rem;
+  }
+
+  .footer-background-wave svg {
+    height: 100px;
+  }
+}
+
+@media (max-width: 576px) {
+  .footer {
+    text-align: center;
+  }
+
+  .social-icons {
+    margin-top: 0.5rem;
+  }
+
+  .footer-wave svg {
+    height: 80px; /* stays visible even on mobile */
+  }
+}
+
 
 .rounded {
   border-radius: 5px;

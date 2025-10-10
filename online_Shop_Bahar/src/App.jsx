@@ -4,6 +4,7 @@ import viteLogo from "/vite.svg";
 import "./App.css";
 import { Button } from "react-bootstrap";
 import Home from "./pages/Home";
+import Footer from "./components/Footer";
 function App() {
   return (
     <>
@@ -50,6 +51,9 @@ function App() {
         {" "}
         <Home></Home>
       </div>
+
+    <Footer></Footer>
+    
     </>
   );
 }

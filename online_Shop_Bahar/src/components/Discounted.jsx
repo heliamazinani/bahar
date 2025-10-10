@@ -16,11 +16,13 @@ import S2 from "../assets/images/Slider/Slider2.jpg";
 import S3 from "../assets/images/Slider/Slider3.jpg";
 
 function Discounted() {
-      const slides = [S1, S2, S3,S1,S2,S3];
+  const slides = [S1, S2, S3, S1, S2, S3];
   return (
     <div className="product-carousel ">
-      <div className="title">
-        <p> تخفیف دار های هفته</p>
+      <div class="title-container">
+        <div class="title">
+          <p>تخفیف دار های هفته</p>
+        </div>
       </div>
       <div className="products-container">
         <Swiper
@@ -72,21 +74,19 @@ function Discounted() {
                           </Col>
                         </Row>
                         <div className="overlay"></div>
-                        <Row className="hover-buttons">
-                          <Col>
-                            {" "}
-                            <Button variant="outline-dark" size="sm">
-                              مشاهده و خرید
-                            </Button>
-                          </Col>
-                          <Col>
-                            {" "}
-                            <Button variant="dark" size="sm">
-                              <Basket2></Basket2>
-                            </Button>
-                          </Col>
-                        </Row>
                       </Container>
+                      <div className="hover-buttons">
+                        <Button
+                          className="buy"
+                          variant="outline-dark"
+                          size="sm"
+                        >
+                          مشاهده و خرید
+                        </Button>
+                        <Button className="basket">
+                          <Basket2 size={50} />
+                        </Button>
+                      </div>
                     </div>
                   </Card.Body>
                 </div>
