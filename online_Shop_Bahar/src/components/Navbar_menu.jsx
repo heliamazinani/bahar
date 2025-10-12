@@ -58,12 +58,11 @@ function NavbarMenu() {
             id="offcanvasNavbar"
             aria-labelledby="offcanvasNavbarLabel"
             placement="end"
+            className="custom-offcanvas"
           >
-            <Offcanvas.Header closeButton>
-              <Offcanvas.Title id="offcanvasNavbarLabel">Menu</Offcanvas.Title>
-            </Offcanvas.Header>
-            <Offcanvas.Body>
-              <Nav className="justify-content-end flex-grow-1 pe-3">
+            <Offcanvas.Header closeButton ></Offcanvas.Header>
+            <Offcanvas.Body >
+              <Nav className="justify-content-end flex-grow-1">
                 <Nav.Link className="menu-item" href="#home">
                   {" "}
                   پوستی

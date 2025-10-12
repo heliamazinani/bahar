@@ -38,6 +38,136 @@ height: 100%;
   object-fit: cover; /* ensures it fills without shrinking height */
 }
 
+.custom-offcanvas.show .dropdown-custom,
+.custom-offcanvas.showing .dropdown-custom,
+.custom-offcanvas.hiding .dropdown-custom {
+  background-color: white;
+  border-top: none !important;
+   border-left: none !important;
+    border-right: none !important;
+  border-bottom: 1px solid rgb(238, 238, 238);
+  color: rgb(52, 52, 52);
+  display: block;
+
+  width: 100%;
+  border-radius: 0%;
+  text-align: start;
+}
+.custom-offcanvas.show .dropdown-custom:hover ,
+.custom-offcanvas.showing .dropdown-custom:hover ,
+.custom-offcanvas.hiding .dropdown-custom:hover {
+  color: rgb(255, 177, 217) !important;
+  border-top: none !important;
+   border-left: none !important;
+    border-right: none !important;
+  border-bottom: 1px solid rgb(238, 238, 238);
+   background-color: white !important;
+  border-bottom: 1px solid rgb(238, 238, 238) !important;
+}
+.custom-offcanvas.show .dropdown-custom:focus ,
+.custom-offcanvas.showing .dropdown-custom:focus ,
+.custom-offcanvas.hiding .dropdown-custom:focus{
+  color: rgb(52, 52, 52) !important;
+  border-top: none !important;
+   border-left: none !important;
+    border-right: none !important;
+  border-bottom: 1px solid rgb(238, 238, 238);
+   background-color: white !important;
+  border-bottom: 1px solid rgb(238, 238, 238) !important;
+}
+
+/* ===========================
+   Offcanvas scoped overrides
+   =========================== */
+
+/* Target the offcanvas in all animation states */
+.custom-offcanvas,
+.custom-offcanvas.show,
+.custom-offcanvas.showing,
+.custom-offcanvas.hiding {
+  /* ensure our context uses desired vars if needed */
+  --bs-btn-bg: transparent;
+  --bs-btn-color: #343434;
+  --bs-btn-border-color: transparent;
+}
+
+/* Strongly override dropdown toggle/button which is rendered as .btn */
+.custom-offcanvas .dropdown-custom,
+.custom-offcanvas.show .dropdown-custom,
+.custom-offcanvas.showing .dropdown-custom,
+.custom-offcanvas.hiding .dropdown-custom,
+.custom-offcanvas.show .dropdown-custom.btn,
+.custom-offcanvas.showing .dropdown-custom.btn,
+.custom-offcanvas.hiding .dropdown-custom.btn {
+  display: block !important;
+  width: 100% !important;
+  text-align: start !important;
+  color: rgb(52,52,52) !important;
+  background-color: #fff !important;
+  border: none !important;
+  border-bottom: 1px solid rgb(238,238,238) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  padding: 0.6rem 1rem !important;
+  transition: background-color .18s ease, color .18s ease;
+}
+
+/* Hover / focus / active states during animations */
+
+.custom-offcanvas.show .dropdown-custom:hover,
+.custom-offcanvas.showing .dropdown-custom:hover,
+.custom-offcanvas.hiding .dropdown-custom:hover,
+.custom-offcanvas.show .dropdown-custom:focus,
+.custom-offcanvas.showing .dropdown-custom:focus,
+.custom-offcanvas.hiding .dropdown-custom:focus,
+.custom-offcanvas .dropdown-custom:active,
+.custom-offcanvas.show .dropdown-custom:active,
+.custom-offcanvas.showing .dropdown-custom:active,
+.custom-offcanvas.hiding .dropdown-custom:active {
+  color: rgb(255,177,217) !important;
+  background-color: #fff !important;
+  border-bottom: 1px solid rgb(238,238,238) !important;
+  box-shadow: none !important;
+}
+
+/* If Bootstrap applies .btn-primary .btn:focus rules, also override them */
+
+.custom-offcanvas .btn:focus,
+.custom-offcanvas .btn:active,
+.custom-offcanvas.show .btn,
+.custom-offcanvas.showing .btn,
+.custom-offcanvas.hiding .btn {
+  background: none !important;
+  background-color: transparent !important;
+  color: inherit !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Hide default caret pseudo-element if you have custom icon */
+.custom-offcanvas .dropdown-custom::after {
+  display: none !important;
+}
+
+/* ensure dropdown menu items follow same palette */
+
+.custom-offcanvas.show .dropdown-menu,
+.custom-offcanvas.showing .dropdown-menu,
+.custom-offcanvas.hiding .dropdown-menu {
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* final safety: highest specificity for the exact element */
+.custom-offcanvas.show .dropdown-custom,
+.custom-offcanvas.showing .dropdown-custom,
+.custom-offcanvas.hiding .dropdown-custom {
+  background-color: #fff !important;
+  color: rgb(52,52,52) !important;
+}
+
+
 
 /* navbar */
 .nav {
@@ -54,10 +184,15 @@ height: 100%;
 .nav .logos {
   height: 30px;
 }
+.nav .dropdown-custom {
+  border: 1px solid rgba(0, 0, 0, 0) !important;
+  background-color: rgba(0, 0, 0, 0) !important;
+  color: rgb(52, 52, 52) !important;
+}
 .nav Button {
-  border: 1px solid rgba(0, 0, 0, 0);
-  background-color: rgba(0, 0, 0, 0);
-  color: rgb(52, 52, 52);
+  border: 1px solid rgba(0, 0, 0, 0) !important;
+  background-color: rgba(0, 0, 0, 0) !important;
+  color: rgb(52, 52, 52) !important;
 }
 .nav Button:hover {
   border: 1px solid rgba(0, 0, 0, 0);
@@ -124,6 +259,85 @@ height: 100%;
   position: relative;
   top: 1px;
 }
+
+/* Target the offcanvas container */
+.custom-offcanvas.show {
+  background: rgb(238, 238, 238);
+  color: rgb(4, 4, 4);
+  padding-top: 1rem;
+  font-family: 'Vazirmatn', sans-serif;
+   direction: rtl;
+}
+.custom-offcanvas.show .offcanvas-body{
+padding: 0%;
+}
+
+
+
+/* Title styling */
+.custom-offcanvas.show .offcanvas-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: rgb(0, 0, 0);
+}
+
+/* Close button */
+.custom-offcanvas.show .btn-close {
+  opacity: 0.8;
+  color: black;
+  margin-right: auto;
+  margin-left: 0%;
+}
+.custom-offcanvas.show .btn-close:active {
+box-shadow: none !important;
+background-color: rgba(0, 0, 0, 0) !important;
+}
+.custom-offcanvas.show .btn-close:focus {
+box-shadow: none !important;
+background-color: rgba(0, 0, 0, 0) !important;
+}
+
+
+/* Nav links */
+.custom-offcanvas.show .menu-item {
+  color: rgb(0, 0, 0);
+  font-size: 1.1rem;
+  padding: 0.6rem 0;
+  padding-right: 10px;
+  transition: all 0.3s ease;
+  background-color: white;
+  border-bottom: 1px solid rgb(238, 238, 238);
+}
+
+.custom-offcanvas.show .menu-item:hover {
+  color: rgb(255, 177, 217);
+}
+
+/* Dropdown */
+.custom-offcanvas.show .dropdown-menu {
+  background-color: #f48fb1;
+  border: none;
+}
+
+.custom-offcanvas.show .dropdown-item {
+  color: rgb(0, 0, 0);
+}
+
+.custom-offcanvas.show .dropdown-item:hover {
+  background-color: #ea4c89;
+}
+
+/* Responsive adjustments */
+@media (max-width: 576px) {
+  .custom-offcanvas.show {
+    width: 100%;
+  }
+
+  .custom-offcanvas.show .menu-item {
+    font-size: 1rem;
+  }
+}
+
 /* Search */
 .group {
   display: flex;
