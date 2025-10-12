@@ -1,8 +1,6 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+
 import "./App.css";
-import { Button } from "react-bootstrap";
+
 import Home from "./pages/Home";
 import Footer from "./components/Footer";
 function App() {
@@ -47,7 +45,7 @@ function App() {
         </svg>
       </div>
 
-      <div className="home px-lg-5 px-2">
+      <div className="home px-lg-4 px-2">
         {" "}
         <Home></Home>
       </div>

@@ -15,13 +15,15 @@ import S1 from "../assets/images/Slider/Slider1.jpg";
 import S2 from "../assets/images/Slider/Slider2.jpg";
 import S3 from "../assets/images/Slider/Slider3.jpg";
 
-function Discounted() {
+function Discounted(  {title}) {
   const slides = [S1, S2, S3, S1, S2, S3];
   return (
     <div className="product-carousel ">
       <div class="title-container">
         <div class="title">
-          <p>تخفیف دار های هفته</p>
+          <p>
+        {title}
+            </p>
         </div>
       </div>
       <div className="products-container">

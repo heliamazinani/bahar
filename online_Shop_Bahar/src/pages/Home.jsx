@@ -7,9 +7,8 @@ function Home(){
       <div>
         <Navbar_menu />
         <Slider></Slider>
-        <Discounted></Discounted>
-        <Discounted></Discounted>
-  
+        <Discounted title={"   تخفیف دار های هفته"}></Discounted>
+        <Discounted title={"     جدید ترین‌ها "}></Discounted>
       </div>
     );
 }
