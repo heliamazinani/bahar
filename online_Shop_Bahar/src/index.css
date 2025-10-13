@@ -38,6 +38,13 @@ height: 100%;
   object-fit: cover; /* ensures it fills without shrinking height */
 }
 
+a,
+a:visited,
+a:hover,
+a:active {
+  text-decoration: none !important;
+
+}
 .custom-offcanvas.show .dropdown-custom,
 .custom-offcanvas.showing .dropdown-custom,
 .custom-offcanvas.hiding .dropdown-custom {
@@ -211,25 +218,26 @@ height: 100%;
   color: rgb(252, 102, 179) !important;
 }
 
-.nav .menu-item {
+.nav .menu-item ,a{
   border: 1px solid rgba(0, 0, 0, 0);
   background-color: rgba(0, 0, 0, 0);
   color: rgb(52, 52, 52);
   display: flex;
   align-items: center; /* vertically centers text and icon */
   gap: 0.4rem;
+
 }
-.nav .menu-item:hover {
+.nav .menu-item:hover,a:hover {
   border: 1px solid rgba(0, 0, 0, 0);
   background-color: rgba(57, 73, 87, 0);
   color: rgb(255, 177, 217);
 }
-.nav .menu-item:focus {
+.nav .menu-item:focus,a:focus {
   border: 1px solid rgba(0, 0, 0, 0) !important;
   background-color: rgba(57, 73, 87, 0) !important;
   color: rgb(52, 52, 52) !important;
 }
-.nav .menu-item:active {
+.nav .menu-item:active ,a:active {
   border: 1px solid rgba(0, 0, 0, 0) !important;
   background-color: rgba(57, 73, 87, 0) !important;
   color: rgb(252, 102, 179) !important;
@@ -394,7 +402,7 @@ input:hover {
 }
 
 /* Discounted */
-.product-carousel {
+.product-carousel , .filters {
   margin-top: 50px;
    margin-bottom: 100px;
 }

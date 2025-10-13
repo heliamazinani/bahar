@@ -1,8 +1,10 @@
-
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import "./App.css";
 
 import Home from "./pages/Home";
 import Footer from "./components/Footer";
+import Navbar_menu from "./components/Navbar_menu";
+import Products from "./pages/Products";
 function App() {
   return (
     <>
@@ -47,11 +49,18 @@ function App() {
 
       <div className="home px-lg-4 px-2">
         {" "}
-        <Home></Home>
+        <BrowserRouter>
+          {/* Navigation */}
+          <Navbar_menu />
+          {/* Routes */}
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/products" element={<Products />} />
+          </Routes>
+        </BrowserRouter>
       </div>
 
-    <Footer></Footer>
-    
+      <Footer></Footer>
     </>
   );
 }

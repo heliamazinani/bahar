@@ -10,6 +10,7 @@ import Dropdown from "react-bootstrap/Dropdown";
 import Logov from "../assets/Logo/Logo-vertical.png";
 import Logos from "../assets/Logo/Logo-small.png";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 
 function NavbarMenu() {
@@ -60,8 +61,8 @@ function NavbarMenu() {
             placement="end"
             className="custom-offcanvas"
           >
-            <Offcanvas.Header closeButton ></Offcanvas.Header>
-            <Offcanvas.Body >
+            <Offcanvas.Header closeButton></Offcanvas.Header>
+            <Offcanvas.Body>
               <Nav className="justify-content-end flex-grow-1">
                 <Nav.Link className="menu-item" href="#home">
                   {" "}
@@ -72,13 +73,15 @@ function NavbarMenu() {
                 </Nav.Link>
                 <div dir="rtl">
                   <Dropdown>
-                    <Dropdown.Toggle
-                      className="dropdown-custom menu-item "
-                      id="dropdown-basic"
-                    >
-                      محصولات
-                      <ChevronDown className="dropdown-icon" />
-                    </Dropdown.Toggle>
+                    <Link to="/products">
+                      <Dropdown.Toggle
+                        className="dropdown-custom menu-item "
+                        id="dropdown-basic"
+                      >
+                        محصولات
+                        <ChevronDown className="dropdown-icon" />
+                      </Dropdown.Toggle>
+                    </Link>
 
                     <Dropdown.Menu>
                       <Dropdown.Item className="menu-item" href="#/action-1">
@@ -93,10 +96,9 @@ function NavbarMenu() {
                     </Dropdown.Menu>
                   </Dropdown>
                 </div>
-                <Nav.Link className="menu-item" href="#about">
-                  {" "}
-                  خانه
-                </Nav.Link>
+             
+                  <Nav.Link className="menu-item" >   <Link to="/"> خانه</Link></Nav.Link>
+               
               </Nav>
             </Offcanvas.Body>
           </Navbar.Offcanvas>

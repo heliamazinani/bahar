@@ -15,15 +15,13 @@ import S1 from "../assets/images/Slider/Slider1.jpg";
 import S2 from "../assets/images/Slider/Slider2.jpg";
 import S3 from "../assets/images/Slider/Slider3.jpg";
 
-function Discounted(  {title}) {
+function Discounted(  {title , onSale}) {
   const slides = [S1, S2, S3, S1, S2, S3];
   return (
     <div className="product-carousel ">
       <div class="title-container">
         <div class="title">
-          <p>
-        {title}
-            </p>
+          <p>{title}</p>
         </div>
       </div>
       <div className="products-container">
@@ -54,9 +52,14 @@ function Discounted(  {title}) {
             <SwiperSlide key={index}>
               <Card className="product-card">
                 <Card.Img className="product-img" variant="top" src={bgImage} />
-                <div className="text-container">
+                {onSale && (
+                  <div className="text-container">
+                    <p>تخفیف</p>
+                  </div>
+                )}
+                {/* <div className="text-container">
                   <p>تخفیف</p>
-                </div>
+                </div> */}
                 <div dir="rtl">
                   <Card.Body>
                     <Card.Title className="card-title">اسم محصول</Card.Title>
@@ -64,12 +67,13 @@ function Discounted(  {title}) {
                     <div>
                       <Container>
                         <Row>
-                          <Col xxl={5}>
-                            <div className="ha">
-                              {" "}
-                              <span className="old-price">130,000</span>
-                            </div>
-                          </Col>
+                          {onSale && (
+                            <Col xxl={5}>
+                              <div className="ha">
+                                <span className="old-price">130,000</span>
+                              </div>
+                            </Col>
+                          )}
                           <Col>
                             <span>120,000</span>
                             <span>تومان</span>
