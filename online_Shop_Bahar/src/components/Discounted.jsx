@@ -1,13 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Button from "react-bootstrap/Button";
-import Card from "react-bootstrap/Card";
-import { Basket2 } from "react-bootstrap-icons";
-
+import { products } from "../DummyData/Products";
+import ProductCard from "./ProductCard";
 import "swiper/css";
 import "swiper/css/navigation";
 
@@ -15,13 +10,13 @@ import S1 from "../assets/images/Slider/Slider1.jpg";
 import S2 from "../assets/images/Slider/Slider2.jpg";
 import S3 from "../assets/images/Slider/Slider3.jpg";
 
-function Discounted() {
-  const slides = [S1, S2, S3, S1, S2, S3];
+function Discounted(  {title , onSale}) {
+  const filteredProducts = onSale ? products.filter((p) => p.onSale) : products;
   return (
     <div className="product-carousel ">
       <div class="title-container">
         <div class="title">
-          <p>تخفیف دار های هفته</p>
+          <p>{title}</p>
         </div>
       </div>
       <div className="products-container">
@@ -48,49 +43,9 @@ function Discounted() {
             },
           }}
         >
-          {slides.map((bgImage, index) => (
-            <SwiperSlide key={index}>
-              <Card className="product-card">
-                <Card.Img className="product-img" variant="top" src={bgImage} />
-                <div className="text-container">
-                  <p>تخفیف</p>
-                </div>
-                <div dir="rtl">
-                  <Card.Body>
-                    <Card.Title className="card-title">اسم محصول</Card.Title>
-                    <Card.Text className="card-text"></Card.Text>
-                    <div>
-                      <Container>
-                        <Row>
-                          <Col xxl={5}>
-                            <div className="ha">
-                              {" "}
-                              <span className="old-price">130,000</span>
-                            </div>
-                          </Col>
-                          <Col>
-                            <span>120,000</span>
-                            <span>تومان</span>
-                          </Col>
-                        </Row>
-                        <div className="overlay"></div>
-                      </Container>
-                      <div className="hover-buttons">
-                        <Button
-                          className="buy"
-                          variant="outline-dark"
-                          size="sm"
-                        >
-                          مشاهده و خرید
-                        </Button>
-                        <Button className="basket">
-                          <Basket2 size={50} />
-                        </Button>
-                      </div>
-                    </div>
-                  </Card.Body>
-                </div>
-              </Card>
+          {filteredProducts.map((product) => (
+            <SwiperSlide key={product.id}>
+              <ProductCard product={product} />
             </SwiperSlide>
           ))}
         </Swiper>
