@@ -458,9 +458,12 @@ input:hover {
 }
 
 .card-text {
-  font-size: clamp(0.8rem, 1.2vw, 1.1rem);
+  font-size: clamp(0.9rem, 1.2vw, 1.3rem);
   margin-top: 30px;
-
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  text-align: center;
 }
 
 .product-card {
@@ -488,7 +491,7 @@ input:hover {
 }
 
 .product-card .hover-buttons .buy {
-  background-color: rgb(255, 144, 201);
+  background-color: #fbb2ce;
   border: none;
   height: 3rem;
   display: flex;
@@ -500,7 +503,7 @@ input:hover {
   line-height: 1;
 }
 .product-card .hover-buttons .basket {
-  background-color: rgb(255, 144, 201);
+  background-color: #fbb2ce;
   border: none;
   width: 3rem;
   height: 3rem;
@@ -539,6 +542,10 @@ input:hover {
   text-decoration: line-through;
   color: rgb(130, 130, 130);
 }
+.price {
+  font-weight: bold;
+
+}
 .product-img {
   height: 30vh;
 }
@@ -561,6 +568,31 @@ input:hover {
   margin: 0; /* removes default p tag margins */
 }
 
+
+/* Base pagination button */
+.page-item .page-link {
+  color: #fbb2ce;            /* text color */
+  background-color: white;   /* background */
+  border: 1px solid #fbb2ce; /* border color */
+  transition: all 0.2s ease;
+}
+
+/* Active page */
+.page-item.active .page-link {
+  color: white !important;            /* active text color */
+  background-color: #fbb2ce !important; /* active background */
+  border-color: #fbb2ce !important;
+  box-shadow: none !important;
+}
+
+/* Hover effect */
+.page-item .page-link:hover {
+  background-color: #f8bbd0;
+  color: white;
+  border-color: #fbb2ce;
+    box-shadow: none !important;
+}
+
 .footer {
   background-color: #ffffff;
   color: #333;
@@ -568,6 +600,106 @@ input:hover {
   overflow: hidden;
 
   padding: 10px;
+}
+
+
+.filters-container {
+  background-color: #ffffff;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.05), 0 6px 20px 0 rgba(0, 0, 0, 0.05);
+  padding: 1rem;
+  border-radius: 12px;
+}
+
+.filter-label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+
+/* Optional: Custom switch styling */
+.onsale-switch .form-check-input {
+  width: 3rem;
+  height: 1.5rem;
+  background-color: #ffffff;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.onsale-switch .form-check-input:checked {
+  background-color: #ea4c89;
+}
+
+.onsale-switch .form-check-input:focus {
+  box-shadow: none;
+}
+
+.filters-container {
+  background-color: #ffffff;
+  padding: 1rem;
+  border-radius: 12px;
+}
+
+.filter-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.filter-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 0.6rem;  /* 👈 adjust spacing here */
+  line-height: 1;
+}
+
+.switch-wrapper {
+  display: flex;
+  align-items: center;
+  height: 38px; /* 👈 matches the height of Bootstrap inputs */
+}
+
+
+/* Optional: Custom switch styling */
+.onsale-switch .form-check-input {
+  width: 4rem;
+  height: 2rem;
+  background-color: #ccc;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.onsale-switch .form-check-input:checked {
+  background-color: #ea4c89;
+}
+
+.onsale-switch input:active , input:focus{
+    outline: none;
+  border-color: rgba(234, 76, 137, 0.4) !important;
+  background-color: #fff;
+  box-shadow: 0 0 0 4px rgb(234 76 137 / 10%) !important;
+
+}
+.onsale-switch select:active , select:focus{
+    outline: none;
+  border-color: rgba(234, 76, 137, 0.4) !important;
+  background-color: #fff;
+  box-shadow: 0 0 0 4px rgb(234 76 137 / 10%) !important;
+}
+.onsale-switch option{
+  background-color: #c71c1c !important;
+
+}
+.onsale-switch option:active , option:focus{
+
+  background-color: #c71c1c;
+ 
+}
+.onsale-switch .form-check-label {
+  margin-right: 0.5rem;
+  font-weight: 500;
 }
 
 /* 👇 Wave Top */
@@ -673,43 +805,39 @@ input:hover {
 
   .footer-wave svg {
     height: 80px; /* stays visible even on mobile */
-
   }
-    .product-card .hover-buttons button {
+  .product-card .hover-buttons button {
     font-size: 0.7rem;
     padding: 0.25rem 0.6rem;
     height: 1rem;
   }
   .product-card .hover-buttons .buy {
-  background-color: rgb(255, 144, 201);
-  border: none;
-  height: 2rem;
-  display: flex;
-  align-items: center;
-  text-align: center;
-  justify-content: center;
-  color: white;
-  font-size: 0.5rem;
-  line-height: 1;
-}
-.product-card .hover-buttons .basket {
-  background-color: rgb(255, 144, 201);
-  border: none;
-  width: 2rem;
-  height: 2rem;
-  border-radius: 10%;
-  display: flex;
-  align-items: center;
-  text-align: center;
-  justify-content: center;
-}
-
-
+    background-color: #fbb2ce;
+    border: none;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    color: white;
+    font-size: 0.5rem;
+    line-height: 1;
+  }
+  .product-card .hover-buttons .basket {
+    background-color: #fbb2ce;
+    border: none;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 10%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+  }
 }
 
 @media (max-width: 400px) {
-  
-    .product-card {
+  .product-card {
     max-width: 160px;
     height: 200px;
   }
@@ -721,16 +849,15 @@ input:hover {
   .product-card .card-title {
     font-size: 0.8rem;
   }
-    .card-text {
-   margin-top: 10px;
+  .card-text {
+    margin-top: 10px;
+    text-align: center;
   }
-
 
   .product-card .hover-buttons button {
     font-size: 0.7rem;
     padding: 0.25rem 0.6rem;
   }
-
 }
 
 .rounded {

@@ -6,6 +6,15 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
+const toFarsiNumber = (number) => {
+  const farsiDigits = ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"];
+  return number
+    .toString()
+    .split("")
+    .map((digit) => farsiDigits[parseInt(digit)])
+    .join("");
+};
+
 function ProductList() {
   const itemsPerPage = 8; // ✅ how many cards per page
   const [currentPage, setCurrentPage] = useState(1);
@@ -35,16 +44,16 @@ function ProductList() {
         ))}
       </Row>
 
-      {/* 🧭 Pagination Controls */}
       <div className="d-flex justify-content-center mt-4">
         <Pagination>
           {[...Array(totalPages)].map((_, i) => (
             <Pagination.Item
+              className="pageNum"
               key={i + 1}
               active={i + 1 === currentPage}
               onClick={() => handlePageChange(i + 1)}
             >
-              {i + 1}
+              {toFarsiNumber(i + 1)}
             </Pagination.Item>
           ))}
         </Pagination>
