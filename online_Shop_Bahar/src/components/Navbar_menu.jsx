@@ -96,9 +96,14 @@ function NavbarMenu() {
                     </Dropdown.Menu>
                   </Dropdown>
                 </div>
+
              
-                  <Nav.Link className="menu-item" >   <Link to="/"> خانه</Link></Nav.Link>
-               
+                  {" "}
+                  <Link to="/" className="menu-item">
+                    {" "}
+                    خانه
+                  </Link>
+                
               </Nav>
             </Offcanvas.Body>
           </Navbar.Offcanvas>

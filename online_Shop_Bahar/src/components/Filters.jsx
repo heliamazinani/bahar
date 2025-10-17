@@ -1,5 +1,5 @@
 
-
+import ProductList from "./ProductList";
 function Filters( {title}){
     return (
       <div className="filters">
@@ -8,6 +8,7 @@ function Filters( {title}){
             <p> دسته بندی {title}</p>
           </div>
         </div>
+        <ProductList></ProductList>
 
         
       </div>

@@ -1,16 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&display=swap");
 @font-face {
-  font-family: 'Estedad';
-  src: url('./assets/fonts/estedad/Estedad-Medium.woff2') format('woff2');
+  font-family: "Estedad";
+  src: url("./assets/fonts/estedad/Estedad-Medium.woff2") format("woff2");
 
   font-weight: 700;
   font-style: normal;
 }
 
-
-
 body {
-  font-family: 'Vazirmatn', sans-serif;
+  font-family: "Vazirmatn", sans-serif;
   font-weight: 400;
   line-height: 1.6;
   color: #333;
@@ -34,7 +32,7 @@ body {
 
 .wave-container svg {
   width: 105%; /* make the wave wider than the viewport */
-height: 100%;
+  height: 100%;
   object-fit: cover; /* ensures it fills without shrinking height */
 }
 
@@ -43,15 +41,14 @@ a:visited,
 a:hover,
 a:active {
   text-decoration: none !important;
-
 }
 .custom-offcanvas.show .dropdown-custom,
 .custom-offcanvas.showing .dropdown-custom,
 .custom-offcanvas.hiding .dropdown-custom {
   background-color: white;
   border-top: none !important;
-   border-left: none !important;
-    border-right: none !important;
+  border-left: none !important;
+  border-right: none !important;
   border-bottom: 1px solid rgb(238, 238, 238);
   color: rgb(52, 52, 52);
   display: block;
@@ -60,26 +57,26 @@ a:active {
   border-radius: 0%;
   text-align: start;
 }
-.custom-offcanvas.show .dropdown-custom:hover ,
-.custom-offcanvas.showing .dropdown-custom:hover ,
+.custom-offcanvas.show .dropdown-custom:hover,
+.custom-offcanvas.showing .dropdown-custom:hover,
 .custom-offcanvas.hiding .dropdown-custom:hover {
   color: rgb(255, 177, 217) !important;
   border-top: none !important;
-   border-left: none !important;
-    border-right: none !important;
+  border-left: none !important;
+  border-right: none !important;
   border-bottom: 1px solid rgb(238, 238, 238);
-   background-color: white !important;
+  background-color: white !important;
   border-bottom: 1px solid rgb(238, 238, 238) !important;
 }
-.custom-offcanvas.show .dropdown-custom:focus ,
-.custom-offcanvas.showing .dropdown-custom:focus ,
-.custom-offcanvas.hiding .dropdown-custom:focus{
+.custom-offcanvas.show .dropdown-custom:focus,
+.custom-offcanvas.showing .dropdown-custom:focus,
+.custom-offcanvas.hiding .dropdown-custom:focus {
   color: rgb(52, 52, 52) !important;
   border-top: none !important;
-   border-left: none !important;
-    border-right: none !important;
+  border-left: none !important;
+  border-right: none !important;
   border-bottom: 1px solid rgb(238, 238, 238);
-   background-color: white !important;
+  background-color: white !important;
   border-bottom: 1px solid rgb(238, 238, 238) !important;
 }
 
@@ -109,14 +106,14 @@ a:active {
   display: block !important;
   width: 100% !important;
   text-align: start !important;
-  color: rgb(52,52,52) !important;
+  color: rgb(52, 52, 52) !important;
   background-color: #fff !important;
   border: none !important;
-  border-bottom: 1px solid rgb(238,238,238) !important;
+  border-bottom: 1px solid rgb(238, 238, 238) !important;
   border-radius: 0 !important;
   box-shadow: none !important;
   padding: 0.6rem 1rem !important;
-  transition: background-color .18s ease, color .18s ease;
+  transition: background-color 0.18s ease, color 0.18s ease;
 }
 
 /* Hover / focus / active states during animations */
@@ -131,9 +128,9 @@ a:active {
 .custom-offcanvas.show .dropdown-custom:active,
 .custom-offcanvas.showing .dropdown-custom:active,
 .custom-offcanvas.hiding .dropdown-custom:active {
-  color: rgb(255,177,217) !important;
+  color: rgb(255, 177, 217) !important;
   background-color: #fff !important;
-  border-bottom: 1px solid rgb(238,238,238) !important;
+  border-bottom: 1px solid rgb(238, 238, 238) !important;
   box-shadow: none !important;
 }
 
@@ -171,10 +168,8 @@ a:active {
 .custom-offcanvas.showing .dropdown-custom,
 .custom-offcanvas.hiding .dropdown-custom {
   background-color: #fff !important;
-  color: rgb(52,52,52) !important;
+  color: rgb(52, 52, 52) !important;
 }
-
-
 
 /* navbar */
 .nav {
@@ -218,26 +213,29 @@ a:active {
   color: rgb(252, 102, 179) !important;
 }
 
-.nav .menu-item ,a{
+.nav .menu-item,
+.nav a {
   border: 1px solid rgba(0, 0, 0, 0);
   background-color: rgba(0, 0, 0, 0);
   color: rgb(52, 52, 52);
   display: flex;
   align-items: center; /* vertically centers text and icon */
   gap: 0.4rem;
-
 }
-.nav .menu-item:hover,a:hover {
+.nav .menu-item:hover,
+.nav a:hover {
   border: 1px solid rgba(0, 0, 0, 0);
   background-color: rgba(57, 73, 87, 0);
   color: rgb(255, 177, 217);
 }
-.nav .menu-item:focus,a:focus {
+.nav .menu-item:focus,
+.nav a:focus {
   border: 1px solid rgba(0, 0, 0, 0) !important;
   background-color: rgba(57, 73, 87, 0) !important;
   color: rgb(52, 52, 52) !important;
 }
-.nav .menu-item:active ,a:active {
+.nav .menu-item:active,
+.nav a:active {
   border: 1px solid rgba(0, 0, 0, 0) !important;
   background-color: rgba(57, 73, 87, 0) !important;
   color: rgb(252, 102, 179) !important;
@@ -273,14 +271,12 @@ a:active {
   background: rgb(238, 238, 238);
   color: rgb(4, 4, 4);
   padding-top: 1rem;
-  font-family: 'Vazirmatn', sans-serif;
-   direction: rtl;
+  font-family: "Vazirmatn", sans-serif;
+  direction: rtl;
 }
-.custom-offcanvas.show .offcanvas-body{
-padding: 0%;
+.custom-offcanvas.show .offcanvas-body {
+  padding: 0%;
 }
-
-
 
 /* Title styling */
 .custom-offcanvas.show .offcanvas-title {
@@ -297,16 +293,18 @@ padding: 0%;
   margin-left: 0%;
 }
 .custom-offcanvas.show .btn-close:active {
-box-shadow: none !important;
-background-color: rgba(0, 0, 0, 0) !important;
+  box-shadow: none !important;
+  background-color: rgba(0, 0, 0, 0) !important;
 }
 .custom-offcanvas.show .btn-close:focus {
-box-shadow: none !important;
-background-color: rgba(0, 0, 0, 0) !important;
+  box-shadow: none !important;
+  background-color: rgba(0, 0, 0, 0) !important;
 }
 
-
 /* Nav links */
+.custom-offcanvas.show a {
+  color: black;
+}
 .custom-offcanvas.show .menu-item {
   color: rgb(0, 0, 0);
   font-size: 1.1rem;
@@ -317,7 +315,8 @@ background-color: rgba(0, 0, 0, 0) !important;
   border-bottom: 1px solid rgb(238, 238, 238);
 }
 
-.custom-offcanvas.show .menu-item:hover {
+.custom-offcanvas.show .menu-item:hover,
+.custom-offcanvas.show a:hover {
   color: rgb(255, 177, 217);
 }
 
@@ -402,25 +401,26 @@ input:hover {
 }
 
 /* Discounted */
-.product-carousel , .filters {
+.product-carousel,
+.filters {
   margin-top: 50px;
-   margin-bottom: 100px;
+  margin-bottom: 100px;
 }
 
- .title-container {
+.title-container {
   display: flex;
   justify-content: center;
   margin-bottom: 40px;
 }
- .title {
+.title {
   position: relative;
   display: inline-block;
   text-align: center;
 }
 
- .title p {
+.title p {
   position: relative;
-  font-family: 'Estedad', 'Vazirmatn', sans-serif;
+  font-family: "Estedad", "Vazirmatn", sans-serif;
   font-weight: 700;
   font-size: clamp(1.2rem, 2vw, 1.5rem);
   color: #333;
@@ -435,20 +435,32 @@ input:hover {
   left: 0;
   width: 100%;
   height: 0.6em; /* height of the pink bar */
-background: #FFD8ED;
-background: linear-gradient(nulldeg, rgba(255, 216, 237, 1) 0%, rgba(252, 159, 226, 1) 100%);
+  background: #ffd8ed;
+  background: linear-gradient(
+    nulldeg,
+    rgba(255, 216, 237, 1) 0%,
+    rgba(252, 159, 226, 1) 100%
+  );
   z-index: 0;
   transform: translateY(30%); /* pushes the bar a bit lower */
 }
 
+.product-card {
+  margin-bottom: 15px;
+  margin-top: 15px;
+  width: 100%;
+  height: 350px;
+  min-height: 200px;
+}
 .card-title {
-  font-size: clamp(0.9rem, 1.2vw, 1.25rem);
+  font-size: clamp(0.9rem, 1.2vw, 1.3rem);
   font-weight: 600;
 }
 
 .card-text {
-  font-size: clamp(0.7rem, 2vw, 3rem);
-  text-align: center;
+  font-size: clamp(0.8rem, 1.2vw, 1.1rem);
+  margin-top: 30px;
+
 }
 
 .product-card {
@@ -506,7 +518,7 @@ background: linear-gradient(nulldeg, rgba(255, 216, 237, 1) 0%, rgba(252, 159, 2
   height: 100%;
   width: 100%;
   opacity: 0;
-  background-color: rgba(198, 211, 255, 0.244);
+  background-color: rgba(255, 255, 255, 0.244);
 }
 
 /* Appear on hover */
@@ -530,7 +542,7 @@ background: linear-gradient(nulldeg, rgba(255, 216, 237, 1) 0%, rgba(252, 159, 2
 .product-img {
   height: 30vh;
 }
-.product-carousel .text-container {
+.product-card .text-container {
   position: absolute;
   color: white;
   left: 5%;
@@ -545,17 +557,16 @@ background: linear-gradient(nulldeg, rgba(255, 216, 237, 1) 0%, rgba(252, 159, 2
   line-height: 1; /* removes extra vertical space from <p> */
 }
 
-.product-carousel .text-container p {
+.product-card .text-container p {
   margin: 0; /* removes default p tag margins */
 }
-
 
 .footer {
   background-color: #ffffff;
   color: #333;
   position: relative;
   overflow: hidden;
- 
+
   padding: 10px;
 }
 
@@ -612,10 +623,9 @@ background: linear-gradient(nulldeg, rgba(255, 216, 237, 1) 0%, rgba(252, 159, 2
   border-top: 1px solid #ffffff00;
   margin: 1.5rem 0;
 }
-.copyright{
+.copyright {
   color: rgba(255, 255, 255, 0.648);
   font-size: clamp(0.7rem, 2vw, 1rem);
-
 }
 
 .footer-background-wave {
@@ -663,9 +673,65 @@ background: linear-gradient(nulldeg, rgba(255, 216, 237, 1) 0%, rgba(252, 159, 2
 
   .footer-wave svg {
     height: 80px; /* stays visible even on mobile */
+
   }
+    .product-card .hover-buttons button {
+    font-size: 0.7rem;
+    padding: 0.25rem 0.6rem;
+    height: 1rem;
+  }
+  .product-card .hover-buttons .buy {
+  background-color: rgb(255, 144, 201);
+  border: none;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  color: white;
+  font-size: 0.5rem;
+  line-height: 1;
+}
+.product-card .hover-buttons .basket {
+  background-color: rgb(255, 144, 201);
+  border: none;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 10%;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
 }
 
+
+}
+
+@media (max-width: 400px) {
+  
+    .product-card {
+    max-width: 160px;
+    height: 200px;
+  }
+
+  .product-card .product-img {
+    height: 120px;
+  }
+
+  .product-card .card-title {
+    font-size: 0.8rem;
+  }
+    .card-text {
+   margin-top: 10px;
+  }
+
+
+  .product-card .hover-buttons button {
+    font-size: 0.7rem;
+    padding: 0.25rem 0.6rem;
+  }
+
+}
 
 .rounded {
   border-radius: 5px;
