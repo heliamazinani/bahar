@@ -405,6 +405,7 @@ input:hover {
 .filters {
   margin-top: 50px;
   margin-bottom: 100px;
+  position: relative;
 }
 
 .title-container {
@@ -445,6 +446,38 @@ input:hover {
   transform: translateY(30%); /* pushes the bar a bit lower */
 }
 
+.product-carousel .nav-buttons .button-prev,
+.product-carousel .nav-buttons .button-next {
+  color: #ffffff;
+  background-color: #fbb2ce;
+  border: none;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  cursor: pointer;
+  transition: color 0.3s ease, transform 0.3s ease;
+  border-radius: 100px;
+}
+
+.product-carousel .nav-buttons .button-prev {
+  left: -5px;  /* 👈 left side */
+}
+
+.product-carousel .nav-buttons .button-next {
+  right: -5px; /* 👈 right side */
+}
+
+.product-carousel .nav-buttons .button-prev:hover,
+.product-carousel .nav-buttons .button-next:hover {
+  color: #ffe4ee;
+  transform: translateY(-50%) scale(1.2);
+}
+
+.product-carousel .nav-buttons .button-prev::after,
+.product-carousel .nav-buttons .button-next::after {
+  font-size: 24px;
+}
 .product-card {
   margin-bottom: 15px;
   margin-top: 15px;

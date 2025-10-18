@@ -4,13 +4,12 @@ import { Navigation } from "swiper/modules";
 import { products } from "../DummyData/Products";
 import ProductCard from "./ProductCard";
 import "swiper/css";
+import { useRef } from 'react';
 import "swiper/css/navigation";
-
-import S1 from "../assets/images/Slider/Slider1.jpg";
-import S2 from "../assets/images/Slider/Slider2.jpg";
-import S3 from "../assets/images/Slider/Slider3.jpg";
-
-function Discounted(  {title , onSale}) {
+import { ArrowLeftShort } from "react-bootstrap-icons";
+import { ArrowRightShort } from "react-bootstrap-icons";
+function Discounted({ title, onSale }) {
+  const swiperRef = useRef();
   const filteredProducts = onSale ? products.filter((p) => p.onSale) : products;
   return (
     <div className="product-carousel ">
@@ -24,9 +23,8 @@ function Discounted(  {title , onSale}) {
           modules={[Navigation]}
           spaceBetween={20}
           loop={true}
-          navigation={{
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
+          onBeforeInit={(swiper) => {
+            swiperRef.current = swiper;
           }}
           breakpoints={{
             320: {
@@ -49,6 +47,20 @@ function Discounted(  {title , onSale}) {
             </SwiperSlide>
           ))}
         </Swiper>
+        <div className="nav-buttons">
+          <button
+            className="button-next"
+            onClick={() => swiperRef.current?.slidePrev()}
+          >
+            <ArrowRightShort size={30}></ArrowRightShort>
+          </button>
+          <button
+            className="button-prev"
+            onClick={() => swiperRef.current?.slideNext()}
+          >
+            <ArrowLeftShort size={30}></ArrowLeftShort>
+          </button>
+        </div>
       </div>
     </div>
   );

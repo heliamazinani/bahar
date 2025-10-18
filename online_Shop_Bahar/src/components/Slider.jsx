@@ -25,10 +25,7 @@ const Slider = () => {
           autoplay={{ delay: 4000 }}
           parallax={true}
           pagination={{ clickable: true }}
-          navigation={{
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-          }}
+
         >
           {slides.map((bgImage, index) => (
             <SwiperSlide className="Slide" key={index}>
