@@ -13,8 +13,8 @@ function Discounted({ title, onSale }) {
   const filteredProducts = onSale ? products.filter((p) => p.onSale) : products;
   return (
     <div className="product-carousel ">
-      <div class="title-container">
-        <div class="title">
+      <div className="title-container">
+        <div className="title">
           <p>{title}</p>
         </div>
       </div>
@@ -52,13 +52,13 @@ function Discounted({ title, onSale }) {
             className="button-next"
             onClick={() => swiperRef.current?.slidePrev()}
           >
-            <ArrowRightShort size={30}></ArrowRightShort>
+            <ArrowRightShort size={40}></ArrowRightShort>
           </button>
           <button
             className="button-prev"
             onClick={() => swiperRef.current?.slideNext()}
           >
-            <ArrowLeftShort size={30}></ArrowLeftShort>
+            <ArrowLeftShort size={40}></ArrowLeftShort>
           </button>
         </div>
       </div>

@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import Footer from "./components/Footer";
 import Navbar_menu from "./components/Navbar_menu";
 import Products from "./pages/Products";
+import AuthPage from "./pages/AuthPage";
 function App() {
   return (
     <>
@@ -56,6 +57,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/products" element={<Products />} />
+            <Route path="/auth" element={<AuthPage />} />
           </Routes>
         </BrowserRouter>
       </div>
