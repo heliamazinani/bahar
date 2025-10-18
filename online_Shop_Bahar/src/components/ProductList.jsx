@@ -16,7 +16,7 @@ const toFarsiNumber = (number) => {
 };
 
 function ProductList() {
-  const itemsPerPage = 8; // ✅ how many cards per page
+  const itemsPerPage = 16; // ✅ how many cards per page
   const [currentPage, setCurrentPage] = useState(1);
 
   const totalPages = Math.ceil(products.length / itemsPerPage);
