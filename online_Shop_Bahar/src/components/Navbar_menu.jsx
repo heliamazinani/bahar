@@ -8,7 +8,7 @@ import { Basket2 } from "react-bootstrap-icons";
 import { ChevronDown } from "react-bootstrap-icons"; 
 import Dropdown from "react-bootstrap/Dropdown";
 import Logov from "../assets/Logo/Logo-vertical.png";
-import Logos from "../assets/Logo/Logo-small.png";
+import Logos from "../assets/Logo/logo-small.png";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
