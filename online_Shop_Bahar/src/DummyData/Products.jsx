@@ -1,6 +1,6 @@
-import P1 from "../assets/images/Slider/Slider1.jpg";
-import P2 from "../assets/images/Slider/Slider2.jpg";
-import P3 from "../assets/images/Slider/Slider3.jpg";
+import P1 from "../assets/images/Slider/Slider1.JPG";
+import P2 from "../assets/images/Slider/Slider2.JPG";
+import P3 from "../assets/images/Slider/Slider3.JPG";
 
 export const products = [
   {
