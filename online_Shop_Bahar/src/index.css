@@ -466,17 +466,17 @@ input:hover {
 }
 
 .product-carousel .nav-buttons .button-prev {
-  left: -15px;  /* 👈 left side */
+  left: -15px;  
 }
 
 .product-carousel .nav-buttons .button-next {
-  right: -15px; /* 👈 right side */
+  right: -15px; 
 }
 
 .product-carousel .nav-buttons .button-prev:hover,
 .product-carousel .nav-buttons .button-next:hover {
   color: #ffe4ee;
-  transform: translateY(-50%) scale(1.2);
+
 }
 
 .product-carousel .nav-buttons .button-prev::after,
