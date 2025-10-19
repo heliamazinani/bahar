@@ -11,16 +11,18 @@ import Logov from "../assets/Logo/Logo-vertical.png";
 import Logos from "../assets/Logo/logo-small.png";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import AuthPage from "../pages/AuthPage";
 
 
 function NavbarMenu() {
     const [showSearch, setShowSearch] = useState(false);
+     const [authOpen, setAuthOpen] = useState(false);
   return (
     <>
       <Navbar className="nav rounded " sticky="top" variant="light" expand="lg">
         <Container fluid>
           <Button>
-            <Basket2 />
+            <Basket2 size={18} />
           </Button>
           {/* Search Toggle */}
           <div className="me-auto ms-3">
@@ -49,7 +51,7 @@ function NavbarMenu() {
                 variant="outline-dark"
                 onClick={() => setShowSearch(true)}
               >
-                <Search />
+                <Search size={18} />
               </Button>
             )}
           </div>
@@ -64,6 +66,15 @@ function NavbarMenu() {
             <Offcanvas.Header closeButton></Offcanvas.Header>
             <Offcanvas.Body>
               <Nav className="justify-content-end flex-grow-1">
+                <button
+                  to="/auth"
+                  className="menu-item dropdown-custom"
+                  onClick={() => setAuthOpen(true)}
+                >
+                  {" "}
+                  ورود | عضویت
+                </button>
+                {authOpen && <AuthPage onClose={() => setAuthOpen(false)} />}
                 <Nav.Link className="menu-item" href="#home">
                   {" "}
                   پوستی
@@ -95,15 +106,11 @@ function NavbarMenu() {
                       </Dropdown.Item>
                     </Dropdown.Menu>
                   </Dropdown>
-                </div>
-
-             
+                </div>{" "}
+                <Link to="/" className="menu-item">
                   {" "}
-                  <Link to="/" className="menu-item">
-                    {" "}
-                    خانه
-                  </Link>
-                
+                  خانه
+                </Link>
               </Nav>
             </Offcanvas.Body>
           </Navbar.Offcanvas>

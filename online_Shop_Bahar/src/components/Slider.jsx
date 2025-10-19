@@ -7,8 +7,8 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 
 import S1 from "../assets/images/Slider/S1.png";
-import S2 from "../assets/images/Slider/Slider2.jpg";
-import S3 from "../assets/images/Slider/Slider3.jpg";
+import S2 from "../assets/images/Slider/Slider2.JPG";
+import S3 from "../assets/images/Slider/Slider3.JPG";
 
 
 const Slider = () => {
@@ -25,10 +25,7 @@ const Slider = () => {
           autoplay={{ delay: 4000 }}
           parallax={true}
           pagination={{ clickable: true }}
-          navigation={{
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-          }}
+
         >
           {slides.map((bgImage, index) => (
             <SwiperSlide className="Slide" key={index}>

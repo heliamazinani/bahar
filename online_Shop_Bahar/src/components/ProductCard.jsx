@@ -31,7 +31,7 @@ function ProductCard({ product }) {
       <div dir="rtl">
         <Card.Body>
           <Card.Title className="card-title">{product.name}</Card.Title>
-          <Card.Text className="card-text">
+          <div className="card-text">
             <div>
               <Container>
                 <Row>
@@ -44,14 +44,14 @@ function ProductCard({ product }) {
                       </div>
                     </Col>
                   )}
-                  <Col>
+                  <Col className="price-container">
                     <span className="price">
-                      {" "}
+                      
                       {toFarsiNumber(
                         (product.newPrice || product.price).toLocaleString()
                       )}
                     </span>
-                    <span> تومان </span>
+                    <span > تومان </span>
                   </Col>
                 </Row>
                 <div className="overlay"></div>
@@ -65,7 +65,7 @@ function ProductCard({ product }) {
                 </Button>
               </div>
             </div>
-          </Card.Text>
+          </div>
         </Card.Body>
       </div>
     </Card>

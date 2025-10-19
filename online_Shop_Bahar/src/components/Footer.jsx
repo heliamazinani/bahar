@@ -6,8 +6,8 @@ import { Instagram, Facebook, Twitter } from "react-bootstrap-icons";
 function Footer() {
   return (
     <footer className="footer mt-5 pt-0 pb-2" dir="rtl">
-      <div class="title-container">
-        <div class="title">
+      <div className="title-container">
+        <div className="title">
           <p>تماس با ما:</p>
         </div>
       </div>
