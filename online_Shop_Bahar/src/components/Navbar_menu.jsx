@@ -17,6 +17,8 @@ import AuthPage from "../pages/AuthPage";
 function NavbarMenu() {
     const [showSearch, setShowSearch] = useState(false);
      const [authOpen, setAuthOpen] = useState(false);
+     const [showOffcanvas, setShowOffcanvas] = useState(false);
+
   return (
     <>
       <Navbar className="nav rounded " sticky="top" variant="light" expand="lg">
@@ -56,12 +58,18 @@ function NavbarMenu() {
             )}
           </div>
 
-          <Navbar.Toggle aria-controls="offcanvasNavbar" className="order-2" />
+          <Navbar.Toggle
+            aria-controls="offcanvasNavbar"
+            className="order-2"
+            onClick={() => setShowOffcanvas(true)}
+          />
           <Navbar.Offcanvas
             id="offcanvasNavbar"
             aria-labelledby="offcanvasNavbarLabel"
             placement="end"
             className="custom-offcanvas"
+            show={showOffcanvas}
+            onHide={() => setShowOffcanvas(false)}
           >
             <Offcanvas.Header closeButton></Offcanvas.Header>
             <Offcanvas.Body>
@@ -84,7 +92,10 @@ function NavbarMenu() {
                 </Nav.Link>
                 <div dir="rtl">
                   <Dropdown>
-                    <Link to="/products">
+                    <Link
+                      to="/products"
+                      onClick={() => setShowOffcanvas(false)}
+                    >
                       <Dropdown.Toggle
                         className="dropdown-custom menu-item "
                         id="dropdown-basic"
@@ -107,7 +118,11 @@ function NavbarMenu() {
                     </Dropdown.Menu>
                   </Dropdown>
                 </div>{" "}
-                <Link to="/" className="menu-item">
+                <Link
+                  to="/"
+                  className="menu-item"
+                  onClick={() => setShowOffcanvas(false)}
+                >
                   {" "}
                   خانه
                 </Link>
