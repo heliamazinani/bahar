@@ -1,0 +1,207 @@
+.product-card {
+  margin-bottom: 15px;
+  margin-top: 15px;
+  width: 100%;
+  height: 45vh !important;
+}
+.card-title {
+  font-size: clamp(1rem, 1.2vw, 1.2rem);
+  font-weight: 600;
+  text-overflow: ellipsis;
+}
+
+.card-text {
+  font-size: clamp(0.95rem, 1.2vw, 1.3rem);
+  margin-top: 30px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  text-align: center;
+}
+
+.product-card {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.1), 0 6px 2px 0 rgba(0, 0, 0, 0.1);
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+}
+
+/* Buttons container (invisible by default) */
+.product-card .hover-buttons {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  display: flex;
+  gap: 0.5rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.product-card .hover-buttons .buy {
+  background-color: #fbb2ce;
+  border: none;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  color: white;
+  font-size: 1rem;
+  line-height: 1;
+}
+.product-card .hover-buttons .basket {
+  background-color: #fbb2ce;
+  border: none;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 10%;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  background-color: rgba(255, 255, 255, 0.244);
+}
+
+.product-card:hover .hover-buttons {
+  opacity: 1;
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  align-content: center;
+  pointer-events: auto;
+  z-index: 10;
+}
+.product-card:hover .overlay {
+  opacity: 0.4;
+}
+.price-container {
+  color: rgb(88, 54, 88);
+}
+
+.old-price {
+  text-decoration: line-through;
+  color: rgb(130, 130, 130);
+}
+.price {
+  font-weight: bold;
+}
+.product-img {
+  height: 30vh;
+}
+.product-card .text-container {
+  position: absolute;
+  color: white;
+  left: 5%;
+  top: 5%;
+  background-color: #fbb2ce;
+  padding: clamp(4px, 0.6vw, 10px) clamp(12px, 1vw, 18px);
+  border-radius: 50px;
+  font-size: clamp(0.9rem, 1vw, 1rem);
+  display: flex; /* centers text horizontally + vertically */
+  align-items: center;
+  justify-content: center;
+  line-height: 1; /* removes extra vertical space from <p> */
+}
+
+.product-card .text-container p {
+  margin: 0; /* removes default p tag margins */
+}
+
+/* Base pagination button */
+.page-item .page-link {
+  color: #fbb2ce; /* text color */
+  background-color: white; /* background */
+  border: 1px solid #fbb2ce; /* border color */
+  transition: all 0.2s ease;
+}
+
+/* Active page */
+.page-item.active .page-link {
+  color: white !important; /* active text color */
+  background-color: #fbb2ce !important; /* active background */
+  border-color: #fbb2ce !important;
+  box-shadow: none !important;
+}
+
+/* Hover effect */
+.page-item .page-link:hover {
+  background-color: #f8bbd0;
+  color: white;
+  border-color: #fbb2ce;
+  box-shadow: none !important;
+}
+
+@media (max-width: 576px) {
+  .product-card {
+   
+    height: 250px !important;
+  }
+  .product-card .hover-buttons button {
+    font-size: 0.7rem;
+    padding: 0.25rem 0.6rem;
+    height: 1rem;
+  }
+  .product-card .hover-buttons .buy {
+    background-color: #fbb2ce;
+    border: none;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    color: white;
+    font-size: 0.5rem;
+    line-height: 1;
+  }
+  .product-card .hover-buttons .basket {
+    background-color: #fbb2ce;
+    border: none;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 10%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 400px) {
+  .product-card {
+    max-width: 160px;
+    height: 200px !important;
+  }
+
+  .product-card .product-img {
+    height: 120px;
+  }
+
+  .product-card .card-title {
+    font-size: 0.8rem;
+  }
+  .card-text {
+    margin-top: 10px;
+    text-align: center;
+  }
+
+  .product-card .hover-buttons button {
+    font-size: 0.7rem;
+    padding: 0.25rem 0.6rem;
+  }
+}

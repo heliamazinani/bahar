@@ -1,0 +1,12 @@
+.Slider {
+  margin-top: 50px;
+  border-radius: 100px;
+}
+.Slider span {
+  background-color: #fbb2ce;
+}
+.Slider .container {
+  border-radius: 100px;
+}
+
+

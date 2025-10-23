@@ -1,21 +1,22 @@
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import "./App.css";
 
-import Home from "./pages/Home";
-import Footer from "./components/Footer";
-import Navbar_menu from "./components/Navbar_menu";
-import Products from "./pages/Products";
-import AuthPage from "./pages/AuthPage";
-import AdminPanel from "./pages/AdminPanel";
+import Home from "./pages/Home/Home";
+import Footer from "./components/Footer/Footer";
+import Navbar_menu from "./components/Navbar/Navbar_menu";
+import Products from "./pages/Products/Products";
+import AuthPage from "./pages/AuthPage/AuthPage";
+import AdminPanel from "./pages/AdminPanel/AdminPanel";
 import MainLayout from "./layouts/MainLayout";
 import AdminLayout from "./layouts/AdminLayout";
 import ScrollToTop from "./components/ScrollToTop";
+import ProductPage from "./pages/ProductPage/ProductPage";
 
 function App() {
   return (
     <>
       <BrowserRouter>
-        <ScrollToTop/>
+        <ScrollToTop />
         <Routes>
           <Route
             path="/"
@@ -30,6 +31,14 @@ function App() {
             element={
               <MainLayout>
                 <Products />
+              </MainLayout>
+            }
+          />
+          <Route
+            path="/product/:id"
+            element={
+              <MainLayout>
+                <ProductPage />
               </MainLayout>
             }
           />

@@ -1,0 +1,98 @@
+.filters-container {
+  background-color: #ffffff;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.05), 0 6px 20px 0 rgba(0, 0, 0, 0.05);
+  padding: 1rem;
+  border-radius: 12px;
+}
+
+.filter-label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+
+/* Optional: Custom switch styling */
+.onsale-switch .form-check-input {
+  width: 3rem;
+  height: 1.5rem;
+  background-color: #ffffff;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.onsale-switch .form-check-input:checked {
+  background-color: #ea4c89;
+}
+
+.onsale-switch .form-check-input:focus {
+  box-shadow: none;
+}
+
+.filters-container {
+  background-color: #ffffff;
+  padding: 1rem;
+  border-radius: 12px;
+}
+
+.filter-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.filter-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 0.6rem;  /* 👈 adjust spacing here */
+  line-height: 1;
+}
+
+.switch-wrapper {
+  display: flex;
+  align-items: center;
+  height: 38px; /* 👈 matches the height of Bootstrap inputs */
+}
+
+
+/* Optional: Custom switch styling */
+.onsale-switch .form-check-input {
+  width: 4rem;
+  height: 2rem;
+  background-color: #ccc;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.onsale-switch .form-check-input:checked {
+  background-color: #ea4c89;
+}
+
+.onsale-switch input:active , input:focus{
+    outline: none;
+  border-color: rgba(234, 76, 137, 0.4) !important;
+  background-color: #fff;
+  box-shadow: 0 0 0 4px rgb(234 76 137 / 10%) !important;
+
+}
+.onsale-switch select:active , select:focus{
+    outline: none;
+  border-color: rgba(234, 76, 137, 0.4) !important;
+  background-color: #fff;
+  box-shadow: 0 0 0 4px rgb(234 76 137 / 10%) !important;
+}
+.onsale-switch option{
+  background-color: #c71c1c !important;
+
+}
+.onsale-switch option:active , option:focus{
+
+  background-color: #c71c1c;
+ 
+}
+.onsale-switch .form-check-label {
+  margin-right: 0.5rem;
+  font-weight: 500;
+}

@@ -1,8 +1,10 @@
 import { Row, Col, Button, Form } from "react-bootstrap";
 import React, { useState } from "react";
-import ProductList from "./ProductList";
+import ProductList from "../ProductList/ProductList";
+import "./Filter.css"
+
 function Filters({ title }) {
-   const [onSale, setOnSale] = useState(false);
+  const [onSale, setOnSale] = useState(false);
   return (
     <div className="filters">
       <div className="title-container">

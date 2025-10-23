@@ -1,4 +1,4 @@
-import Filters from "../components/Filters";
+import Filters from "../../components/Filters/Filters";
 function Products() {
   return (
     <>

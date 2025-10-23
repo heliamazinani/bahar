@@ -2,22 +2,22 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import Offcanvas from "react-bootstrap/Offcanvas";
-import { Form,Button } from "react-bootstrap";
+import { Form, Button } from "react-bootstrap";
 import { Search } from "react-bootstrap-icons";
 import { Basket2 } from "react-bootstrap-icons";
-import { ChevronDown } from "react-bootstrap-icons"; 
+import { ChevronDown } from "react-bootstrap-icons";
 import Dropdown from "react-bootstrap/Dropdown";
-import Logov from "../assets/Logo/Logo-vertical.png";
-import Logos from "../assets/Logo/logo-small.png";
+import Logov from "../../assets/Logo/Logo-vertical.png";
+import Logos from "../../assets/Logo/logo-small.png";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import AuthPage from "../pages/AuthPage";
-
+import AuthPage from "../../pages/AuthPage/AuthPage";
+import  "./Navbar.css";
 
 function NavbarMenu() {
-    const [showSearch, setShowSearch] = useState(false);
-     const [authOpen, setAuthOpen] = useState(false);
-     const [showOffcanvas, setShowOffcanvas] = useState(false);
+  const [showSearch, setShowSearch] = useState(false);
+  const [authOpen, setAuthOpen] = useState(false);
+  const [showOffcanvas, setShowOffcanvas] = useState(false);
 
   return (
     <>

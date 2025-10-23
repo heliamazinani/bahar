@@ -2,6 +2,7 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { Instagram, Facebook, Twitter } from "react-bootstrap-icons";
+import "./Footer.css"
 
 function Footer() {
   return (

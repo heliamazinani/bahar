@@ -1,0 +1,41 @@
+.product-carousel,
+.filters {
+  margin-top: 50px;
+  margin-bottom: 100px;
+
+  position: relative;
+}
+
+.product-carousel .nav-buttons .button-prev,
+.product-carousel .nav-buttons .button-next {
+  color: #ffffff;
+  background-color: #fbb2ce;
+  border: none;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  cursor: pointer;
+  transition: color 0.3s ease, transform 0.3s ease;
+  border-radius: 100px;
+  padding: 5px;
+}
+
+.product-carousel .nav-buttons .button-prev {
+  left: -15px;  
+}
+
+.product-carousel .nav-buttons .button-next {
+  right: -15px; 
+}
+
+.product-carousel .nav-buttons .button-prev:hover,
+.product-carousel .nav-buttons .button-next:hover {
+  color: #ffe4ee;
+
+}
+
+.product-carousel .nav-buttons .button-prev::after,
+.product-carousel .nav-buttons .button-next::after {
+  font-size: 24px;
+}

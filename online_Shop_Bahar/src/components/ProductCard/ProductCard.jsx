@@ -4,6 +4,9 @@ import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 import { Button } from "react-bootstrap";
 import { Basket2 } from "react-bootstrap-icons";
+import { Link } from "react-router-dom";
+import "./ProductCard.css"
+
 const toFarsiNumber = (number) => {
   const farsiDigits = ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"];
   return number
@@ -46,19 +49,18 @@ function ProductCard({ product }) {
                   )}
                   <Col className="price-container">
                     <span className="price">
-                      
                       {toFarsiNumber(
                         (product.newPrice || product.price).toLocaleString()
                       )}
                     </span>
-                    <span > تومان </span>
+                    <span> تومان </span>
                   </Col>
                 </Row>
                 <div className="overlay"></div>
               </Container>
               <div className="hover-buttons">
                 <Button className="buy" variant="outline-dark" size="sm">
-                  مشاهده و خرید
+                  <Link to={`/product/${product.id}`}>مشاهده و خرید</Link>
                 </Button>
                 <Button className="basket">
                   <Basket2 size={50} />
