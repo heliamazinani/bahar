@@ -14,7 +14,7 @@ function Footer() {
       </div>
       <Container className="pt-5">
         <Row className="text-center text-lg-end">
-          <Col lg={6} md={6} sm={12} className="mb-4">
+          <Col lg={6} md={12} sm={12} className="mb-4">
             <h5 className="footer-title">درباره ما</h5>
             <p className="footer-text">
               بهار فروشگاه آنلاین محصولات آرایشی و پوستی با بهترین کیفیت و قیمت

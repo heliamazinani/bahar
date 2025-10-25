@@ -37,7 +37,7 @@ function Filters({ title }) {
           </Col> */}
 
           {/* Price Range */}
-          <Col xs={12} sm={6} md={6} dir="rtl">
+          <Col xs={12} sm={12} md={6} dir="rtl">
             <Form.Label className="filter-label">محدوده قیمت</Form.Label>
             <div className="d-flex align-items-center gap-2">
               <Form.Control type="number" placeholder="از قیمت" min="0" />
