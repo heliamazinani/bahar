@@ -373,6 +373,10 @@
 .hover-buttons .basket:hover {
   background-color: #f28eb8;
 }
+.hover-buttons .buy:active,
+.hover-buttons .basket:active {
+  background-color: #f28eb8 !important;
+}
 
 /* --- RESPONSIVE --- */
 @media (max-width: 1200px) {

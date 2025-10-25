@@ -23,7 +23,7 @@
     
 }
 
-.b {
+.product-page .buy {
   background-color: var(--primary-color);
   border: none;
   height: 3rem;
@@ -33,4 +33,11 @@
   justify-content: center;
   color: white;
   line-height: 1;
+}
+/* --- HOVER EFFECTS --- */
+.product-page .buy:hover {
+  background-color: #f28eb8;
+}
+.product-page .buy:active {
+  background-color: #f28eb8 !important;
 }

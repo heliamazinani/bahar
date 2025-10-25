@@ -64,7 +64,7 @@ function ProductPage() {
             className="description mb-4"
             dangerouslySetInnerHTML={{ __html: product.description }}
           />
-          <Button className="b me-2">
+          <Button className="buy me-2">
             <Basket2 className="me-2" />
             افزودن به سبد خرید
           </Button>
