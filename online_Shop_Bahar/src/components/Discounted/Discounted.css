@@ -9,7 +9,7 @@
 .product-carousel .nav-buttons .button-prev,
 .product-carousel .nav-buttons .button-next {
   color: #ffffff;
-  background-color: #fbb2ce;
+  background-color: var(--primary-color);
   border: none;
   position: absolute;
   top: 50%;
@@ -22,17 +22,16 @@
 }
 
 .product-carousel .nav-buttons .button-prev {
-  left: -15px;  
+  left: -15px;
 }
 
 .product-carousel .nav-buttons .button-next {
-  right: -15px; 
+  right: -15px;
 }
 
 .product-carousel .nav-buttons .button-prev:hover,
 .product-carousel .nav-buttons .button-next:hover {
   color: #ffe4ee;
-
 }
 
 .product-carousel .nav-buttons .button-prev::after,

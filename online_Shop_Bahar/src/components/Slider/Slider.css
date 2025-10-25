@@ -3,7 +3,7 @@
   border-radius: 100px;
 }
 .Slider span {
-  background-color: #fbb2ce;
+  background-color: var(--primary-color);
 }
 .Slider .container {
   border-radius: 100px;

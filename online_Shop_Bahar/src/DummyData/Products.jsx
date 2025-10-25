@@ -1,15 +1,16 @@
 import P1 from "../assets/images/Slider/Slider1.JPG";
 import P2 from "../assets/images/Slider/Slider2.JPG";
 import P3 from "../assets/images/Slider/Slider3.JPG";
+import P4 from "../assets/images/Slider/pro.JPG"
 
 export const products = [
   {
     id: 1,
-    name: "کرم آبرسان",
+    name: "کرم  تنانمانلتغنلغغفغننننننننننآبرسان",
     description: "<p>این کرم پوست شما را لطیف و شاداب می‌کند.</p>",
     price: 120000,
     newPrice: 95000,
-    image: P1,
+    image: P4,
     category: "پوستی",
     onSale: true,
   },
@@ -79,7 +80,7 @@ export const products = [
     description: "<p>این کرم پوست شما را لطیف و شاداب می‌کند.</p>",
     price: 120000,
     newPrice: 95000,
-    image: P1,
+    image: P4,
     category: "پوستی",
     onSale: true,
   },
@@ -99,7 +100,7 @@ export const products = [
     description: "<p>این کرم پوست شما را لطیف و شاداب می‌کند.</p>",
     price: 120000,
     newPrice: 95000,
-    image: P1,
+    image: P4,
     category: "پوستی",
     onSale: true,
   },

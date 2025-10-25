@@ -1,0 +1,36 @@
+
+.catagory {
+    display: inline-block;
+  background-color: var(--primary-color);
+  color: white;
+  font-size: 0.9rem;
+  padding: 4px 10px;
+  border-radius: 50px;
+}
+.catagory p{
+    margin: 0%;
+}
+.prices{
+    font-size: 2rem;
+}
+.prices .old{
+    text-decoration: line-through;
+    margin-left: 10px;
+}
+.prices .new{
+    font-weight: 500;
+    color: var(--primary-color);
+    
+}
+
+.b {
+  background-color: var(--primary-color);
+  border: none;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  color: white;
+  line-height: 1;
+}

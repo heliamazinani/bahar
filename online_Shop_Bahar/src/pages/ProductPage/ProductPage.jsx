@@ -3,6 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import { products } from "../../DummyData/Products";
 import { Basket2 } from "react-bootstrap-icons";
+import "./ProductPage.css"
 const toFarsiNumber = (number) => {
   const farsiDigits = ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"];
   return number
@@ -40,31 +41,30 @@ function ProductPage() {
           />
         </Col>
         <Col md={6}>
-          <h1>{product.name}</h1>
+          <h1 className="mt-5 mb-3">{product.name}</h1>
           <div className="catagory">
             <p>{product.category}</p>
           </div>
-          <p className="text-muted">{product.category}</p>
-          <div className="price-section mb-3">
-            {product.onSale && (
-              <div className="ha">
-                <span className="old-price">
-                  {toFarsiNumber(product.price.toLocaleString())}
-                </span>
-              </div>
-            )}
-            <span className="price">
+
+          <div className="prices m-3">
+            <span className="new m-1">
               {toFarsiNumber(
                 (product.newPrice || product.price).toLocaleString()
               )}
             </span>
-            <span> تومان </span>
+
+            {product.onSale && (
+              <span className=" old text-muted">
+                {toFarsiNumber(product.price.toLocaleString())}
+              </span>
+            )}
+            <span className="new">تومان </span>
           </div>
           <div
             className="description mb-4"
             dangerouslySetInnerHTML={{ __html: product.description }}
           />
-          <Button variant="dark" className="me-2">
+          <Button className="b me-2">
             <Basket2 className="me-2" />
             افزودن به سبد خرید
           </Button>

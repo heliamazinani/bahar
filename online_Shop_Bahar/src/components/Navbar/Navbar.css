@@ -204,7 +204,7 @@
 .dropdown-custom:focus,
 .dropdown-custom:active {
   background: none !important;
-  color: rgb(255, 144, 201); /* or your accent color */
+  color: var(--primary-color); /* or your accent color */
   box-shadow: none !important;
 }
 .dropdown-custom::after {
