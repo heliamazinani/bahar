@@ -3,6 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import { products } from "../../DummyData/Products";
 import { Basket2 } from "react-bootstrap-icons";
+import ProductGallery from "../../components/ProductGallery/ProductGallery"
 import "./ProductPage.css"
 const toFarsiNumber = (number) => {
   const farsiDigits = ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"];
@@ -34,11 +35,12 @@ function ProductPage() {
     <Container className="py-5 product-page" dir="rtl">
       <Row className="align-items-center">
         <Col md={6}>
-          <img
+          <ProductGallery images={product.images}></ProductGallery>
+          {/* <img
             src={product.image}
             alt={product.name}
             className="img-fluid rounded shadow-sm"
-          />
+          /> */}
         </Col>
         <Col md={6}>
           <h1 className="mt-5 mb-3">{product.name}</h1>

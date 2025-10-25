@@ -10,7 +10,9 @@
     --primary-color: #fbb2ce;
     --secondry-color: #ffd8ed;
 }
-
+html {
+  scroll-behavior: smooth;
+}
 body {
   font-family: "Vazirmatn", sans-serif;
   font-weight: 400;
