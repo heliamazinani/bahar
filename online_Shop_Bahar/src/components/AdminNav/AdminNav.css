@@ -3,7 +3,7 @@
 .custom-offcanvas.hiding .dropdown-custom,
 .custom-offcanvas.show .dropdown-custom,
 .custom-offcanvas.showing .dropdown-custom,
-.custom-offcanvas.hiding .dropdown-custom  {
+.custom-offcanvas.hiding .dropdown-custom {
   background-color: white;
   border-top: none !important;
   border-left: none !important;
@@ -11,7 +11,6 @@
   border-bottom: 1px solid rgb(238, 238, 238);
   color: rgb(52, 52, 52);
   display: block;
-
   width: 100%;
   border-radius: 0%;
   text-align: start;
@@ -19,7 +18,7 @@
 .custom-offcanvas.show .dropdown-custom:hover,
 .custom-offcanvas.showing .dropdown-custom:hover,
 .custom-offcanvas.hiding .dropdown-custom:hover {
-  color:var(--active-color) !important;
+  color: var(--active-color) !important;
   border-top: none !important;
   border-left: none !important;
   border-right: none !important;
@@ -122,7 +121,6 @@
   box-shadow: none !important;
 }
 
-/* final safety: highest specificity for the exact element */
 .custom-offcanvas.show .dropdown-custom,
 .custom-offcanvas.showing .dropdown-custom,
 .custom-offcanvas.hiding .dropdown-custom {
@@ -131,20 +129,17 @@
 }
 
 /* navbar */
-.nav {
+.admin-nav .nav {
   background-color: rgba(255, 255, 255, 0.9);
-  margin-top: 2%;
-
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
   font-size: medium;
   position: sticky;
+  margin-top: 0%;
 }
-.nav .logo {
-  height: 70px;
+.admin-nav .fluid-container {
+  justify-content: end;
 }
-.nav .logos {
-  height: 30px;
-}
+
 .nav .dropdown-custom {
   border: 1px solid rgba(0, 0, 0, 0) !important;
   background-color: rgba(0, 0, 0, 0) !important;
@@ -169,7 +164,7 @@
 .nav Button:active {
   border: 1px solid rgba(0, 0, 0, 0) !important;
   background-color: rgba(57, 73, 87, 0) !important;
-  color: var(--active-color)!important;
+  color: var(--active-color) !important;
 }
 
 .nav .menu-item,
@@ -178,7 +173,7 @@
   background-color: rgba(0, 0, 0, 0);
   color: rgb(52, 52, 52);
   display: flex;
-  align-items: center; /* vertically centers text and icon */
+  align-items: center; 
   gap: 0.4rem;
 }
 .nav .menu-item:hover,
@@ -197,7 +192,7 @@
 .nav a:active {
   border: 1px solid rgba(0, 0, 0, 0) !important;
   background-color: rgba(57, 73, 87, 0) !important;
-  color:var(--active-color) !important;
+  color: var(--active-color) !important;
 }
 
 .dropdown-custom:hover,
@@ -226,8 +221,10 @@
 }
 
 /* Target the offcanvas container */
-.custom-offcanvas .btn-close:hover ,.custom-offcanvas .btn-close:focus,.custom-offcanvas .btn-close:active{
-box-shadow: none !important;
+.custom-offcanvas .btn-close:hover,
+.custom-offcanvas .btn-close:focus,
+.custom-offcanvas .btn-close:active {
+  box-shadow: none !important;
 }
 .custom-offcanvas.show {
   background: rgb(238, 238, 238);
@@ -349,53 +346,42 @@ input:hover {
   width: 1rem;
   height: 1rem;
 }
-.shopOffCanvesHead .offcanvas-title{
+.shopOffCanvesHead .offcanvas-title {
   margin-left: auto;
   margin-right: auto;
-
 }
-.shopOffCanvesHead .btn-close{
-margin-left: 0% !important;
+.shopOffCanvesHead .btn-close {
+  margin-left: 0% !important;
 }
-.shopOffCanvesHead .btn-close:hover ,.shopOffCanvesHead .btn-close:focus,.shopOffCanvesHead .btn-close:active{
-box-shadow: none !important;
+.shopOffCanvesHead .btn-close:hover,
+.shopOffCanvesHead .btn-close:focus,
+.shopOffCanvesHead .btn-close:active {
+  box-shadow: none !important;
 }
-.shopOffCanvesBody .cart-item{
+.shopOffCanvesBody .cart-item {
   border: 1px solid #bdbdbd;
   border-radius: 16px;
   padding: 12px;
 }
-.shopOffCanvesBody .final{
- position: absolute;
- bottom: 0;
- right: 16px;
- left: 16px;
- margin-left: auto;
- margin-right: auto;
+.shopOffCanvesBody .final {
+  position: absolute;
+  bottom: 0;
+  right: 16px;
+  left: 16px;
+  margin-left: auto;
+  margin-right: auto;
 }
-.shopOffCanvesBody .buy{
- width: 100%;
- margin-left: auto;
- margin-right: auto;
- border: none;
- background-color: var(--primary-color);
- box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+.shopOffCanvesBody .buy {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  border: none;
+  background-color: var(--primary-color);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
 }
-.shopOffCanvesBody .buy:hover ,.shopOffCanvesBody .buy:active{
+.shopOffCanvesBody .buy:hover,
+.shopOffCanvesBody .buy:active {
+  background-color: var(--active-color);
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+}
 
- background-color: var(--active-color);
- box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
-}
-.dropdownMenu{
-  display: block;
-  left: -100px !important;
-}
-@media (max-width: 990px) {
-  .catagories{
-    flex-direction: column;
-    text-align: right;
-  }
-    .catagories .sub{
-display: none;
-  }
-}

@@ -21,6 +21,20 @@ function NavbarMenu() {
   const [showCart, setShowCart] = useState(false);
 
   const [show, setShow] = useState(false);
+  const [showDrop, setShowDrop] = useState(false);
+  let timeoutId = null;
+
+  const handleMouseEnter = () => {
+    clearTimeout(timeoutId);
+    setShowDrop(true);
+  };
+
+  const handleMouseLeave = () => {
+ 
+    timeoutId = setTimeout(() => {
+      setShowDrop(false);
+    }, 300);
+  };
 
   return (
     <>
@@ -82,12 +96,10 @@ function NavbarMenu() {
                   className="menu-item dropdown-custom"
                   onClick={() => setAuthOpen(true)}
                 >
-                  {" "}
                   ورود | عضویت
                 </button>
                 {authOpen && <AuthPage onClose={() => setAuthOpen(false)} />}
                 <Nav.Link className="menu-item" href="#home">
-                  {" "}
                   پوستی
                 </Nav.Link>
                 <Nav.Link className="menu-item" href="#products">
@@ -95,9 +107,9 @@ function NavbarMenu() {
                 </Nav.Link>
                 <div dir="rtl">
                   <Dropdown
-                    onMouseEnter={() => setShow(true)}
-                    onMouseLeave={() => setShow(false)}
-                    show={show}
+                    onMouseEnter={handleMouseEnter}
+                    onMouseLeave={handleMouseLeave}
+                    show={showDrop}
                   >
                     <Link
                       to="/products"
@@ -112,16 +124,81 @@ function NavbarMenu() {
                       </Dropdown.Toggle>
                     </Link>
 
-                    <Dropdown.Menu>
-                      <Dropdown.Item className="menu-item" href="#/action-1">
-                        Action
-                      </Dropdown.Item>
-                      <Dropdown.Item className="menu-item" href="#/action-2">
-                        Another action
-                      </Dropdown.Item>
-                      <Dropdown.Item className="menu-item" href="#/action-3">
-                        Something else
-                      </Dropdown.Item>
+                    <Dropdown.Menu className="dropdownMenu">
+                      <div className="catagories d-flex pe-2 ps-5">
+                        <div className="nav-catagory">
+                          <Dropdown.Item
+                            className="menu-item fw-600"
+                            href="#/action-1"
+                          >
+                            <h6>ابزار</h6>
+                          </Dropdown.Item>
+                        </div>
+                        <div className="nav-catagory">
+                          <Dropdown.Item
+                            className="menu-item"
+                            href="#/action-1"
+                          >
+                            <h6>آرایشی</h6>
+                          </Dropdown.Item>
+                          <Dropdown.Item
+                            className="menu-item sub"
+                            href="#/action-1"
+                          >
+                            آرایش لب
+                          </Dropdown.Item>
+                          <Dropdown.Item
+                            className="menu-item sub"
+                            href="#/action-1"
+                          >
+                            آرایش چشم
+                          </Dropdown.Item>
+                          <Dropdown.Item
+                            className="menu-item sub"
+                            href="#/action-1"
+                          >
+                            آرایش صورت
+                          </Dropdown.Item>
+                        </div>
+                        <div className="nav-catagory">
+                          <Dropdown.Item
+                            className="menu-item"
+                            href="#/action-1"
+                          >
+                            <h6>مراقبتی</h6>
+                          </Dropdown.Item>
+                          <Dropdown.Item
+                            className="menu-item"
+                            href="#/action-1"
+                          >
+                            مراقبت لب
+                          </Dropdown.Item>
+                          <Dropdown.Item
+                            className="menu-item"
+                            href="#/action-1"
+                          >
+                            مراقبت چشم
+                          </Dropdown.Item>
+                          <Dropdown.Item
+                            className="menu-item"
+                            href="#/action-1"
+                          >
+                            مراقبت صورت
+                          </Dropdown.Item>
+                          <Dropdown.Item
+                            className="menu-item"
+                            href="#/action-1"
+                          >
+                            مراقبت بدن
+                          </Dropdown.Item>
+                          <Dropdown.Item
+                            className="menu-item"
+                            href="#/action-1"
+                          >
+                            مراقبت مو
+                          </Dropdown.Item>
+                        </div>
+                      </div>
                     </Dropdown.Menu>
                   </Dropdown>
                 </div>{" "}
@@ -130,7 +207,6 @@ function NavbarMenu() {
                   className="menu-item"
                   onClick={() => setShowOffcanvas(false)}
                 >
-                  {" "}
                   خانه
                 </Link>
               </Nav>
@@ -160,7 +236,6 @@ function NavbarMenu() {
                 <span>۹۵,۰۰۰ تومان</span>
               </div>
 
-            
               <div className="final">
                 <hr />
                 <div className="d-flex justify-content-between mt-3">
