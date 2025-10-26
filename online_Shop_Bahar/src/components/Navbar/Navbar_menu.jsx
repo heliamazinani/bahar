@@ -12,19 +12,22 @@ import Logos from "../../assets/Logo/logo-small.png";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import AuthPage from "../../pages/AuthPage/AuthPage";
-import  "./Navbar.css";
+import "./Navbar.css";
 
 function NavbarMenu() {
   const [showSearch, setShowSearch] = useState(false);
   const [authOpen, setAuthOpen] = useState(false);
   const [showOffcanvas, setShowOffcanvas] = useState(false);
+  const [showCart, setShowCart] = useState(false);
+
+  const [show, setShow] = useState(false);
 
   return (
     <>
       <Navbar className="nav rounded " sticky="top" variant="light" expand="lg">
         <Container fluid>
           <Button>
-            <Basket2 size={18} />
+            <Basket2 size={18} onClick={() => setShowCart(true)} />
           </Button>
           {/* Search Toggle */}
           <div className="me-auto ms-3">
@@ -91,7 +94,11 @@ function NavbarMenu() {
                   آرایشی
                 </Nav.Link>
                 <div dir="rtl">
-                  <Dropdown>
+                  <Dropdown
+                    onMouseEnter={() => setShow(true)}
+                    onMouseLeave={() => setShow(false)}
+                    show={show}
+                  >
                     <Link
                       to="/products"
                       onClick={() => setShowOffcanvas(false)}
@@ -129,6 +136,48 @@ function NavbarMenu() {
               </Nav>
             </Offcanvas.Body>
           </Navbar.Offcanvas>
+          <Offcanvas
+            show={showCart}
+            onHide={() => setShowCart(false)}
+            placement="start"
+            className="cart-offcanvas"
+            dir="rtl"
+          >
+            <Offcanvas.Header
+              className="shopOffCanvesHead"
+              dir="ltr"
+              closeButton
+            >
+              <Offcanvas.Title>سبد خرید</Offcanvas.Title>
+            </Offcanvas.Header>
+            <Offcanvas.Body className="shopOffCanvesBody">
+              {/* Example cart content */}
+              <div className="cart-item d-flex justify-content-between align-items-center mb-3">
+                <div>
+                  <strong>کرم آبرسان</strong>
+                  <p className="mb-0 text-muted">تعداد: 1</p>
+                </div>
+                <span>۹۵,۰۰۰ تومان</span>
+              </div>
+
+            
+              <div className="final">
+                <hr />
+                <div className="d-flex justify-content-between mt-3">
+                  <strong>مجموع:</strong>
+                  <span>۹۵,۰۰۰ تومان</span>
+                </div>
+                <hr />
+                <Button
+                  className="buy  mt-3 mb-4"
+                  onClick={() => setShowCart(false)}
+                >
+                  ادامه خرید
+                </Button>
+              </div>
+            </Offcanvas.Body>
+          </Offcanvas>
+
           <div className="lg-ms-auto">
             <Navbar.Brand href="#" className="d-none d-lg-block">
               <img src={Logov} className="logo" alt="bahar-logo" />

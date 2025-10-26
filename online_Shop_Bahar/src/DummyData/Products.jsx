@@ -7,7 +7,8 @@ export const products = [
   {
     id: 1,
     name: "کرم  تنانمانلتغنلغغفغننننننننننآبرسان",
-    description: "<p>این کرم پوست شما را لطیف و شاداب می‌کند.</p>",
+    description:
+      "<p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis consequatur eius repellendus quod numquam! Quia expedita, ut ipsum necessitatibus doloribus nisi eaque non voluptatibus eligendi saepe quasi? Cum, nobis iste!این کرم پوست شما را لطیف و شاداب می‌کند.</p>",
     price: 120000,
     newPrice: 95000,
     image: P4,

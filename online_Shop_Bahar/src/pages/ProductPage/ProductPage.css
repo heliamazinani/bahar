@@ -1,6 +1,6 @@
 
 .catagory {
-    display: inline-block;
+  display: inline-block;
   background-color: var(--primary-color);
   color: white;
   font-size: 0.9rem;
@@ -15,10 +15,11 @@
 }
 .prices .old{
     text-decoration: line-through;
+    color: gray;
     margin-left: 10px;
 }
 .prices .new{
-    font-weight: 500;
+    font-weight: 600;
     color: var(--primary-color);
     
 }
@@ -36,8 +37,8 @@
 }
 /* --- HOVER EFFECTS --- */
 .product-page .buy:hover {
-  background-color: #f28eb8;
+  background-color: var(--active-color);
 }
 .product-page .buy:active {
-  background-color: #f28eb8 !important;
+  background-color: var(--active-color) !important;
 }

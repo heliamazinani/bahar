@@ -36,17 +36,12 @@ function ProductPage() {
       <Row className="align-items-center">
         <Col md={6}>
           <ProductGallery images={product.images}></ProductGallery>
-          {/* <img
-            src={product.image}
-            alt={product.name}
-            className="img-fluid rounded shadow-sm"
-          /> */}
         </Col>
         <Col md={6}>
-          <h1 className="mt-5 mb-3">{product.name}</h1>
           <div className="catagory">
             <p>{product.category}</p>
           </div>
+          <h1 className="mt-3 mb-3">{product.name}</h1>
 
           <div className="prices m-3">
             <span className="new m-1">
@@ -56,20 +51,17 @@ function ProductPage() {
             </span>
 
             {product.onSale && (
-              <span className=" old text-muted">
+              <span className=" old ">
                 {toFarsiNumber(product.price.toLocaleString())}
               </span>
             )}
             <span className="new">تومان </span>
           </div>
+          <Button className="buy">افزودن به سبد خرید</Button>
           <div
-            className="description mb-4"
+            className="description mb-4 mt-4"
             dangerouslySetInnerHTML={{ __html: product.description }}
           />
-          <Button className="buy me-2">
-            <Basket2 className="me-2" />
-            افزودن به سبد خرید
-          </Button>
         </Col>
       </Row>
     </Container>
