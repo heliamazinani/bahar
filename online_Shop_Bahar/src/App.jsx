@@ -1,6 +1,5 @@
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import "./App.css";
-
 import Home from "./pages/Home/Home";
 import Footer from "./components/Footer/Footer";
 import Navbar_menu from "./components/Navbar/Navbar_menu";
@@ -11,7 +10,8 @@ import MainLayout from "./layouts/MainLayout";
 import AdminLayout from "./layouts/AdminLayout";
 import ScrollToTop from "./components/ScrollToTop";
 import ProductPage from "./pages/ProductPage/ProductPage";
-
+import OrderLayout from "./layouts/OrderLayout";
+import CheckoutPage from "./pages/CheckoutPage/CheckoutPage";
 function App() {
   return (
     <>
@@ -40,6 +40,14 @@ function App() {
               <MainLayout>
                 <ProductPage />
               </MainLayout>
+            }
+          />
+          <Route
+            path="/checkout"
+            element={
+              <OrderLayout>
+                <CheckoutPage/>
+              </OrderLayout>
             }
           />
           <Route

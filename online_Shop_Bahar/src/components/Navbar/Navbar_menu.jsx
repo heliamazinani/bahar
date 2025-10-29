@@ -263,7 +263,7 @@ function NavbarMenu() {
                         to="/products"
                         onClick={() => setShowOffcanvas(false)}
                       >
-                        آرایشی
+                        آرایشی 
                       </Link>
                       <Dropdown.Toggle
                         id="dropdown-basic"
