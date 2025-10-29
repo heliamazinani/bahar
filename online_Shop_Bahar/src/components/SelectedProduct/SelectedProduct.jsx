@@ -29,43 +29,54 @@ function SelectedProduct({ product }) {
               <img src={product.image} className="productImage" alt="" />
               <h6 className="mb-0 me-4">{product.name}</h6>
             </div>
+            <hr className="d-lg-none" />
           </Col>
           <Col lg={4} md={6}>
-            <div className="price-section">
-              {product.onSale && (
-                <span className="old-price">
-                  {toFarsiNumber(product.price.toLocaleString())}
+            <div className="total-price mt-md-3 mt-sm-3 mt-3 mt-lg-0">
+              <p className=" d-lg-none">جمع قیمت:</p>
+              <div className="price-section">
+                {product.onSale && (
+                  <span className="old-price">
+                    {toFarsiNumber(product.price.toLocaleString())}
+                  </span>
+                )}
+                <span className="price">
+                  {toFarsiNumber(
+                    (product.newPrice || product.price).toLocaleString()
+                  )}{" "}
+                  تومان
                 </span>
-              )}
-              <span className="price">
-                {toFarsiNumber(
-                  (product.newPrice || product.price).toLocaleString()
-                )}{" "}
-                تومان
-              </span>
+              </div>
             </div>
           </Col>
           <Col lg={2} md={6}>
-            <div className="productCount">
-              <PlusLg
-                onClick={() => {
-                  setCount(count + 1);
-                }}
-              />
-              {count}
-              {count == 1 ? (
-                <Trash
+            <div className="total-price mt-md-3 mt-sm-3 mt-3 mt-lg-0">
+              <p className=" d-lg-none">تعداد:</p>
+              <div className="productCount">
+                <PlusLg
+                  className="count-icon"
                   onClick={() => {
-                    setCount(count - 1);
+                    setCount(count + 1);
                   }}
                 />
-              ) : (
-                <DashLg
-                  onClick={() => {
-                    setCount(count - 1);
-                  }}
-                />
-              )}
+                <p>{count}</p>
+
+                {count == 1 ? (
+                  <Trash
+                    className="count-icon"
+                    onClick={() => {
+                      setCount(count - 1);
+                    }}
+                  />
+                ) : (
+                  <DashLg
+                    className="count-icon"
+                    onClick={() => {
+                      setCount(count - 1);
+                    }}
+                  />
+                )}
+              </div>
             </div>
           </Col>
         </Row>

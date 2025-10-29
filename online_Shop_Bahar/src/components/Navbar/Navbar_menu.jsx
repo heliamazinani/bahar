@@ -2,6 +2,7 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import Offcanvas from "react-bootstrap/Offcanvas";
+import SelectedProduct from "../SelectedProduct/SelectedProduct.jsx"
 import { Form, Button } from "react-bootstrap";
 import { Search, TypeH1 } from "react-bootstrap-icons";
 import { Basket2 } from "react-bootstrap-icons";
@@ -13,6 +14,7 @@ import Logos from "../../assets/Logo/logo-small.png";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import AuthPage from "../../pages/AuthPage/AuthPage";
+import { products } from "../../DummyData/Products.jsx";
 import "./Navbar.css";
 
 function NavbarMenu() {
@@ -20,11 +22,11 @@ function NavbarMenu() {
   const [authOpen, setAuthOpen] = useState(false);
   const [showOffcanvas, setShowOffcanvas] = useState(false);
   const [showCart, setShowCart] = useState(false);
-
   const [show, setShow] = useState(false);
   const [show1, setShow1] = useState(false);
   const [showDrop, setShowDrop] = useState(false);
   let timeoutId = null;
+  const product = products[0];
 
   const handleMouseEnter = () => {
     clearTimeout(timeoutId);
@@ -337,6 +339,7 @@ function NavbarMenu() {
                 </div>
                 <span>۹۵,۰۰۰ تومان</span>
               </div>
+              <SelectedProduct product={product}></SelectedProduct>
 
               <div className="final">
                 <hr />
