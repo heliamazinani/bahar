@@ -48,7 +48,6 @@
 .custom-offcanvas.show,
 .custom-offcanvas.showing,
 .custom-offcanvas.hiding {
-
   --bs-btn-bg: transparent;
   --bs-btn-color: #343434;
   --bs-btn-border-color: transparent;
@@ -240,11 +239,10 @@
   padding-top: 1rem;
   font-family: "Vazirmatn", sans-serif;
   direction: rtl;
-
 }
 .custom-offcanvas.show .offcanvas-body {
   padding: 0%;
-    overflow-y: auto; /* allow scroll */
+  overflow-y: auto; /* allow scroll */
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE/Edge */
 }
@@ -427,8 +425,8 @@ input:hover {
   background-color: rgb(239, 239, 239);
   border-bottom: 1px solid rgba(199, 199, 199, 0.555);
 }
-.sub a{
-    color: rgb(47, 47, 47) !important;
+.sub a {
+  color: rgb(47, 47, 47) !important;
 }
 .sub:hover,
 .sub a:hover,
