@@ -79,7 +79,7 @@ export default function AdminPanel() {
 
   return (
     <div className="container mt-4">
-      <h2 className="mb-4 text-center">🛍 پنل مدیریت فروشگاه</h2>
+
 
       <div className="d-flex justify-content-end mb-3">
         <Button onClick={() => handleOpenModal()}>➕ افزودن محصول جدید</Button>

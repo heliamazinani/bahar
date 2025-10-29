@@ -49,12 +49,13 @@ function AdminNav() {
               <Offcanvas.Header closeButton></Offcanvas.Header>
               <Offcanvas.Body>
                 <Nav className="justify-content-end flex-grow-1">
-                  <Nav.Link className="menu-item" href="#home">
-                    پوستی
-                  </Nav.Link>
                   <Nav.Link className="menu-item" href="#products">
-                    آرایشی
+                    سفارش ها
                   </Nav.Link>
+                  <Nav.Link className="menu-item" href="#home">
+                    محصولات
+                  </Nav.Link>
+
                   <Link
                     to="/"
                     className="menu-item"
@@ -66,8 +67,8 @@ function AdminNav() {
               </Offcanvas.Body>
             </Navbar.Offcanvas>
 
-            <Navbar.Brand >
-              <h3> مدیریت فروشگاه</h3>
+            <Navbar.Brand>
+              <h3 className="mb-0"> مدیریت فروشگاه</h3>
             </Navbar.Brand>
           </Container>
         </Navbar>
