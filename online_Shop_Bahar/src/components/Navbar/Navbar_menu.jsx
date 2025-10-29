@@ -3,9 +3,10 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import { Form, Button } from "react-bootstrap";
-import { Search } from "react-bootstrap-icons";
+import { Search, TypeH1 } from "react-bootstrap-icons";
 import { Basket2 } from "react-bootstrap-icons";
-import { ChevronDown } from "react-bootstrap-icons";
+import { ChevronDown, ChevronUp, PlusLg, DashLg } from "react-bootstrap-icons";
+
 import Dropdown from "react-bootstrap/Dropdown";
 import Logov from "../../assets/Logo/Logo-vertical.png";
 import Logos from "../../assets/Logo/logo-small.png";
@@ -21,6 +22,7 @@ function NavbarMenu() {
   const [showCart, setShowCart] = useState(false);
 
   const [show, setShow] = useState(false);
+  const [show1, setShow1] = useState(false);
   const [showDrop, setShowDrop] = useState(false);
   let timeoutId = null;
 
@@ -30,7 +32,6 @@ function NavbarMenu() {
   };
 
   const handleMouseLeave = () => {
- 
     timeoutId = setTimeout(() => {
       setShowDrop(false);
     }, 300);
@@ -99,14 +100,15 @@ function NavbarMenu() {
                   ورود | عضویت
                 </button>
                 {authOpen && <AuthPage onClose={() => setAuthOpen(false)} />}
-                <Nav.Link className="menu-item" href="#home">
+                <Nav.Link className="menu-item drop" href="#home">
                   پوستی
                 </Nav.Link>
-                <Nav.Link className="menu-item" href="#products">
+                <Nav.Link className="menu-item drop" href="#products">
                   آرایشی
                 </Nav.Link>
                 <div dir="rtl">
                   <Dropdown
+                    className="drop"
                     onMouseEnter={handleMouseEnter}
                     onMouseLeave={handleMouseLeave}
                     show={showDrop}
@@ -142,19 +144,19 @@ function NavbarMenu() {
                             <h6>آرایشی</h6>
                           </Dropdown.Item>
                           <Dropdown.Item
-                            className="menu-item sub"
+                            className="menu-item "
                             href="#/action-1"
                           >
                             آرایش لب
                           </Dropdown.Item>
                           <Dropdown.Item
-                            className="menu-item sub"
+                            className="menu-item "
                             href="#/action-1"
                           >
                             آرایش چشم
                           </Dropdown.Item>
                           <Dropdown.Item
-                            className="menu-item sub"
+                            className="menu-item "
                             href="#/action-1"
                           >
                             آرایش صورت
@@ -202,6 +204,106 @@ function NavbarMenu() {
                     </Dropdown.Menu>
                   </Dropdown>
                 </div>{" "}
+                {/* burgerdrop 1 */}
+                <div dir="rtl">
+                  <Dropdown className="burgerdrop" show={show}>
+                    <div className="menu-item ">
+                      <Link
+                        to="/products"
+                        onClick={() => setShowOffcanvas(false)}
+                      >
+                        مراقبتی
+                      </Link>
+                      <Dropdown.Toggle
+                        id="dropdown-basic"
+                        className={`customChev ${show ? "open" : ""}`}
+                        onClick={() => setShow(!show)}
+                      >
+                        <span className="chev-icon">
+                          {show ? <PlusLg size={25} /> : <PlusLg size={25} />}
+                        </span>
+                      </Dropdown.Toggle>
+                    </div>
+
+                    <Dropdown.Menu className="dropdownMenu p-0 mt-0 mt-0">
+                      <div className="subs  ">
+                        <div className="sub">
+                          <Dropdown.Item className="" href="#/action-1">
+                            <h6> مراقبت لب</h6>
+                          </Dropdown.Item>
+                        </div>
+                        <div className="sub">
+                          <Dropdown.Item className="" href="#/action-1">
+                            <h6> مراقبت چشم</h6>
+                          </Dropdown.Item>
+                        </div>
+                        <div className="sub">
+                          <Dropdown.Item className="" href="#/action-1">
+                            <h6> مراقبت صورت</h6>
+                          </Dropdown.Item>
+                        </div>
+                        <div className="sub">
+                          <Dropdown.Item className="" href="#/action-1">
+                            <h6> مراقبت بدن</h6>
+                          </Dropdown.Item>
+                        </div>
+                        <div className="sub">
+                          <Dropdown.Item className="" href="#/action-1">
+                            <h6> مراقبت مو</h6>
+                          </Dropdown.Item>
+                        </div>
+                      </div>
+                    </Dropdown.Menu>
+                  </Dropdown>
+                </div>{" "}
+                <div dir="rtl">
+                  <Dropdown className="burgerdrop" show={show1}>
+                    <div className="menu-item ">
+                      <Link
+                        to="/products"
+                        onClick={() => setShowOffcanvas(false)}
+                      >
+                        آرایشی
+                      </Link>
+                      <Dropdown.Toggle
+                        id="dropdown-basic"
+                        className={`customChev ${show1 ? "open" : ""}`}
+                        onClick={() => setShow1(!show1)}
+                      >
+                        <span className="chev-icon">
+                          {show1 ? <PlusLg size={25} /> : <PlusLg size={25} />}
+                        </span>
+                      </Dropdown.Toggle>
+                    </div>
+
+                    <Dropdown.Menu className="dropdownMenu p-0 mt-0">
+                      <div className="subs  ">
+                        <div className="sub">
+                          <Dropdown.Item className="" href="#/action-1">
+                            <h6> آرایش لب</h6>
+                          </Dropdown.Item>
+                        </div>
+                        <div className="sub">
+                          <Dropdown.Item className="" href="#/action-1">
+                            <h6> آرایش چشم</h6>
+                          </Dropdown.Item>
+                        </div>
+                        <div className="sub">
+                          <Dropdown.Item className="" href="#/action-1">
+                            <h6> آرایش صورت</h6>
+                          </Dropdown.Item>
+                        </div>
+                      </div>
+                    </Dropdown.Menu>
+                  </Dropdown>
+                </div>{" "}
+                <Link
+                  to="/products"
+                  className="menu-item d-lg-none"
+                  onClick={() => setShowOffcanvas(false)}
+                >
+                  محصولات
+                </Link>
                 <Link
                   to="/"
                   className="menu-item"

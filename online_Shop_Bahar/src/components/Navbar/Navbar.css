@@ -3,7 +3,7 @@
 .custom-offcanvas.hiding .dropdown-custom,
 .custom-offcanvas.show .dropdown-custom,
 .custom-offcanvas.showing .dropdown-custom,
-.custom-offcanvas.hiding .dropdown-custom  {
+.custom-offcanvas.hiding .dropdown-custom {
   background-color: white;
   border-top: none !important;
   border-left: none !important;
@@ -19,7 +19,7 @@
 .custom-offcanvas.show .dropdown-custom:hover,
 .custom-offcanvas.showing .dropdown-custom:hover,
 .custom-offcanvas.hiding .dropdown-custom:hover {
-  color:var(--active-color) !important;
+  color: var(--active-color) !important;
   border-top: none !important;
   border-left: none !important;
   border-right: none !important;
@@ -48,7 +48,7 @@
 .custom-offcanvas.show,
 .custom-offcanvas.showing,
 .custom-offcanvas.hiding {
-  /* ensure our context uses desired vars if needed */
+
   --bs-btn-bg: transparent;
   --bs-btn-color: #343434;
   --bs-btn-border-color: transparent;
@@ -169,7 +169,7 @@
 .nav Button:active {
   border: 1px solid rgba(0, 0, 0, 0) !important;
   background-color: rgba(57, 73, 87, 0) !important;
-  color: var(--active-color)!important;
+  color: var(--active-color) !important;
 }
 
 .nav .menu-item,
@@ -197,7 +197,7 @@
 .nav a:active {
   border: 1px solid rgba(0, 0, 0, 0) !important;
   background-color: rgba(57, 73, 87, 0) !important;
-  color:var(--active-color) !important;
+  color: var(--active-color) !important;
 }
 
 .dropdown-custom:hover,
@@ -208,6 +208,9 @@
   box-shadow: none !important;
 }
 .dropdown-custom::after {
+  display: none !important;
+}
+.customChev::after {
   display: none !important;
 }
 .dropdown-custom,
@@ -226,8 +229,10 @@
 }
 
 /* Target the offcanvas container */
-.custom-offcanvas .btn-close:hover ,.custom-offcanvas .btn-close:focus,.custom-offcanvas .btn-close:active{
-box-shadow: none !important;
+.custom-offcanvas .btn-close:hover,
+.custom-offcanvas .btn-close:focus,
+.custom-offcanvas .btn-close:active {
+  box-shadow: none !important;
 }
 .custom-offcanvas.show {
   background: rgb(238, 238, 238);
@@ -235,9 +240,16 @@ box-shadow: none !important;
   padding-top: 1rem;
   font-family: "Vazirmatn", sans-serif;
   direction: rtl;
+
 }
 .custom-offcanvas.show .offcanvas-body {
   padding: 0%;
+    overflow-y: auto; /* allow scroll */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+}
+.custom-offcanvas.show .offcanvas-body::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
 }
 
 /* Title styling */
@@ -263,7 +275,9 @@ box-shadow: none !important;
   background-color: rgba(0, 0, 0, 0) !important;
 }
 
-/* Nav links */
+.custom-offcanvas.show .navbar-nav {
+  flex-direction: column-reverse;
+}
 .custom-offcanvas.show a {
   color: black;
 }
@@ -286,14 +300,6 @@ box-shadow: none !important;
 .custom-offcanvas.show .dropdown-menu {
   background-color: #f48fb1;
   border: none;
-}
-
-.custom-offcanvas.show .dropdown-item {
-  color: rgb(0, 0, 0);
-}
-
-.custom-offcanvas.show .dropdown-item:hover {
-  background-color: #ea4c89;
 }
 
 /* Responsive adjustments */
@@ -349,53 +355,117 @@ input:hover {
   width: 1rem;
   height: 1rem;
 }
-.shopOffCanvesHead .offcanvas-title{
+.shopOffCanvesHead .offcanvas-title {
   margin-left: auto;
   margin-right: auto;
-
 }
-.shopOffCanvesHead .btn-close{
-margin-left: 0% !important;
+.shopOffCanvesHead .btn-close {
+  margin-left: 0% !important;
 }
-.shopOffCanvesHead .btn-close:hover ,.shopOffCanvesHead .btn-close:focus,.shopOffCanvesHead .btn-close:active{
-box-shadow: none !important;
+.shopOffCanvesHead .btn-close:hover,
+.shopOffCanvesHead .btn-close:focus,
+.shopOffCanvesHead .btn-close:active {
+  box-shadow: none !important;
 }
-.shopOffCanvesBody .cart-item{
+.shopOffCanvesBody .cart-item {
   border: 1px solid #bdbdbd;
   border-radius: 16px;
   padding: 12px;
 }
-.shopOffCanvesBody .final{
- position: absolute;
- bottom: 0;
- right: 16px;
- left: 16px;
- margin-left: auto;
- margin-right: auto;
+.shopOffCanvesBody .final {
+  position: absolute;
+  bottom: 0;
+  right: 16px;
+  left: 16px;
+  margin-left: auto;
+  margin-right: auto;
 }
-.shopOffCanvesBody .buy{
- width: 100%;
- margin-left: auto;
- margin-right: auto;
- border: none;
- background-color: var(--primary-color);
- box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+.shopOffCanvesBody .buy {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  border: none;
+  background-color: var(--primary-color);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
 }
-.shopOffCanvesBody .buy:hover ,.shopOffCanvesBody .buy:active{
-
- background-color: var(--active-color);
- box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+.shopOffCanvesBody .buy:hover,
+.shopOffCanvesBody .buy:active {
+  background-color: var(--active-color);
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
 }
-.dropdownMenu{
+.burgerdrop {
+  display: none;
+}
+.custom-offcanvas.show .burgerdrop {
+  background-color: white;
+  border-top: none !important;
+  border-left: none !important;
+  border-right: none !important;
+  border-bottom: 1px solid rgb(238, 238, 238);
+  color: rgb(52, 52, 52);
   display: block;
-  left: -100px !important;
+  width: 100%;
+  border-radius: 0%;
+  text-align: start;
 }
+.custom-offcanvas.show .burgerdrop .menu-item {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.subs {
+  display: flex;
+  flex-direction: column;
+}
+.sub {
+  text-align: right;
+  font-size: 1rem;
+  padding: 0.6rem 0;
+  padding-right: 10px;
+  transition: all 0.3s ease;
+  background-color: rgb(239, 239, 239);
+  border-bottom: 1px solid rgba(199, 199, 199, 0.555);
+}
+.sub a{
+    color: rgb(47, 47, 47) !important;
+}
+.sub:hover,
+.sub a:hover,
+.sub a:focus {
+  background-color: rgb(235, 235, 235) !important;
+}
+.custom-offcanvas.show .drop {
+  display: none;
+}
+
+.dropdownMenu {
+  display: block;
+  left: -150px !important;
+}
+.customChev {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.chev-icon {
+  display: inline-flex;
+  transition: transform 0.3s ease, opacity 0.2s ease;
+}
+
+.customChev.open .chev-icon {
+  transform: rotate(45deg);
+}
+
 @media (max-width: 990px) {
-  .catagories{
+  .catagories {
     flex-direction: column;
     text-align: right;
   }
-    .catagories .sub{
-display: none;
+  .catagories .sub {
+    display: none;
   }
 }
