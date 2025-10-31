@@ -17,17 +17,24 @@ const toFarsiNumber = (number) => {
 
 function SelectedProduct({ product }) {
   const [count, setCount] = useState(1);
+  const price = product.newPrice || product.price || 0; 
+  const total = Number(price) * Number(count); 
+  const formattedTotal = total.toLocaleString();
+  const discount =( product.price - product.newPrice) * Number(count);
+
   if (!count) {
     return <></>;
   }
   return (
     <>
-      <Container dir="rtl" className="selectedProduct mt-5">
+      <Container dir="rtl" className="selectedProduct mb-3 ">
         <Row className="align-items-center">
           <Col lg={6} md={12}>
             <div className="d-flex align-items-center ">
-              <img src={product.image} className="productImage" alt="" />
-              <h6 className="mb-0 me-4">{product.name}</h6>
+              <div className="image-wrapper0">
+                <img src={product.image} className="productImage0" alt="" />
+              </div>
+              <h6 className="productName mb-0 me-4">{product.name}</h6>
             </div>
             <hr className="d-lg-none" />
           </Col>
@@ -36,23 +43,20 @@ function SelectedProduct({ product }) {
               <p className=" d-lg-none">جمع قیمت:</p>
               <div className="price-section">
                 {product.onSale && (
-                  <span className="old-price">
-                    {toFarsiNumber(product.price.toLocaleString())}
+                  <span className="discount">
+                    {toFarsiNumber(discount.toLocaleString())} تومان تخفیف
                   </span>
                 )}
-                <span className="price">
-                  {toFarsiNumber(
-                    (product.newPrice || product.price).toLocaleString()
-                  )}{" "}
-                  تومان
+                <span className="tprice">
+                  {toFarsiNumber(formattedTotal)} تومان
                 </span>
               </div>
             </div>
           </Col>
-          <Col lg={2} md={6}>
+          <Col className="count" lg={2} md={6}>
             <div className="total-price mt-md-3 mt-sm-3 mt-3 mt-lg-0">
               <p className=" d-lg-none">تعداد:</p>
-              <div className="productCount">
+              <div className="productCount m-lg-auto ">
                 <PlusLg
                   className="count-icon"
                   onClick={() => {
