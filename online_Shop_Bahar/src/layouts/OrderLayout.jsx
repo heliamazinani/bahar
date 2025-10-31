@@ -1,5 +1,4 @@
 import React from "react";
-import AdminNav from "../components/AdminNav/AdminNav";
 import { Container, Col, Row } from "react-bootstrap";
 import {
   CartCheck,
@@ -7,43 +6,64 @@ import {
   CreditCard,
   Check2Circle,
 } from "react-bootstrap-icons";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
 
-export default function OrderLayout({ children }) {
+export default function OrderLayout() {
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const stepMap = [
+    { path: "/checkout", label: "سبد خرید", icon: <CartCheck size={25} /> },
+    {
+      path: "/checkout/info",
+      label: "اطلاعات ارسال",
+      icon: <UiChecks size={25} />,
+    },
+    {
+      path: "/checkout/payment",
+      label: "پرداخت",
+      icon: <CreditCard size={25} />,
+    },
+    {
+      path: "/checkout/confirmation",
+      label: "تایید نهایی",
+      icon: <Check2Circle size={25} />,
+    },
+  ];
+
+  const currentStep = stepMap.findIndex((s) => location.pathname === s.path);
+
   return (
     <>
       <Container dir="rtl">
         <Row className="align-items-center p-5 m-lg-5">
-          <Col className="d-lg-flex justify-content-center p-0">
-            <div className="flexWrapper">
-              <CartCheck size={25} />
-              <p className="m-0  d-none d-lg-flex  d-none d-lg-flex">بررسی سبد خرید</p>
-            </div>
-          </Col>
-          <div className="divider" />
-          <Col className="d-flex justify-content-center p-0">
-            <div className="flexWrapper">
-              <UiChecks size={25} />
-              <p className="m-0  d-none d-lg-flex">بررسی سبد خرید</p>
-            </div>
-          </Col>
-          <div className="divider" />
-          <Col className="d-flex justify-content-center p-0">
-            <div className="flexWrapper">
-              <CreditCard size={25} sizeLg={80} />
-              <p className="m-0  d-none d-lg-flex">بررسی سبد خرید</p>
-            </div>
-          </Col>
-          <div className="divider" />
-          <Col className="d-flex justify-content-center p-0">
-            <div className="flexWrapper">
-              <Check2Circle size={25} />
-              <p className="m-0  d-none d-lg-flex">بررسی سبد خرید</p>
-            </div>
-          </Col>
+          {stepMap.map((step, index) => (
+            <React.Fragment key={index}>
+              <Col
+                className={`d-flex justify-content-center p-0 ${
+                  index === currentStep
+                    ? "active-step"
+                    : index < currentStep
+                    ? "completed-step"
+                    : ""
+                }`}
+                onClick={() => navigate(step.path)}
+                style={{ cursor: "pointer" }}
+              >
+                <div className="flexWrapper text-center">
+                  {step.icon}
+                  <p className="m-0 d-none d-lg-flex">{step.label}</p>
+                </div>
+              </Col>
+              {index < stepMap.length - 1 && <div className="divider" />}
+            </React.Fragment>
+          ))}
         </Row>
       </Container>
 
-      <div className="admin-layout">{children}</div>
+      <div className="checkout-content">
+        <Outlet /> {/* 👈 Step content appears here */}
+      </div>
     </>
   );
 }

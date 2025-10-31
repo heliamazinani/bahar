@@ -12,6 +12,10 @@ import ScrollToTop from "./components/ScrollToTop";
 import ProductPage from "./pages/ProductPage/ProductPage";
 import OrderLayout from "./layouts/OrderLayout";
 import CheckoutPage from "./pages/CheckoutPage/CheckoutPage";
+import CartStep from "./components/Checkout/CartStep/CartStep";
+import InfoStep from "./components/Checkout/InfoStep/InfoStep";
+import PaymentStep from "./components/Checkout/PaymentStep/PaymentStep";
+import ConfirmationStep from "./components/Checkout/ConfirmationStep/ConfirmationStep";
 function App() {
   return (
     <>
@@ -42,14 +46,16 @@ function App() {
               </MainLayout>
             }
           />
-          <Route
-            path="/checkout"
-            element={
-              <OrderLayout>
-                <CheckoutPage/>
-              </OrderLayout>
-            }
-          />
+          <Route path="/checkout" element={<OrderLayout />}>
+            <Route index element={<CartStep />} />
+            <Route path="info" element={<InfoStep/>} />
+            <Route path="payment" element={<PaymentStep />} />
+            <Route
+              path="confirmation"
+              element={<ConfirmationStep/>}
+            />
+          </Route>
+
           <Route
             path="/admin"
             element={
