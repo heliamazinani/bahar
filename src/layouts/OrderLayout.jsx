@@ -13,21 +13,21 @@ export default function OrderLayout() {
   const navigate = useNavigate();
 
   const stepMap = [
-    { path: "/checkout", label: "سبد خرید", icon: <CartCheck size={25} /> },
+    { path: "/checkout/", label: " بررسی سبد خرید", icon: <CartCheck size={36} /> },
     {
       path: "/checkout/info",
       label: "اطلاعات ارسال",
-      icon: <UiChecks size={25} />,
+      icon: <UiChecks size={36} />,
     },
     {
       path: "/checkout/payment",
       label: "پرداخت",
-      icon: <CreditCard size={25} />,
+      icon: <CreditCard size={36} />,
     },
     {
       path: "/checkout/confirmation",
-      label: "تایید نهایی",
-      icon: <Check2Circle size={25} />,
+      label: "پایان خرید ",
+      icon: <Check2Circle size={36} />,
     },
   ];
 
@@ -36,7 +36,7 @@ export default function OrderLayout() {
   return (
     <>
       <Container dir="rtl">
-        <Row className="align-items-center p-5 m-lg-5">
+        <Row className="align-items-center p-3 pe-5 ps-5 m-lg-5 mb-lg-2 mt-lg-3">
           {stepMap.map((step, index) => (
             <React.Fragment key={index}>
               <Col
@@ -45,17 +45,27 @@ export default function OrderLayout() {
                     ? "active-step"
                     : index < currentStep
                     ? "completed-step"
-                    : ""
+                    : "deactive"
                 }`}
                 onClick={() => navigate(step.path)}
                 style={{ cursor: "pointer" }}
               >
                 <div className="flexWrapper text-center">
                   {step.icon}
-                  <p className="m-0 d-none d-lg-flex">{step.label}</p>
+                  <p className="mt-1 d-none d-lg-flex">{step.label}</p>
                 </div>
               </Col>
-              {index < stepMap.length - 1 && <div className="divider" />}
+              {index < stepMap.length - 1 && (
+                <div
+                  className={`divider ${
+                    index === currentStep
+                      ? "dactive-step"
+                      : index < currentStep
+                      ? "dcompleted-step"
+                      : "deActive"
+                  }`}
+                />
+              )}
             </React.Fragment>
           ))}
         </Row>

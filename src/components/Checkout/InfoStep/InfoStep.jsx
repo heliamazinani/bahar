@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { Button, Form } from "react-bootstrap";
+import { Container, Col, Row, Button, Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import { ChevronLeft, ChevronRight } from "react-bootstrap-icons";
 export default function InfoStep() {
   const [formData, setFormData] = useState({
     name: "",
@@ -47,11 +48,29 @@ export default function InfoStep() {
           />
         </Form.Group>
       </Form>
+      <Container>
+        <Row>
+          <Col>
+            <div className="d-flex justify-content-between">
+              <Button
+                className="navigationNext"
+                onClick={() => navigate("/checkout/payment")}
+              >
+                <ChevronLeft />
+                پرداخت
+              </Button>
+              <Button
+                className="navigationPrev"
+                onClick={() => navigate("/checkout/")}
+              >
+                بررسی سبد خرید <ChevronRight />
+              </Button>
+            </div>
+          </Col>
+        </Row>
+      </Container>
 
-      <Button onClick={() => navigate("/checkout/payment")}>
-        ادامه به پرداخت
-      </Button>
-            <Button onClick={() => navigate("/checkout/")}>بازگشت</Button>
+
     </div>
   );
 }

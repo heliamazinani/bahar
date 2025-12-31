@@ -24,6 +24,7 @@ function AuthPage() {
   const handleLoginSubmit = (e) => {
     e.preventDefault();
     console.log("login", loginData);
+    
   };
 
   return (

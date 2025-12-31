@@ -1,6 +1,7 @@
 import React from "react";
-import { Button, Form } from "react-bootstrap";
+import { Container,Col,Row,Button, Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import { ChevronLeft, ChevronRight } from "react-bootstrap-icons";
 export default function PaymentStep() {
       const navigate = useNavigate();
   return (
@@ -22,8 +23,28 @@ export default function PaymentStep() {
           label="پرداخت در محل"
         />
       </Form>
-      <Button onClick={() => navigate("/checkout/confirmation")}>پرداخت</Button>
-      <Button onClick={() => navigate("/checkout/info")}>بازگشت</Button>
+      <Container>
+        <Row>
+          <Col>
+            <div className="d-flex justify-content-between">
+              <Button
+                className="navigationNext"
+                onClick={() => navigate("/checkout/confirmation")}
+              >
+                <ChevronLeft />
+                پرداخت
+              </Button>
+              <Button
+                className="navigationPrev"
+                onClick={() => navigate("/checkout/info")}
+              >
+                بازگشت <ChevronRight />
+              </Button>
+            </div>
+          </Col>
+        </Row>
+      </Container>
+
     </div>
   );
 }
