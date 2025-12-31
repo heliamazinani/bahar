@@ -2,19 +2,19 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import Offcanvas from "react-bootstrap/Offcanvas";
-import SelectedProduct from "../SelectedProduct/SelectedProduct.jsx"
+import SelectedProduct from "../../../components/SelectedProduct/SelectedProduct.jsx"
 import { Form, Button } from "react-bootstrap";
-import { Search, TypeH1 } from "react-bootstrap-icons";
+import { Search } from "react-bootstrap-icons";
 import { Basket2 } from "react-bootstrap-icons";
-import { ChevronDown, ChevronUp, PlusLg, DashLg } from "react-bootstrap-icons";
+import { ChevronDown, PlusLg, DashLg } from "react-bootstrap-icons";
 
 import Dropdown from "react-bootstrap/Dropdown";
-import Logov from "../../assets/Logo/Logo-vertical.png";
-import Logos from "../../assets/Logo/logo-small.png";
+import Logov from "../../../assets/Logo/Logo-vertical.png";
+import Logos from "../../../assets/Logo/logo-small.png";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import AuthPage from "../../pages/AuthPage/AuthPage";
-import { products } from "../../DummyData/Products.jsx";
+import AuthPage from "../../../features/auth/pages/AuthPage.jsx";
+import { products } from "../../../DummyData/Products.jsx";
 import "./Navbar.css";
 
 function NavbarMenu() {

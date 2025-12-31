@@ -6,10 +6,10 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import InputGroup from "react-bootstrap/InputGroup";
 import { Eye, EyeSlash, Google, Facebook } from "react-bootstrap-icons";
-import "./Auth.css"
+import "../Auth.css";
+import { registerUser } from "../auth.service";
 
-
-function AuthPage({ onClose }) {
+function AuthPage() {
   const [tab, setTab] = useState("login");
   const [showPassword, setShowPassword] = useState(false);
   const [showRegPassword, setShowRegPassword] = useState(false);
@@ -26,17 +26,8 @@ function AuthPage({ onClose }) {
     console.log("login", loginData);
   };
 
-  const handleRegisterSubmit = (e) => {
-    e.preventDefault();
-    console.log("register", regData);
-  };
-
   return (
     <div className="auth-overlay">
-      <div className="auth-close-btn" onClick={onClose}>
-        ✕
-      </div>
-
       <div className="auth-page" dir="rtl">
         <Container className="auth-container">
           <Row className="align-items-center">
@@ -112,7 +103,6 @@ function AuthPage({ onClose }) {
                     </Form.Group>
 
                     <div className="d-flex justify-content-between align-items-center mb-3">
-                     
                       <a className="forgot-link" href="#forgot">
                         کلمه عبور را فراموش کرده‌اید؟
                       </a>
@@ -138,7 +128,14 @@ function AuthPage({ onClose }) {
                 )}
 
                 {tab === "register" && (
-                  <Form onSubmit={handleRegisterSubmit} className="auth-form">
+                  <Form
+                    onSubmit={() => {
+                      const { confirm, ...dataWithoutConfirm } =
+                        regData;
+                      result = registerUser(dataWithoutConfirm);
+                    }}
+                    className="auth-form"
+                  >
                     <Form.Group className="mb-3" controlId="regName">
                       <Form.Label>نام و نام خانوادگی</Form.Label>
                       <Form.Control

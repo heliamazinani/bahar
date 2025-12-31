@@ -1,6 +1,6 @@
 import Slider from "../../components/Slider/Slider";
 import Discounted from "../../components/Discounted/Discounted";
-import Footer from "../../components/Footer/Footer";
+import Footer from "../../shared/components/Footer/Footer";
 function Home() {
   return (
     <div>
