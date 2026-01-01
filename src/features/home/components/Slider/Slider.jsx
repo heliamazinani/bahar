@@ -6,9 +6,9 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
-import S1 from "../../../assets/images/Slider/S1.png";
-import S2 from "../../../assets/images/Slider/Slider2.JPG";
-import S3 from "../../../assets/images/Slider/Slider3.JPG";
+import S1 from "../../../../assets/images/Slider/S1.png";
+import S2 from "../../../../assets/images/Slider/Slider2.JPG";
+import S3 from "../../../../assets/images/Slider/Slider3.JPG";
 import "./Slider.css"
 
 

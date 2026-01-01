@@ -7,7 +7,7 @@ import Products from "./features/products/pages/Products/Products";
 import AdminPanel from "./pages/AdminPanel/AdminPanel";
 import MainLayout from "./layouts/MainLayout";
 import AdminLayout from "./layouts/AdminLayout";
-import ScrollToTop from "./components/ScrollToTop";
+import ScrollToTop from "./shared/components/ScrollToTop";
 import ProductPage from "./features/products/pages/ProductPage/ProductPage";
 import OrderLayout from "./layouts/OrderLayout";
 import CheckoutPage from "./features/orders/pages/CheckoutPage/CheckoutPage";
