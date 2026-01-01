@@ -3,6 +3,8 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import Table from "react-bootstrap/Table";
+import HtmlEditor from "../../shared/components/Editor/HtmlEditor";
+
 import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function AdminPanel() {
@@ -17,16 +19,36 @@ export default function AdminPanel() {
     newPrice: "",
     category: "",
     description: "",
-    image: "",
+    images: [],
   });
 
-  // Load from localStorage on mount
+  const handleMultipleImageUpload = (e) => {
+    const files = Array.from(e.target.files);
+
+    files.forEach((file) => {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setFormData((prev) => ({
+          ...prev,
+          images: [...prev.images, reader.result],
+        }));
+      };
+      reader.readAsDataURL(file);
+    });
+  };
+
+  const handleRemoveImage = (index) => {
+    setFormData((prev) => ({
+      ...prev,
+      images: prev.images.filter((_, i) => i !== index),
+    }));
+  };
+
   useEffect(() => {
     const saved = localStorage.getItem("products");
     if (saved) setProducts(JSON.parse(saved));
   }, []);
 
-  // Save to localStorage on every change
   useEffect(() => {
     localStorage.setItem("products", JSON.stringify(products));
   }, [products]);
@@ -34,7 +56,11 @@ export default function AdminPanel() {
   const handleOpenModal = (index = null) => {
     if (index !== null) {
       setEditIndex(index);
-      setFormData(products[index]);
+      const product = products[index];
+      setFormData({
+        ...product,
+        images: product.images || [],
+      });
     } else {
       setEditIndex(null);
       setFormData({
@@ -44,7 +70,7 @@ export default function AdminPanel() {
         newPrice: "",
         category: "",
         description: "",
-        image: "",
+        images: [],
       });
     }
     setShowModal(true);
@@ -66,21 +92,8 @@ export default function AdminPanel() {
     setProducts(updated);
   };
 
-  // Convert uploaded file to base64
-  const handleImageUpload = (e) => {
-    const file = e.target.files[0];
-    if (!file) return;
-    const reader = new FileReader();
-    reader.onloadend = () => {
-      setFormData({ ...formData, image: reader.result });
-    };
-    reader.readAsDataURL(file);
-  };
-
   return (
     <div className="container mt-4">
-
-
       <div className="d-flex justify-content-end mb-3">
         <Button onClick={() => handleOpenModal()}>➕ افزودن محصول جدید</Button>
       </div>
@@ -107,9 +120,9 @@ export default function AdminPanel() {
             products.map((p, index) => (
               <tr key={p.id}>
                 <td>
-                  {p.image ? (
+                  {p.images && p.images.length > 0 ? (
                     <img
-                      src={p.image}
+                      src={p.images[0]}
                       alt={p.name}
                       style={{
                         width: "60px",
@@ -149,7 +162,6 @@ export default function AdminPanel() {
         </tbody>
       </Table>
 
-      {/* Add/Edit Modal */}
       <Modal show={showModal} onHide={() => setShowModal(false)} centered>
         <Modal.Header closeButton>
           <Modal.Title>
@@ -208,35 +220,62 @@ export default function AdminPanel() {
               />
             </Form.Group>
             <Form.Group className="mb-3">
-              <Form.Label>توضیحات</Form.Label>
-              <Form.Control
-                as="textarea"
-                rows={3}
+              <Form.Label>توضیحات محصول</Form.Label>
+              <HtmlEditor
                 value={formData.description}
-                onChange={(e) =>
-                  setFormData({ ...formData, description: e.target.value })
+                onChange={(html) =>
+                  setFormData({ ...formData, description: html })
                 }
               />
             </Form.Group>
+
             <Form.Group>
-              <Form.Label>تصویر محصول</Form.Label>
+              <Form.Label>تصاویر محصول</Form.Label>
               <Form.Control
                 type="file"
                 accept="image/*"
-                onChange={handleImageUpload}
+                multiple
+                onChange={handleMultipleImageUpload}
               />
-              {formData.image && (
-                <img
-                  src={formData.image}
-                  alt="preview"
+
+              {formData.images.length > 0 && (
+                <div
                   style={{
-                    width: "100%",
-                    height: "200px",
-                    objectFit: "cover",
+                    display: "grid",
+                    gridTemplateColumns:
+                      "repeat(auto-fill, minmax(150px, 1fr))",
+                    gap: "10px",
                     marginTop: "10px",
-                    borderRadius: "8px",
                   }}
-                />
+                >
+                  {formData.images.map((image, index) => (
+                    <div key={index} style={{ position: "relative" }}>
+                      <img
+                        src={image}
+                        alt={`preview ${index + 1}`}
+                        style={{
+                          width: "100%",
+                          height: "150px",
+                          objectFit: "cover",
+                          borderRadius: "8px",
+                        }}
+                      />
+                      <Button
+                        variant="danger"
+                        size="sm"
+                        style={{
+                          position: "absolute",
+                          top: "5px",
+                          right: "5px",
+                          padding: "2px 8px",
+                        }}
+                        onClick={() => handleRemoveImage(index)}
+                      >
+                        ×
+                      </Button>
+                    </div>
+                  ))}
+                </div>
               )}
             </Form.Group>
           </Form>

@@ -1,0 +1,62 @@
+.editor-box {
+  border: 1px solid #ced4da;
+  border-radius: 8px;
+  padding: 12px;
+  min-height: 140px;
+  background-color: #fff;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.editor-box:focus-within {
+  outline: none;
+  border-color: rgba(234, 76, 137, 0.4);
+  background-color: #fff;
+  box-shadow: 0 0 0 4px rgb(234 76 137 / 10%);
+}
+
+.editor-box .ProseMirror {
+  outline: none;
+  min-height: 120px;
+  direction: rtl;
+}
+
+.editor-box .ProseMirror p {
+  margin: 0 0 0.75rem;
+  line-height: 1.8;
+  font-size: 0.95rem;
+}
+
+.editor-box .ProseMirror h2 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 1rem 0 0.5rem;
+}
+
+.editor-box .ProseMirror ul {
+  padding-right: 1.2rem;
+  margin-bottom: 0.75rem;
+}
+
+.editor-box .ProseMirror li {
+  margin-bottom: 0.3rem;
+}
+
+.editor-box .ProseMirror p.is-editor-empty:first-child::before {
+  content: "توضیحات محصول را وارد کنید...";
+  color: #adb5bd;
+  float: right;
+  pointer-events: none;
+}
+
+.editor button {
+  color: var(--primary-color);
+  background-color: white;
+  border: none;
+  padding: 0.5rem 1.5rem;
+}
+.editor button:active,
+.editor button:hover,
+.editor button:focus {
+  background-color: rgb(252, 252, 252);
+  color: var(--active-color);
+}
