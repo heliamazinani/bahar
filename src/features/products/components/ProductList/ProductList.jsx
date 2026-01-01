@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import ProductCard from "../ProductCard/ProductCard";
-import { products } from "../../DummyData/Products";
+import { products } from "../../../../DummyData/Products";
 import Pagination from "react-bootstrap/Pagination";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";

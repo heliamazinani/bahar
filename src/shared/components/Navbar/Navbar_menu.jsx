@@ -2,7 +2,7 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import Offcanvas from "react-bootstrap/Offcanvas";
-import SelectedProduct from "../../../components/SelectedProduct/SelectedProduct.jsx"
+import SelectedProduct from "../../../features/products/components/SelectedProduct/SelectedProduct.jsx";
 import { Form, Button } from "react-bootstrap";
 import { Search } from "react-bootstrap-icons";
 import { Basket2 } from "react-bootstrap-icons";
@@ -265,7 +265,7 @@ function NavbarMenu() {
                         to="/products"
                         onClick={() => setShowOffcanvas(false)}
                       >
-                        آرایشی 
+                        آرایشی
                       </Link>
                       <Dropdown.Toggle
                         id="dropdown-basic"

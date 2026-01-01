@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
-import { products } from "../../DummyData/Products";
-import ProductCard from "../ProductCard/ProductCard";
+import { products } from "../../../../DummyData/Products";
+import ProductCard from "../../../products/components/ProductCard/ProductCard";
 import "swiper/css";
 import { useRef } from "react";
 import "swiper/css/navigation";
 import { ArrowLeftShort } from "react-bootstrap-icons";
 import { ArrowRightShort } from "react-bootstrap-icons";
-import "./Discounted.css"
+import "./carousel.css";
 
-function Discounted({ title, onSale }) {
+function Carousel({ title, onSale }) {
   const swiperRef = useRef();
   const filteredProducts = onSale ? products.filter((p) => p.onSale) : products;
   return (
@@ -67,4 +67,4 @@ function Discounted({ title, onSale }) {
     </div>
   );
 }
-export default Discounted;
+export default Carousel;

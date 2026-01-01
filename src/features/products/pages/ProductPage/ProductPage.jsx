@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams, Link } from "react-router-dom";
 import { Container, Row, Col, Button } from "react-bootstrap";
-import { products } from "../../DummyData/Products";
+import { products } from "../../../../DummyData/Products";
 import { Basket2 } from "react-bootstrap-icons";
 import ProductGallery from "../../components/ProductGallery/ProductGallery"
 import "./ProductPage.css"

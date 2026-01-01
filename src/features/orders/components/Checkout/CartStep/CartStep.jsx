@@ -1,5 +1,5 @@
-import SelectedProduct from "../../SelectedProduct/SelectedProduct";
-import { products } from "../../../DummyData/Products";
+import SelectedProduct from "../../../../products/components/SelectedProduct/SelectedProduct";
+import { products } from "../../../../../DummyData/Products";
 import { Container, Col, Row } from "react-bootstrap";
 import { Button, Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
@@ -77,9 +77,7 @@ function CartStep() {
                 <ChevronLeft /> ثبت سفارش
               </Button>
               <Button className="navigationPrev" onClick={() => navigate("/")}>
-                بازگشت
-                {" "}
-                <ChevronRight />
+                بازگشت <ChevronRight />
               </Button>
             </div>
           </Col>

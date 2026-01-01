@@ -72,7 +72,7 @@ export default function OrderLayout() {
       </Container>
 
       <div className="checkout-content">
-        <Outlet /> {/* 👈 Step content appears here */}
+        <Outlet />
       </div>
     </>
   );
