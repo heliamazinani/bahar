@@ -26,7 +26,9 @@ function NavbarMenu() {
   const [show, setShow] = useState(false);
   const [show1, setShow1] = useState(false);
   const [showDrop, setShowDrop] = useState(false);
- const timeoutId = useRef(null);
+  const [open, setOpen] = useState(false); //offcanves's dropdown1
+  const [open1, setOpen1] = useState(false); //offcanves's dropdown2
+  const timeoutId = useRef(null);
   const product = products[0];
   const navigate = useNavigate();
 
@@ -36,17 +38,12 @@ function NavbarMenu() {
   };
 
   const handleMouseLeave = () => {
-
-     timeoutId.current= setTimeout(() => {
+    timeoutId.current = setTimeout(() => {
       setShowDrop(false);
     }, 300);
-    
-
-      
   };
   const openAuth = () => {
-    navigate('/auth');
-
+    navigate("/auth");
   };
 
   return (
@@ -133,7 +130,6 @@ function NavbarMenu() {
                     />
                   </Link>
 
-                  {/* Mega Menu */}
                   {showDrop && (
                     <div className="mega-menu ">
                       <div className="catagories d-flex pe-2 ps-5">
@@ -177,97 +173,82 @@ function NavbarMenu() {
                 </div>
                 {/* burgerdrop 1 */}
                 <div dir="rtl">
-                  <Dropdown className="burgerdrop" show={show}>
-                    <div className="menu-item ">
+                  <div className="burgerdrop">
+                    <div
+                      className="menu-item burger-header"
+                      onClick={() => setOpen((prev) => !prev)}
+                    >
                       <Link
                         to="/products"
                         onClick={() => setShowOffcanvas(false)}
+                        className="burger-title"
                       >
                         مراقبتی
                       </Link>
-                      <Dropdown.Toggle
-                        id="dropdown-basic"
-                        className={`customChev ${show ? "open" : ""}`}
-                        onClick={() => setShow(!show)}
-                      >
-                        <span className="chev-icon">
-                          {show ? <PlusLg size={25} /> : <PlusLg size={25} />}
-                        </span>
-                      </Dropdown.Toggle>
-                    </div>
 
-                    <Dropdown.Menu className="dropdownMenu p-0 mt-0 mt-0">
-                      <div className="subs  ">
-                        <div className="sub">
-                          <Dropdown.Item className="" href="#/action-1">
-                            <h6> مراقبت لب</h6>
-                          </Dropdown.Item>
-                        </div>
-                        <div className="sub">
-                          <Dropdown.Item className="" href="#/action-1">
-                            <h6> مراقبت چشم</h6>
-                          </Dropdown.Item>
-                        </div>
-                        <div className="sub">
-                          <Dropdown.Item className="" href="#/action-1">
-                            <h6> مراقبت صورت</h6>
-                          </Dropdown.Item>
-                        </div>
-                        <div className="sub">
-                          <Dropdown.Item className="" href="#/action-1">
-                            <h6> مراقبت بدن</h6>
-                          </Dropdown.Item>
-                        </div>
-                        <div className="sub">
-                          <Dropdown.Item className="" href="#/action-1">
-                            <h6> مراقبت مو</h6>
-                          </Dropdown.Item>
-                        </div>
+                      <div className={`customChev ${open ? "open" : ""}`}>
+                        <span className="chev-icon">
+                          {open ? <PlusLg size={25} /> : <PlusLg size={25} />}
+                        </span>
                       </div>
-                    </Dropdown.Menu>
-                  </Dropdown>
-                </div>{" "}
+                    </div>
+                    {open && (
+                      <div className="subs">
+                        <Link to="#" className="sub">
+                          مراقبت لب
+                        </Link>
+                        <Link to="#" className="sub">
+                          مراقبت چشم
+                        </Link>
+                        <Link to="#" className="sub">
+                          مراقبت صورت
+                        </Link>
+                        <Link to="#" className="sub">
+                          مراقبت بدن
+                        </Link>
+                        <Link to="#" className="sub">
+                          مراقبت مو
+                        </Link>
+                      </div>
+                    )}
+                  </div>
+                </div>
                 <div dir="rtl">
-                  <Dropdown className="burgerdrop" show={show1}>
-                    <div className="menu-item ">
+                  <div className="burgerdrop">
+                    <div
+                      className="menu-item burger-header"
+                      onClick={() => setOpen1((prev) => !prev)}
+                    >
                       <Link
                         to="/products"
                         onClick={() => setShowOffcanvas(false)}
+                        className="burger-title"
                       >
                         آرایشی
                       </Link>
-                      <Dropdown.Toggle
-                        id="dropdown-basic"
-                        className={`customChev ${show1 ? "open" : ""}`}
-                        onClick={() => setShow1(!show1)}
-                      >
-                        <span className="chev-icon">
-                          {show1 ? <PlusLg size={25} /> : <PlusLg size={25} />}
-                        </span>
-                      </Dropdown.Toggle>
-                    </div>
 
-                    <Dropdown.Menu className="dropdownMenu p-0 mt-0">
-                      <div className="subs  ">
-                        <div className="sub">
-                          <Dropdown.Item className="" href="#/action-1">
-                            <h6> آرایش لب</h6>
-                          </Dropdown.Item>
-                        </div>
-                        <div className="sub">
-                          <Dropdown.Item className="" href="#/action-1">
-                            <h6> آرایش چشم</h6>
-                          </Dropdown.Item>
-                        </div>
-                        <div className="sub">
-                          <Dropdown.Item className="" href="#/action-1">
-                            <h6> آرایش صورت</h6>
-                          </Dropdown.Item>
-                        </div>
+                      <div className={`customChev ${open1 ? "open" : ""}`}>
+                        <span className="chev-icon">
+                          {open1 ? <PlusLg size={25} /> : <PlusLg size={25} />}
+                        </span>
                       </div>
-                    </Dropdown.Menu>
-                  </Dropdown>
-                </div>{" "}
+                    </div>
+                    {open1 && (
+                      <div className="subs">
+                        <Link to="#" className="sub">
+                          آرایش لب
+                        </Link>
+                        <Link to="#" className="sub">
+                          آرایش چشم
+                        </Link>
+                        <Link to="#" className="sub">
+                          آرایش صورت
+                        </Link>
+                      </div>
+                    )}
+                  </div>
+                </div>
+
                 <Link
                   to="/products"
                   className="menu-item d-lg-none"
