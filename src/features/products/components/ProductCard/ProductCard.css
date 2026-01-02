@@ -56,10 +56,11 @@
 
 /* --- BODY --- */
 .card-body {
+   position: relative;
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   text-align: center;
   padding: 10px;
 }
@@ -97,18 +98,29 @@
 
 /* --- BUTTONS --- */
 .hover-buttons {
- overflow:hidden;
-  justify-content: center;
-  height: 0;
-  transition: all 0.9s ease;
-}
-.product-card:hover .hover-buttons {
-  height: auto;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(10px);
+
   display: flex;
   gap: 0.5rem;
-  margin-top: 0.5rem;
+
+  opacity: 0;
+  pointer-events: none;
+
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
 }
 
+/* Show on hover */
+.product-card:hover .hover-buttons {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+  pointer-events: auto;
+
+}
 .hover-buttons .buy,
 .hover-buttons .basket {
   background-color: var(--primary-color);
@@ -192,6 +204,12 @@
     font-size: 0.8rem;
     padding: 0.4rem 0.8rem;
   }
+      .product-card:hover .image-overlay,
+  .product-card:hover .hover-buttons {
+    opacity: 0;
+    display: none;
+    pointer-events: none;
+  }
 }
 
 @media (max-width: 480px) {
@@ -215,4 +233,78 @@
   .image-wrapper {
     aspect-ratio: 1 / 1;
   }
+
+}
+
+@media (hover: none) {
+  .product-card:hover {
+    transform: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .product-card:hover .image-overlay,
+  .product-card:hover .hover-buttons {
+    opacity: 0;
+    display: none;
+    pointer-events: none;
+  }
+}
+/* --- IMAGE OVERLAY --- */
+.image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(32, 0, 47, 0.35),
+    rgba(10, 0, 47, 0.15)
+  );
+
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+.product-img {
+  position: relative;
+  z-index: 0;
+}
+
+.image-overlay {
+  z-index: 1;
+}
+
+.hover-buttons {
+  z-index: 2;
+}
+.product-card:hover .image-overlay {
+  opacity: 1;
+}
+.image-overlay {
+  transition: opacity 0.25s ease;
+}
+
+.hover-buttons {
+  transition:
+    opacity 0.25s ease 0.05s,
+    transform 0.25s ease 0.05s;
+}
+/* --- MOBILE CART BUTTON --- */
+.mobile-cart-btn {
+  margin-top: 8px;
+  align-self: center;
+  background-color: var(--primary-color) !important;
+  border: none !important;
+  color: white;
+  width: 100%;
+  max-width: 160px;
+  height: 40px;
+  border-radius: 8px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mobile-cart-btn:active {
+  background-color: var(--active-color);
 }
