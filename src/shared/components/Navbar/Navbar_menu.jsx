@@ -12,9 +12,10 @@ import Dropdown from "react-bootstrap/Dropdown";
 import Logov from "../../../assets/Logo/Logo-vertical.png";
 import Logos from "../../../assets/Logo/logo-small.png";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link ,useNavigate } from "react-router-dom";
 import AuthPage from "../../../features/auth/pages/AuthPage.jsx";
 import { products } from "../../../DummyData/Products.jsx";
+import { useRef } from "react";
 import "./Navbar.css";
 
 function NavbarMenu() {
@@ -25,18 +26,27 @@ function NavbarMenu() {
   const [show, setShow] = useState(false);
   const [show1, setShow1] = useState(false);
   const [showDrop, setShowDrop] = useState(false);
-  let timeoutId = null;
+ const timeoutId = useRef(null);
   const product = products[0];
+  const navigate = useNavigate();
 
   const handleMouseEnter = () => {
-    clearTimeout(timeoutId);
+    clearTimeout(timeoutId.current);
     setShowDrop(true);
   };
 
   const handleMouseLeave = () => {
-    timeoutId = setTimeout(() => {
+
+     timeoutId.current= setTimeout(() => {
       setShowDrop(false);
     }, 300);
+    
+
+      
+  };
+  const openAuth = () => {
+    navigate('/auth');
+
   };
 
   return (
@@ -95,117 +105,76 @@ function NavbarMenu() {
             <Offcanvas.Body>
               <Nav className="justify-content-end flex-grow-1">
                 <button
-                  to="/auth"
+                  onClick={openAuth}
                   className="menu-item dropdown-custom"
-                  onClick={() => setAuthOpen(true)}
                 >
                   ورود | عضویت
                 </button>
-                {authOpen && <AuthPage onClose={() => setAuthOpen(false)} />}
                 <Nav.Link className="menu-item drop" href="#home">
                   پوستی
                 </Nav.Link>
                 <Nav.Link className="menu-item drop" href="#products">
                   آرایشی
                 </Nav.Link>
-                <div dir="rtl">
-                  <Dropdown
-                    className="drop"
-                    onMouseEnter={handleMouseEnter}
-                    onMouseLeave={handleMouseLeave}
-                    show={showDrop}
+                <div
+                  dir="rtl"
+                  className="products-wrapper drop"
+                  onMouseEnter={() => setShowDrop(true)}
+                  onMouseLeave={handleMouseLeave}
+                >
+                  {/* Trigger */}
+                  <Link
+                    to="/products"
+                    className="dropdown-custom menu-item products-trigger"
                   >
-                    <Link
-                      to="/products"
-                      onClick={() => setShowOffcanvas(false)}
-                    >
-                      <Dropdown.Toggle
-                        className="dropdown-custom menu-item "
-                        id="dropdown-basic"
-                      >
-                        محصولات
-                        <ChevronDown className="dropdown-icon" />
-                      </Dropdown.Toggle>
-                    </Link>
+                    محصولات{" "}
+                    <ChevronDown
+                      className={`dropdown-icon ${showDrop ? "open" : ""}`}
+                    />
+                  </Link>
 
-                    <Dropdown.Menu className="dropdownMenu">
+                  {/* Mega Menu */}
+                  {showDrop && (
+                    <div className="mega-menu ">
                       <div className="catagories d-flex pe-2 ps-5">
                         <div className="nav-catagory">
-                          <Dropdown.Item
-                            className="menu-item fw-600"
-                            href="#/action-1"
-                          >
-                            <h6>ابزار</h6>
-                          </Dropdown.Item>
-                        </div>
-                        <div className="nav-catagory">
-                          <Dropdown.Item
-                            className="menu-item"
-                            href="#/action-1"
-                          >
-                            <h6>آرایشی</h6>
-                          </Dropdown.Item>
-                          <Dropdown.Item
-                            className="menu-item "
-                            href="#/action-1"
-                          >
+                          <h6>آرایشی</h6>
+                          <Link className="menu-item mega-item" to="#">
                             آرایش لب
-                          </Dropdown.Item>
-                          <Dropdown.Item
-                            className="menu-item "
-                            href="#/action-1"
-                          >
+                          </Link>
+                          <Link className="menu-item" to="#">
                             آرایش چشم
-                          </Dropdown.Item>
-                          <Dropdown.Item
-                            className="menu-item "
-                            href="#/action-1"
-                          >
+                          </Link>
+                          <Link className="menu-item" to="#">
                             آرایش صورت
-                          </Dropdown.Item>
+                          </Link>
+                        </div>
+
+                        <div className="nav-catagory">
+                          <h6>مراقبتی</h6>
+                          <Link className="menu-item" to="#">
+                            مراقبت لب
+                          </Link>
+                          <Link className="menu-item" to="#">
+                            مراقبت چشم
+                          </Link>
+                          <Link className="menu-item" to="#">
+                            مراقبت صورت
+                          </Link>
+                          <Link className="menu-item" to="#">
+                            مراقبت بدن
+                          </Link>
+                          <Link className="menu-item" to="#">
+                            مراقبت مو
+                          </Link>
                         </div>
                         <div className="nav-catagory">
-                          <Dropdown.Item
-                            className="menu-item"
-                            href="#/action-1"
-                          >
-                            <h6>مراقبتی</h6>
-                          </Dropdown.Item>
-                          <Dropdown.Item
-                            className="menu-item"
-                            href="#/action-1"
-                          >
-                            مراقبت لب
-                          </Dropdown.Item>
-                          <Dropdown.Item
-                            className="menu-item"
-                            href="#/action-1"
-                          >
-                            مراقبت چشم
-                          </Dropdown.Item>
-                          <Dropdown.Item
-                            className="menu-item"
-                            href="#/action-1"
-                          >
-                            مراقبت صورت
-                          </Dropdown.Item>
-                          <Dropdown.Item
-                            className="menu-item"
-                            href="#/action-1"
-                          >
-                            مراقبت بدن
-                          </Dropdown.Item>
-                          <Dropdown.Item
-                            className="menu-item"
-                            href="#/action-1"
-                          >
-                            مراقبت مو
-                          </Dropdown.Item>
+                          <h6>ابزار</h6>
                         </div>
                       </div>
-                    </Dropdown.Menu>
-                  </Dropdown>
-                </div>{" "}
+                    </div>
+                  )}
+                </div>
                 {/* burgerdrop 1 */}
                 <div dir="rtl">
                   <Dropdown className="burgerdrop" show={show}>

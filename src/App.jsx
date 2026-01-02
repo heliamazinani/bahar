@@ -1,8 +1,7 @@
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import "./App.css";
 import Home from "./features/home/pages/Home/Home";
-import Footer from "./shared/components/Footer/Footer";
-import Navbar_menu from "./shared/components/Navbar/Navbar_menu";
+
 import Products from "./features/products/pages/Products/Products";
 import AdminPanel from "./pages/AdminPanel/AdminPanel";
 import MainLayout from "./layouts/MainLayout";
@@ -54,7 +53,14 @@ function App() {
             <Route path="payment" element={<PaymentStep />} />
             <Route path="confirmation" element={<ConfirmationStep />} />
           </Route>
-
+          <Route
+            path="/auth"
+            element={
+            
+                <AuthPage />
+             
+            }
+          />
           <Route
             path="/admin"
             element={
