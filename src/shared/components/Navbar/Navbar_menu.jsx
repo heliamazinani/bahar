@@ -6,33 +6,29 @@ import SelectedProduct from "../../../features/products/components/SelectedProdu
 import { Form, Button } from "react-bootstrap";
 import { Search } from "react-bootstrap-icons";
 import { Basket2 } from "react-bootstrap-icons";
-import { ChevronDown, PlusLg, DashLg } from "react-bootstrap-icons";
-
-import Dropdown from "react-bootstrap/Dropdown";
+import { ChevronDown, PlusLg, BoxArrowLeft } from "react-bootstrap-icons";
 import Logov from "../../../assets/Logo/Logo-vertical.png";
 import Logos from "../../../assets/Logo/logo-small.png";
 import { useState } from "react";
 import { Link ,useNavigate } from "react-router-dom";
-import AuthPage from "../../../features/auth/pages/AuthPage.jsx";
 import { products } from "../../../DummyData/Products.jsx";
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import { useAuth } from "../../../features/auth/context/AuthContext";
 import "./Navbar.css";
 
 function NavbarMenu() {
   const [showSearch, setShowSearch] = useState(false);
-  const [authOpen, setAuthOpen] = useState(false);
   const [showOffcanvas, setShowOffcanvas] = useState(false);
   const [showCart, setShowCart] = useState(false);
-  const [show, setShow] = useState(false);
-  const [show1, setShow1] = useState(false);
   const [showDrop, setShowDrop] = useState(false);
+  const [showProfile, setShowProfile] = useState(false);
   const [open, setOpen] = useState(false); //offcanves's dropdown1
   const [open1, setOpen1] = useState(false); //offcanves's dropdown2
   const timeoutId = useRef(null);
   const product = products[0];
 const navigate = useNavigate();
 const { isAuthenticated, user, logout } = useAuth();
+const profileRef = useRef(null);
 
   const handleMouseEnter = () => {
     clearTimeout(timeoutId.current);
@@ -53,9 +49,24 @@ const handleCheckout = () => {
       setShowDrop(false);
     }, 300);
   };
-  const openAuth = () => {
-    navigate("/auth");
+const handleLogout = () => {
+  setShowProfile(false); 
+  logout(); 
+  navigate("/"); 
+};
+useEffect(() => {
+  const handleClickOutside = (event) => {
+    if (profileRef.current && !profileRef.current.contains(event.target)) {
+      setShowProfile(false);
+    }
   };
+
+  document.addEventListener("mousedown", handleClickOutside);
+
+  return () => {
+    document.removeEventListener("mousedown", handleClickOutside);
+  };
+}, []);
 
   return (
     <>
@@ -95,6 +106,46 @@ const handleCheckout = () => {
               </Button>
             )}
           </div>
+          {!isAuthenticated ? (
+            <Button
+              onClick={() => navigate("/auth")}
+              className="menu-item dropdown-custom"
+            >
+              ورود | ثبت‌نام
+            </Button>
+          ) : (
+            <div dir="rtl" className="products-wrapper" ref={profileRef}>
+              <Button
+                className="dropdown-custom profile-drop"
+                onClick={() => setShowProfile((prev) => !prev)}
+              >
+                پروفایل{"  "}
+                <ChevronDown
+                  className={`dropdown-icon ${showProfile ? "open" : ""}`}
+                />
+              </Button>
+
+              {showProfile && (
+                <div className="profile-menu">
+                  <div className="catagories d-flex ">
+                    <div className="nav-catagory">
+                      <Link to="#" className="menu-item">
+                        اطلاعات
+                      </Link>
+                      <hr style={{ margin: 0, color: "gray" }} />
+                      <Link to="#" className="menu-item">
+                        سفارش ها
+                      </Link>
+                      <hr style={{ margin: 0, color: "gray" }} />
+                      <Button className="menu-item logout" onClick={handleLogout}>
+                        خروج <BoxArrowLeft size={20} />
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+          )}
 
           <Navbar.Toggle
             aria-controls="offcanvasNavbar"
@@ -112,23 +163,6 @@ const handleCheckout = () => {
             <Offcanvas.Header closeButton></Offcanvas.Header>
             <Offcanvas.Body>
               <Nav className="justify-content-end flex-grow-1">
-                {!isAuthenticated ? (
-                  <Button
-                    onClick={() => navigate("/auth")}
-                    className="menu-item dropdown-custom"
-                  >
-                    ورود | ثبت‌نام
-                  </Button>
-                ) : (
-                  <Button
-                  
-                    onClick={() => navigate("/profile")}
-                    className="menu-item dropdown-custom"
-                  >
-                    پروفایل
-                  </Button>
-                )}
-
                 <Nav.Link className="menu-item drop" href="#home">
                   پوستی
                 </Nav.Link>
@@ -141,7 +175,6 @@ const handleCheckout = () => {
                   onMouseEnter={() => setShowDrop(true)}
                   onMouseLeave={handleMouseLeave}
                 >
-                  {/* Trigger */}
                   <Link
                     to="/products"
                     className="dropdown-custom menu-item products-trigger"

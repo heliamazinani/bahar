@@ -485,6 +485,32 @@ input:hover {
 .menu-item{
   padding: 10px;
 }
+.mega-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: white;
+  min-width: 400px;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.1);
+  z-index: 9999;
+}
+.menu-item{
+  padding: 10px;
+}
+
+.profile-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: white;
+  min-width: 120px;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.1);
+  z-index: 9999;
+}
+
 .products-trigger {
   display: inline-flex;
   align-items: center;
@@ -499,4 +525,9 @@ input:hover {
 
 .dropdown-icon.open {
   transform: rotate(180deg);
+}
+.logout{
+  display: flex !important;
+  justify-content: space-between ;
+  width: 100%;
 }
