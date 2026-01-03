@@ -7,9 +7,12 @@ import Button from "react-bootstrap/Button";
 import InputGroup from "react-bootstrap/InputGroup";
 import { Eye, EyeSlash, Google, Facebook } from "react-bootstrap-icons";
 import "../Auth.css";
+import { useNavigate, useLocation } from "react-router-dom";
 import { registerUser } from "../auth.service";
+import { useAuth } from "../context/AuthContext";
 
-function AuthPage() {
+
+function AuthPage({ onSuccess }) {
   const [tab, setTab] = useState("login");
   const [showPassword, setShowPassword] = useState(false);
   const [showRegPassword, setShowRegPassword] = useState(false);
@@ -21,11 +24,24 @@ function AuthPage() {
     confirm: "",
   });
 
-  const handleLoginSubmit = (e) => {
-    e.preventDefault();
-    console.log("login", loginData);
-    
-  };
+const navigate = useNavigate();
+const location = useLocation();
+const { login, register } = useAuth();
+
+const from = location.state?.from || "/";
+
+
+const handleLoginSubmit = async (e) => {
+  e.preventDefault();
+
+  try {
+    await login(loginData);
+    navigate(from, { replace: true });
+  } catch (err) {
+    console.error(err);
+  }
+};
+
 
   return (
     <div className="auth-overlay">
@@ -130,12 +146,22 @@ function AuthPage() {
 
                 {tab === "register" && (
                   <Form
-                    onSubmit={() => {
-                      const { confirm, ...dataWithoutConfirm } =
-                        regData;
-                      result = registerUser(dataWithoutConfirm);
+                    onSubmit={async (e) => {
+                      e.preventDefault();
+
+                      if (regData.password !== regData.confirm) {
+                        alert("کلمه عبور یکسان نیست");
+                        return;
+                      }
+
+                      try {
+                        const { confirm, ...data } = regData;
+                        await register(data);
+                        navigate(from, { replace: true });
+                      } catch (err) {
+                        console.error(err);
+                      }
                     }}
-                    className="auth-form"
                   >
                     <Form.Group className="mb-3" controlId="regName">
                       <Form.Label>نام و نام خانوادگی</Form.Label>

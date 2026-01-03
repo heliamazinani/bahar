@@ -16,6 +16,7 @@ import { Link ,useNavigate } from "react-router-dom";
 import AuthPage from "../../../features/auth/pages/AuthPage.jsx";
 import { products } from "../../../DummyData/Products.jsx";
 import { useRef } from "react";
+import { useAuth } from "../../../features/auth/context/AuthContext";
 import "./Navbar.css";
 
 function NavbarMenu() {
@@ -30,13 +31,23 @@ function NavbarMenu() {
   const [open1, setOpen1] = useState(false); //offcanves's dropdown2
   const timeoutId = useRef(null);
   const product = products[0];
-  const navigate = useNavigate();
+const navigate = useNavigate();
+const { isAuthenticated, user, logout } = useAuth();
 
   const handleMouseEnter = () => {
     clearTimeout(timeoutId.current);
     setShowDrop(true);
   };
-
+const handleCheckout = () => {
+  if (!isAuthenticated) {
+    navigate("/auth", {
+      state: { from: "/checkout" },
+      replace: true,
+    });
+  } else {
+    navigate("/checkout");
+  }
+};
   const handleMouseLeave = () => {
     timeoutId.current = setTimeout(() => {
       setShowDrop(false);
@@ -101,12 +112,23 @@ function NavbarMenu() {
             <Offcanvas.Header closeButton></Offcanvas.Header>
             <Offcanvas.Body>
               <Nav className="justify-content-end flex-grow-1">
-                <button
-                  onClick={openAuth}
-                  className="menu-item dropdown-custom"
-                >
-                  ورود | عضویت
-                </button>
+                {!isAuthenticated ? (
+                  <Button
+                    onClick={() => navigate("/auth")}
+                    className="menu-item dropdown-custom"
+                  >
+                    ورود | ثبت‌نام
+                  </Button>
+                ) : (
+                  <Button
+                  
+                    onClick={() => navigate("/profile")}
+                    className="menu-item dropdown-custom"
+                  >
+                    پروفایل
+                  </Button>
+                )}
+
                 <Nav.Link className="menu-item drop" href="#home">
                   پوستی
                 </Nav.Link>
@@ -298,12 +320,7 @@ function NavbarMenu() {
                   <span>۹۵,۰۰۰ تومان</span>
                 </div>
                 <hr />
-                <Button
-                  className="buy  mt-3 mb-4"
-                  onClick={() => setShowCart(false)}
-                >
-                  ادامه خرید
-                </Button>
+                <Button onClick={handleCheckout}>ادامه خرید</Button>
               </div>
             </Offcanvas.Body>
           </Offcanvas>

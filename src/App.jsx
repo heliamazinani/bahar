@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import "./App.css";
 import Home from "./features/home/pages/Home/Home";
-
+import RequireAuth from "./features/auth/RequireAuth"
 import Products from "./features/products/pages/Products/Products";
 import AdminPanel from "./pages/AdminPanel/AdminPanel";
 import MainLayout from "./layouts/MainLayout";
@@ -54,11 +54,11 @@ function App() {
             <Route path="confirmation" element={<ConfirmationStep />} />
           </Route>
           <Route
-            path="/auth"
+            path="/checkout"
             element={
-            
-                <AuthPage />
-             
+              <RequireAuth>
+                <CheckoutPage />
+              </RequireAuth>
             }
           />
           <Route
