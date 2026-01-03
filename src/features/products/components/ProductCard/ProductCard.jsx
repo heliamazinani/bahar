@@ -1,9 +1,9 @@
 import Card from "react-bootstrap/Card";
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
-import Container from "react-bootstrap/Container";
+import { useCart } from "../../../orders/context/CartContext";
 import { Button } from "react-bootstrap";
 import { Basket2 } from "react-bootstrap-icons";
+import { useRef } from "react";
+import { flyToCart } from "../../utils/flyToCart";
 import { Link, useNavigate } from "react-router-dom";
 import "./ProductCard.css";
 
@@ -19,15 +19,23 @@ const toFarsiNumber = (number) => {
 };
 
 function ProductCard({ product }) {
+  const imgRef = useRef(null);
+
     const navigate = useNavigate();
+    const { addItem } = useCart();
       const handleCardClick = () => {
         navigate(`/product/${product.id}`);
       };
-
+      const handleCart = (event) => {
+        event.stopPropagation();
+         flyToCart(imgRef.current);
+        addItem(product);
+      };
   return (
     <Card className="product-card" onClick={handleCardClick}>
       <div className="image-wrapper">
         <Card.Img
+          ref={imgRef}
           className="product-img"
           variant="top"
           src={product.image}
@@ -38,7 +46,7 @@ function ProductCard({ product }) {
           <Button className="buy">
             <Link to={`/product/${product.id}`}>مشاهده </Link>
           </Button>
-          <Button className="basket">
+          <Button className="basket" onClick={handleCart}>
             <Basket2 size={40} />
           </Button>
         </div>
@@ -67,7 +75,7 @@ function ProductCard({ product }) {
           </span>
         </div>
 
-        <Button className="mobile-cart-btn d-md-none">
+        <Button className="mobile-cart-btn d-md-none" onClick={handleCart}>
           <Basket2 size={22} />
         </Button>
       </Card.Body>

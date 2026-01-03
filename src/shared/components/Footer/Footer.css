@@ -48,7 +48,7 @@
 }
 
 .social-icons a {
-  color: var(--primary-color);
+  color: var(--primary-color) !important;
   font-size: 1.4rem;
   margin: 0 0.4rem;
   transition: color 0.3s ease;

@@ -49,26 +49,24 @@
   font-weight: bold;
   font-size: 0.9rem;
 }
-/* .count{
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-} */
+
 .productCount {
   border: rgb(239, 239, 239) 2px solid;
   padding: 0.4rem 0.5rem;
   border-radius: 5px;
   display: block;
+  text-align: center;
+  align-items: center;
 
-
-  
 }
 .productCount p {
-  padding: 0.4rem 0.5rem;
+ margin-top: 0;
+ margin-bottom: 0;
   margin-left: 0.5rem;
   margin-right: 0.5rem;
   display: inline;
 }
+
 .count-icon:hover {
   color: var(--primary-color);
 }

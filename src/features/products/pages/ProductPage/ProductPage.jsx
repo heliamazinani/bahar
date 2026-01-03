@@ -2,7 +2,7 @@ import React from "react";
 import { useParams, Link } from "react-router-dom";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import { products } from "../../../../DummyData/Products";
-import { Basket2 } from "react-bootstrap-icons";
+import { useCart } from "../../../orders/context/CartContext";
 import ProductGallery from "../../components/ProductGallery/ProductGallery"
 import "./ProductPage.css"
 const toFarsiNumber = (number) => {
@@ -21,6 +21,10 @@ const toFarsiNumber = (number) => {
 function ProductPage() {
   const { id } = useParams();
   const product = products.find((p) => p.id === parseInt(id));
+    const { addItem } = useCart();
+    const handleCart = () => {
+      addItem(product);
+    };
 
   if (!product) {
     return (
@@ -57,7 +61,9 @@ function ProductPage() {
             )}
             <span className="new">تومان </span>
           </div>
-          <Button className="buy">افزودن به سبد خرید</Button>
+          <Button className="buy" onClick={handleCart}>
+            افزودن به سبد خرید
+          </Button>
           <div
             className="description mb-4 mt-4"
             dangerouslySetInnerHTML={{ __html: product.description }}

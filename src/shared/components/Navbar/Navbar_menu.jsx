@@ -14,6 +14,7 @@ import { Link ,useNavigate } from "react-router-dom";
 import { products } from "../../../DummyData/Products.jsx";
 import { useRef, useEffect } from "react";
 import { useAuth } from "../../../features/auth/context/AuthContext";
+import { useCart } from "../../../features/orders/context/CartContext.jsx";
 import "./Navbar.css";
 
 function NavbarMenu() {
@@ -26,14 +27,25 @@ function NavbarMenu() {
   const [open1, setOpen1] = useState(false); //offcanves's dropdown2
   const timeoutId = useRef(null);
   const product = products[0];
+  const { items, removeItem, changeQty } = useCart();
+
 const navigate = useNavigate();
 const { isAuthenticated, user, logout } = useAuth();
 const profileRef = useRef(null);
 
-  const handleMouseEnter = () => {
-    clearTimeout(timeoutId.current);
-    setShowDrop(true);
-  };
+const toFarsiNumber = (number) => {
+  const farsiDigits = ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"];
+  return number
+    .toString()
+    .split("")
+    .map((char) => {
+      if (char >= "0" && char <= "9") {
+        return farsiDigits[parseInt(char)];
+      }
+      return char;
+    })
+    .join("");
+};
 const handleCheckout = () => {
   if (!isAuthenticated) {
     navigate("/auth", {
@@ -61,19 +73,39 @@ useEffect(() => {
     }
   };
 
+
   document.addEventListener("mousedown", handleClickOutside);
 
   return () => {
     document.removeEventListener("mousedown", handleClickOutside);
   };
 }, []);
+const subtotal = items.reduce((sum, item) => {
+  const price = item.price * item.quantity;
+  return sum + price;
+}, 0);
+
+const totalDiscount = items.reduce((sum, item) => {
+  if (item.onSale && item.newPrice) {
+    return sum + (item.price - item.newPrice) * item.quantity;
+  }
+  return sum;
+}, 0);
+
+const finalTotal = subtotal - totalDiscount;
 
   return (
     <>
       <Navbar className="nav rounded " sticky="top" variant="light" expand="lg">
         <Container fluid>
-          <Button>
-            <Basket2 size={18} onClick={() => setShowCart(true)} />
+          <Button className="cart-btn" id="cart-icon">
+            <Basket2
+              size={18}
+              onClick={() => {
+                setShowCart(true);
+              }}
+            />{" "}
+            {items.length > 0 && <span className="badge">{items.length} </span>}
           </Button>
           {/* Search Toggle */}
           <div className="me-auto ms-3">
@@ -137,7 +169,10 @@ useEffect(() => {
                         سفارش ها
                       </Link>
                       <hr style={{ margin: 0, color: "gray" }} />
-                      <Button className="menu-item logout" onClick={handleLogout}>
+                      <Button
+                        className="menu-item logout"
+                        onClick={handleLogout}
+                      >
                         خروج <BoxArrowLeft size={20} />
                       </Button>
                     </div>
@@ -336,24 +371,59 @@ useEffect(() => {
               <Offcanvas.Title>سبد خرید</Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body className="shopOffCanvesBody">
-              {/* Example cart content */}
-              <div className="cart-item d-flex justify-content-between align-items-center mb-3">
-                <div>
-                  <strong>کرم آبرسان</strong>
-                  <p className="mb-0 text-muted">تعداد: 1</p>
-                </div>
-                <span>۹۵,۰۰۰ تومان</span>
-              </div>
-              <SelectedProduct product={product}></SelectedProduct>
+              {items.length === 0 ? (
+                <p className="text-center mt-4">سبد خرید خالی است</p>
+              ) : (
+                items.map((item) => (
+                  <SelectedProduct
+                    key={item.id}
+                    product={item}
+                    onRemove={() => removeItem(item.id)}
+                    onIncrease={() => changeQty(item.id, item.quantity + 1)}
+                    onDecrease={() => changeQty(item.id, item.quantity - 1)}
+                  />
+                ))
+              )}
 
               <div className="final">
                 <hr />
-                <div className="d-flex justify-content-between mt-3">
-                  <strong>مجموع:</strong>
-                  <span>۹۵,۰۰۰ تومان</span>
+
+                {/* Subtotal */}
+                <div className="d-flex justify-content-between">
+                  <span>جمع کل بدون تخفیف</span>
+                  <span>
+                    {toFarsiNumber(subtotal.toLocaleString()) + " تومان "}
+                  </span>
                 </div>
+
+                {/* Discount */}
+                {totalDiscount > 0 && (
+                  <div className="d-flex justify-content-between text-success">
+                    <span>تخفیف</span>
+                    <span>
+                      -{" "}
+                      {toFarsiNumber(totalDiscount.toLocaleString()) +
+                        " تومان "}
+                    </span>
+                  </div>
+                )}
+
                 <hr />
-                <Button onClick={handleCheckout}>ادامه خرید</Button>
+
+                <div className="d-flex justify-content-between fw-bold">
+                  <span>مبلغ قابل پرداخت</span>
+                  <span>
+                    {toFarsiNumber(finalTotal.toLocaleString()) + " تومان "}
+                  </span>
+                </div>
+
+                <Button
+                  className="w-100 mt-3"
+                  disabled={items.length === 0}
+                  onClick={handleCheckout}
+                >
+                  ادامه خرید
+                </Button>
               </div>
             </Offcanvas.Body>
           </Offcanvas>

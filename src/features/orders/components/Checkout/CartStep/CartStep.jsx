@@ -1,10 +1,10 @@
 import SelectedProduct from "../../../../products/components/SelectedProduct/SelectedProduct";
-import { products } from "../../../../../DummyData/Products";
-import { Container, Col, Row } from "react-bootstrap";
-import { Button, Form } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
-import "./CartStep.css";
+import { Container, Col, Row, Button } from "react-bootstrap";
 import { ChevronLeft, ChevronRight } from "react-bootstrap-icons";
+import { useNavigate } from "react-router-dom";
+import { useCart } from "../../../context/CartContext";
+import "./CartStep.css";
+
 const toFarsiNumber = (number) => {
   const farsiDigits = ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"];
   return number
@@ -15,67 +15,88 @@ const toFarsiNumber = (number) => {
     )
     .join("");
 };
+
 function CartStep() {
-  const product = products[0];
   const navigate = useNavigate();
+  const { items, changeQty, removeItem } = useCart();
+
+  const subtotal = items.reduce(
+    (sum, item) => sum + item.price * item.quantity,
+    0
+  );
+
+  const totalDiscount = items.reduce((sum, item) => {
+    if (item.onSale && item.newPrice) {
+      return sum + (item.price - item.newPrice) * item.quantity;
+    }
+    return sum;
+  }, 0);
+
+  const finalTotal = subtotal - totalDiscount;
+
   return (
     <>
-      {" "}
-      <Container dir="rtl" className="d-lg-block d-none  p-2 pe-3">
-        {" "}
+      {/* Header row */}
+      <Container dir="rtl" className="d-lg-block d-none p-2 pe-3">
         <Row className="align-items-center">
-          <Col className="text-muted" lg={6} md={12}>
-            محصول
-          </Col>
-          <Col className="text-muted" lg={4} md={6}>
-            جمع قیمت
-          </Col>
-          <Col className="text-muted" lg={2} md={6}>
-            تعداد
-          </Col>
+          <Col lg={6}>محصول</Col>
+          <Col lg={4}>جمع قیمت</Col>
+          <Col lg={2}>تعداد</Col>
         </Row>
       </Container>
-      <SelectedProduct product={product} />
-      <SelectedProduct product={products[1]} />
-      <SelectedProduct product={products[6]} />
+
+      {/* Cart items */}
+      {items.map((item) => (
+        <SelectedProduct
+          key={item.id}
+          product={item}
+          onIncrease={() => changeQty(item.id, item.quantity + 1)}
+          onDecrease={() => changeQty(item.id, item.quantity - 1)}
+          onRemove={() => removeItem(item.id)}
+        />
+      ))}
+
+      {/* Totals */}
       <Container>
         <Row>
           <Col lg={4}>
             <div className="total-price-section" dir="rtl">
               <div className="subPrice text-muted">
-                <p className=""> قیمت کالا‌ها :</p>
-                <span className="">
-                  {toFarsiNumber(product.price.toLocaleString())} تومان
-                </span>
+                <p>قیمت کالا‌ها:</p>
+                <span>{toFarsiNumber(subtotal.toLocaleString())} تومان</span>
               </div>
 
-              <div className="subPrice text-red">
-                <p className=""> سود شما از این خرید:</p>
-                <span className="">
-                  {toFarsiNumber(product.price.toLocaleString())} تومان
-                </span>
-              </div>
+              {totalDiscount > 0 && (
+                <div className="subPrice text-red">
+                  <p>سود شما از این خرید:</p>
+                  <span>
+                    - {toFarsiNumber(totalDiscount.toLocaleString())} تومان
+                  </span>
+                </div>
+              )}
 
-              <div className="subPrice text-muted">
-                <p className=""> جمع سبد خرید:</p>
-                <span className="">
-                  {toFarsiNumber(product.price.toLocaleString())} تومان
-                </span>
+              <div className="subPrice fw-bold">
+                <p>جمع سبد خرید:</p>
+                <span>{toFarsiNumber(finalTotal.toLocaleString())} تومان</span>
               </div>
             </div>
           </Col>
         </Row>
       </Container>
+
+      {/* Navigation */}
       <Container>
         <Row>
           <Col>
             <div className="d-flex justify-content-between">
               <Button
                 className="navigationNext"
+                disabled={items.length === 0}
                 onClick={() => navigate("/checkout/info")}
               >
                 <ChevronLeft /> ثبت سفارش
               </Button>
+
               <Button className="navigationPrev" onClick={() => navigate("/")}>
                 بازگشت <ChevronRight />
               </Button>

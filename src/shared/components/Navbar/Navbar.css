@@ -531,3 +531,21 @@ input:hover {
   justify-content: space-between ;
   width: 100%;
 }
+.badge{
+  color: white;
+  background-color: var(--primary-color);
+  border-radius: 50px;
+}
+.cart-btn {
+  position: relative;
+}
+
+.cart-btn.fly-hit {
+  animation: cartPop 0.25s ease-in-out;
+}
+
+@keyframes cartPop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
