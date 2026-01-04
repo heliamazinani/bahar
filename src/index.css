@@ -153,12 +153,22 @@ a:active {
   bottom: 0;
   left: 0;
 }
+/* mobile next */
+.next-step-btn{
+   background-color: var(--primary-color);
+   border-radius: 16px;
+   border:none;
+   color: white;
+}
+.next-step-btn:active{
+background: var(--active-color) !important;
+}
 .navigationNext:active,
 .navigationNext:hover {
   background: var(--active-color) !important;
 }
-.navigationNext:focus{
-    background-color: var(--primary-color);
+.navigationNext:focus {
+  background-color: var(--primary-color);
   box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.1), 0 4px 20px 0 rgba(0, 0, 0, 0.1);
 }
 .navigationPrev {
@@ -174,11 +184,11 @@ a:active {
 }
 .navigationPrev:active,
 .navigationPrev:hover {
-  background-color: rgb(252, 252, 252)!important;
-  color: var(--active-color)!important;
+  background-color: rgb(252, 252, 252) !important;
+  color: var(--active-color) !important;
 }
-.navigationPrev:focus{
-    color: var(--primary-color);
+.navigationPrev:focus {
+  color: var(--primary-color);
   background-color: white;
   box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.1), 0 4px 20px 0 rgba(0, 0, 0, 0.1);
 }
@@ -187,12 +197,12 @@ a:active {
   position: sticky;
   top: 0;
   z-index: 30;
-justify-content: space-between;
+  justify-content: space-around;
   display: flex;
   align-items: center;
   gap: 12px;
   text-align: center;
-
+   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
   padding: 12px 16px;
   background: #fff;
   border-bottom: 1px solid #eee;
@@ -202,6 +212,9 @@ justify-content: space-between;
   background: none;
   border: none;
   padding: 4px;
+  position: absolute;
+  padding-right:1rem ;
+  right: 0;
 }
 
 .mobile-step-text {
@@ -210,12 +223,15 @@ justify-content: space-between;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  position: absolute;
+  padding-left: 1rem;
+  left: 0;
 }
 
 /* ================= CONTENT ================= */
 .checkout-content {
   padding: 16px;
-  padding-bottom: 110px; 
+  padding-bottom: 110px;
 }
 
 /* ================= MOBILE FOOTER ================= */
@@ -225,12 +241,11 @@ justify-content: space-between;
   left: 0;
   right: 0;
   z-index: 30;
-
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 12px;
-
+  box-shadow: 4px 0px 12px rgba(0, 0, 0, 0.1);
   padding: 12px 16px;
   background: #fff;
   border-top: 1px solid #eee;
@@ -247,7 +262,6 @@ justify-content: space-between;
   padding: 8px 14px;
   border-radius: 8px;
 }
-
 
 /* Large and down (below 992px) */
 @media (max-width: 992px) {

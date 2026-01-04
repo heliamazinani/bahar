@@ -91,7 +91,7 @@ function OrderLayoutInner() {
             </button>
           )}
           <span>{current.label}</span>
-          <span className="mobile-step-text">
+          <span className="mobile-step-text text-muted">
             مرحله {currentStep + 1} از {stepMap.length}
           </span>
         </div>
