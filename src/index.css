@@ -154,9 +154,12 @@ a:active {
   left: 0;
 }
 .navigationNext:active,
-.navigationNext:hover,
-.navigationNext:focus {
+.navigationNext:hover {
   background: var(--active-color) !important;
+}
+.navigationNext:focus{
+    background-color: var(--primary-color);
+  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.1), 0 4px 20px 0 rgba(0, 0, 0, 0.1);
 }
 .navigationPrev {
   margin-top: 4rem;
@@ -170,20 +173,25 @@ a:active {
   padding: 0.5rem 1.5rem;
 }
 .navigationPrev:active,
-.navigationPrev:hover,
-.navigationPrev:focus {
+.navigationPrev:hover {
   background-color: rgb(252, 252, 252)!important;
   color: var(--active-color)!important;
+}
+.navigationPrev:focus{
+    color: var(--primary-color);
+  background-color: white;
+  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.1), 0 4px 20px 0 rgba(0, 0, 0, 0.1);
 }
 /* ================= MOBILE HEADER ================= */
 .mobile-checkout-header {
   position: sticky;
   top: 0;
   z-index: 30;
-
+justify-content: space-between;
   display: flex;
   align-items: center;
   gap: 12px;
+  text-align: center;
 
   padding: 12px 16px;
   background: #fff;

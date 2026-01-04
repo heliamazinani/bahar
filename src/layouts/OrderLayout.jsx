@@ -1,6 +1,4 @@
 import React from "react";
-import { CheckoutProvider } from "../features/orders/context/CheckoutContext";
-import { useCheckout } from "../features/orders/context/CheckoutContext";
 import { Container, Col, Row, Button } from "react-bootstrap";
 import {
   CartCheck,
@@ -12,29 +10,33 @@ import {
   ChevronRight,
 } from "react-bootstrap-icons";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
-// import { useCart } from "@/cart/CartContext"; // later for real total
+import {
+  CheckoutProvider,
+  useCheckout,
+} from "../features/orders/context/CheckoutContext";
 
-export default function OrderLayout() {
+function OrderLayoutInner() {
   const location = useLocation();
   const navigate = useNavigate();
   const { isStepValid } = useCheckout();
 
-  // const { finalTotal } = useCart(); // later
-
   const stepMap = [
     {
-      path: "/checkout/",
+      path: "/checkout",
       label: "بررسی سبد خرید",
+      nextLabel: "ثبت سفارش",
       icon: <CartCheck size={36} />,
     },
     {
       path: "/checkout/info",
-      label: "اطلاعات ارسال",
+      label: " اطلاعات ارسال",
+      nextLabel: "نهایی‌سازی اطلاعات",
       icon: <UiChecks size={36} />,
     },
     {
       path: "/checkout/payment",
       label: "پرداخت",
+      nextLabel: "ثبت نهایی سفارش",
       icon: <CreditCard size={36} />,
     },
     {
@@ -44,32 +46,57 @@ export default function OrderLayout() {
     },
   ];
 
-  const currentStep = stepMap.findIndex((s) => location.pathname === s.path);
+  const currentStep = stepMap.findIndex((s) => s.path === location.pathname);
 
-  const currentStepData = stepMap[currentStep];
-  const isMobile = window.innerWidth < 992;
+  const current = stepMap[currentStep];
+  const next = stepMap[currentStep + 1];
+  const prev = stepMap[currentStep - 1];
+
+  const isMobile = window.innerWidth < 448;
+
+  const goNext = () => {
+    // if (next && isStepValid) {
+    //   navigate(next.path);
+    // }
+        if (next ) {
+          navigate(next.path);
+        }
+  };
+
+  const goPrev = () => {
+    if (prev) {
+      navigate(prev.path);
+    }
+  };
+
+
 
   return (
     <>
-      {/* ================= MOBILE HEADER ================= */}
       {isMobile && (
-        <div className="mobile-checkout-header">
-          <button
-            className="back-icon"
-            onClick={() => navigate(-1)}
-            aria-label="بازگشت"
-          >
-            <ArrowRight size={22} />
-          </button>
-
+        <div className="mobile-checkout-header" dir="rtl">
+          {prev && (
+            <button className="back-icon" onClick={goPrev}>
+              <ArrowRight size={22} />
+            </button>
+          )}
+          {currentStep === 0 && (
+            <button
+              className="back-icon"
+              onClick={() => {
+                navigate("/");
+              }}
+            >
+              <ArrowRight size={22} />
+            </button>
+          )}
+          <span>{current.label}</span>
           <span className="mobile-step-text">
-            مرحله {currentStep + 1} از {stepMap.length} –{" "}
-            {currentStepData?.label}
+            مرحله {currentStep + 1} از {stepMap.length}
           </span>
         </div>
       )}
 
-      {/* ================= DESKTOP STEPPER ================= */}
       <Container dir="rtl" className="d-none d-lg-block">
         <Row className="align-items-center p-3 pe-5 ps-5 m-lg-5 mb-lg-2 mt-lg-3">
           {stepMap.map((step, index) => (
@@ -82,15 +109,14 @@ export default function OrderLayout() {
                     ? "completed-step"
                     : "deactive"
                 }`}
-                onClick={() => navigate(step.path)}
-                style={{ cursor: "pointer" }}
+                onClick={() => index <= currentStep && navigate(step.path)}
+                style={{ cursor: index <= currentStep ? "pointer" : "default" }}
               >
                 <div className="flexWrapper text-center">
                   {step.icon}
                   <p className="mt-1 d-none d-lg-flex">{step.label}</p>
                 </div>
               </Col>
-
               {index < stepMap.length - 1 && (
                 <div
                   className={`divider ${
@@ -103,30 +129,30 @@ export default function OrderLayout() {
         </Row>
       </Container>
 
-      {/* ================= CHECKOUT CONTENT ================= */}
-      <div className="checkout-content ">
-        <CheckoutProvider>
-          <Outlet />
-        </CheckoutProvider>
+      <div className={`checkout-content ${!isMobile ? "pb-0" : ""}`}>
+        <Outlet />
       </div>
+
       {!isMobile && (
         <Container>
           <Row>
             <Col>
               <div className="d-flex justify-content-between">
+                {next && (
+                  <Button
+                    className="navigationNext"
+                    // disabled={!isStepValid}
+                    onClick={goNext}
+                  >
+                    <ChevronLeft /> {current.nextLabel}
+                  </Button>
+                )}
                 <Button
-                  className="navigationNext"
-                  // disabled={items.length === 0}
-                  onClick={() => {
-                    if (currentStep < stepMap.length - 1) {
-                      navigate(stepMap[currentStep + 1].path);
-                    }
-                  }}
+                  className="navigationPrev"
+                  variant="outline-secondary"
+                  // disabled={!prev}
+                  onClick={goPrev}
                 >
-                  <ChevronLeft /> ثبت سفارش
-                </Button>
-
-                <Button className="navigationPrev" onClick={() => navigate(-1)}>
                   بازگشت <ChevronRight />
                 </Button>
               </div>
@@ -134,28 +160,31 @@ export default function OrderLayout() {
           </Row>
         </Container>
       )}
-      {/* ================= MOBILE FOOTER ================= */}
-      {isMobile && (
+
+      {isMobile && next && (
         <div className="mobile-checkout-footer">
           <div className="total">
             <span>مبلغ قابل پرداخت</span>
-            {/* replace with finalTotal later */}
             <strong>۱٬۲۴۰٬۰۰۰ تومان</strong>
           </div>
 
           <button
             className="next-step-btn"
             // disabled={!isStepValid}
-            onClick={() => {
-              if (currentStep < stepMap.length - 1) {
-                navigate(stepMap[currentStep + 1].path);
-              }
-            }}
+            onClick={goNext}
           >
-            ادامه
+            {current.nextLabel}
           </button>
         </div>
       )}
     </>
+  );
+}
+
+export default function OrderLayout() {
+  return (
+    <CheckoutProvider>
+      <OrderLayoutInner />
+    </CheckoutProvider>
   );
 }

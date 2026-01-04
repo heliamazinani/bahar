@@ -62,26 +62,26 @@ function CartStep() {
               <p>قیمت کالا‌ها:</p>
               <span>{toFarsiNumber(subtotal.toLocaleString())} تومان</span>
             </div>
-            <hr className="p-0 mt-0" />
+
             {totalDiscount > 0 && (
-              <div className="subPrice text-success">
-                <p>سود شما از این خرید:</p>
-                <span>
-                 {toFarsiNumber(totalDiscount.toLocaleString())} تومان
-                </span>
-              </div>
+              <>
+                <hr className="p-0 mt-0" />
+                <div className="subPrice text-success">
+                  <p>سود شما از این خرید:</p>
+                  <span>
+                    {toFarsiNumber(totalDiscount.toLocaleString())} تومان
+                  </span>
+                </div>
+              </>
             )}
             <hr className="p-0 mt-0" />
             <div className="subPrice fw-bold">
               <p>جمع سبد خرید:</p>
               <span>{toFarsiNumber(finalTotal.toLocaleString())} تومان</span>
             </div>
-       
           </Col>
         </Row>
       </Container>
-
-
     </>
   );
 }
