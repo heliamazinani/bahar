@@ -48,27 +48,7 @@ export default function InfoStep() {
           />
         </Form.Group>
       </Form>
-      <Container>
-        <Row>
-          <Col>
-            <div className="d-flex justify-content-between">
-              <Button
-                className="navigationNext"
-                onClick={() => navigate("/checkout/payment")}
-              >
-                <ChevronLeft />
-                پرداخت
-              </Button>
-              <Button
-                className="navigationPrev"
-                onClick={() => navigate("/checkout/")}
-              >
-                بررسی سبد خرید <ChevronRight />
-              </Button>
-            </div>
-          </Col>
-        </Row>
-      </Container>
+
 
 
     </div>

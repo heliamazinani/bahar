@@ -43,13 +43,13 @@ function SelectedProduct({ product, onIncrease, onDecrease, onRemove }) {
           <hr className="d-lg-none" />
         </Col>
 
-        <Col lg={4} md={6}>
+        <Col lg={4} md={6} className="pe-1">
           <div className="total-price mt-3 mt-lg-0">
             <p className="d-lg-none">جمع قیمت:</p>
 
             <div className="price-section">
               {discount > 0 && (
-                <span className="discount">
+                <span className="discount text-success">
                   {toFarsiNumber(discount.toLocaleString())} تومان تخفیف
                 </span>
               )}
@@ -60,7 +60,7 @@ function SelectedProduct({ product, onIncrease, onDecrease, onRemove }) {
           </div>
         </Col>
 
-        <Col lg={2} md={6} className="count">
+        <Col lg={2} md={6} className="pe-1">
           <div className="total-price mt-3 mt-lg-0">
             <p className="d-lg-none">تعداد:</p>
 

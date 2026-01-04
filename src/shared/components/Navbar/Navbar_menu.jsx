@@ -10,7 +10,7 @@ import { ChevronDown, PlusLg, BoxArrowLeft } from "react-bootstrap-icons";
 import Logov from "../../../assets/Logo/Logo-vertical.png";
 import Logos from "../../../assets/Logo/logo-small.png";
 import { useState } from "react";
-import { Link ,useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { products } from "../../../DummyData/Products.jsx";
 import { useRef, useEffect } from "react";
 import { useAuth } from "../../../features/auth/context/AuthContext";
@@ -29,70 +29,69 @@ function NavbarMenu() {
   const product = products[0];
   const { items, removeItem, changeQty } = useCart();
 
-const navigate = useNavigate();
-const { isAuthenticated, user, logout } = useAuth();
-const profileRef = useRef(null);
+  const navigate = useNavigate();
+  const { isAuthenticated, user, logout } = useAuth();
+  const profileRef = useRef(null);
 
-const toFarsiNumber = (number) => {
-  const farsiDigits = ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"];
-  return number
-    .toString()
-    .split("")
-    .map((char) => {
-      if (char >= "0" && char <= "9") {
-        return farsiDigits[parseInt(char)];
-      }
-      return char;
-    })
-    .join("");
-};
-const handleCheckout = () => {
-  if (!isAuthenticated) {
-    navigate("/auth", {
-      state: { from: "/checkout" },
-      replace: true,
-    });
-  } else {
-    navigate("/checkout");
-  }
-};
+  const toFarsiNumber = (number) => {
+    const farsiDigits = ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"];
+    return number
+      .toString()
+      .split("")
+      .map((char) => {
+        if (char >= "0" && char <= "9") {
+          return farsiDigits[parseInt(char)];
+        }
+        return char;
+      })
+      .join("");
+  };
+  const handleCheckout = () => {
+    if (!isAuthenticated) {
+      navigate("/auth", {
+        state: { from: "/checkout" },
+        replace: true,
+      });
+    } else {
+      navigate("/checkout");
+    }
+  };
   const handleMouseLeave = () => {
     timeoutId.current = setTimeout(() => {
       setShowDrop(false);
     }, 300);
   };
-const handleLogout = () => {
-  setShowProfile(false); 
-  logout(); 
-  navigate("/"); 
-};
-useEffect(() => {
-  const handleClickOutside = (event) => {
-    if (profileRef.current && !profileRef.current.contains(event.target)) {
-      setShowProfile(false);
+  const handleLogout = () => {
+    setShowProfile(false);
+    logout();
+    navigate("/");
+  };
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (profileRef.current && !profileRef.current.contains(event.target)) {
+        setShowProfile(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+  const subtotal = items.reduce((sum, item) => {
+    const price = item.price * item.quantity;
+    return sum + price;
+  }, 0);
+
+  const totalDiscount = items.reduce((sum, item) => {
+    if (item.onSale && item.newPrice) {
+      return sum + (item.price - item.newPrice) * item.quantity;
     }
-  };
+    return sum;
+  }, 0);
 
-
-  document.addEventListener("mousedown", handleClickOutside);
-
-  return () => {
-    document.removeEventListener("mousedown", handleClickOutside);
-  };
-}, []);
-const subtotal = items.reduce((sum, item) => {
-  const price = item.price * item.quantity;
-  return sum + price;
-}, 0);
-
-const totalDiscount = items.reduce((sum, item) => {
-  if (item.onSale && item.newPrice) {
-    return sum + (item.price - item.newPrice) * item.quantity;
-  }
-  return sum;
-}, 0);
-
-const finalTotal = subtotal - totalDiscount;
+  const finalTotal = subtotal - totalDiscount;
 
   return (
     <>
@@ -108,7 +107,7 @@ const finalTotal = subtotal - totalDiscount;
             {items.length > 0 && <span className="badge">{items.length} </span>}
           </Button>
           {/* Search Toggle */}
-          <div className="me-auto ms-3">
+          <div className="me-auto ">
             {showSearch ? (
               <Form className="d-flex">
                 <div className="group">
@@ -371,39 +370,33 @@ const finalTotal = subtotal - totalDiscount;
               <Offcanvas.Title>سبد خرید</Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body className="shopOffCanvesBody">
-              {items.length === 0 ? (
-                <p className="text-center mt-4">سبد خرید خالی است</p>
-              ) : (
-                items.map((item) => (
-                  <SelectedProduct
-                    key={item.id}
-                    product={item}
-                    onRemove={() => removeItem(item.id)}
-                    onIncrease={() => changeQty(item.id, item.quantity + 1)}
-                    onDecrease={() => changeQty(item.id, item.quantity - 1)}
-                  />
-                ))
-              )}
+              <div className="cart-items">
+                {items.length === 0 ? (
+                  <p className="text-center mt-4">سبد خرید خالی است</p>
+                ) : (
+                  items.map((item) => (
+                    <SelectedProduct
+                      key={item.id}
+                      product={item}
+                      onRemove={() => removeItem(item.id)}
+                      onIncrease={() => changeQty(item.id, item.quantity + 1)}
+                      onDecrease={() => changeQty(item.id, item.quantity - 1)}
+                    />
+                  ))
+                )}
+              </div>
 
-              <div className="final">
-                <hr />
-
-                {/* Subtotal */}
+              <div className="cart-summary">
                 <div className="d-flex justify-content-between">
                   <span>جمع کل بدون تخفیف</span>
-                  <span>
-                    {toFarsiNumber(subtotal.toLocaleString()) + " تومان "}
-                  </span>
+                  <span>{toFarsiNumber(subtotal.toLocaleString())} تومان</span>
                 </div>
 
-                {/* Discount */}
                 {totalDiscount > 0 && (
                   <div className="d-flex justify-content-between text-success">
                     <span>تخفیف</span>
                     <span>
-                      -{" "}
-                      {toFarsiNumber(totalDiscount.toLocaleString()) +
-                        " تومان "}
+                      {toFarsiNumber(totalDiscount.toLocaleString())} تومان
                     </span>
                   </div>
                 )}
@@ -413,12 +406,12 @@ const finalTotal = subtotal - totalDiscount;
                 <div className="d-flex justify-content-between fw-bold">
                   <span>مبلغ قابل پرداخت</span>
                   <span>
-                    {toFarsiNumber(finalTotal.toLocaleString()) + " تومان "}
+                    {toFarsiNumber(finalTotal.toLocaleString())} تومان
                   </span>
                 </div>
 
                 <Button
-                  className="w-100 mt-3"
+                  className="buy w-100 mt-3"
                   disabled={items.length === 0}
                   onClick={handleCheckout}
                 >

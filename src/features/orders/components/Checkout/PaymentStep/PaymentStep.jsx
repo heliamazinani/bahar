@@ -23,27 +23,7 @@ export default function PaymentStep() {
           label="پرداخت در محل"
         />
       </Form>
-      <Container>
-        <Row>
-          <Col>
-            <div className="d-flex justify-content-between">
-              <Button
-                className="navigationNext"
-                onClick={() => navigate("/checkout/confirmation")}
-              >
-                <ChevronLeft />
-                پرداخت
-              </Button>
-              <Button
-                className="navigationPrev"
-                onClick={() => navigate("/checkout/info")}
-              >
-                بازگشت <ChevronRight />
-              </Button>
-            </div>
-          </Col>
-        </Row>
-      </Container>
+
 
     </div>
   );

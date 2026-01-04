@@ -36,7 +36,6 @@ function CartStep() {
 
   return (
     <>
-      {/* Header row */}
       <Container dir="rtl" className="d-lg-block d-none p-2 pe-3">
         <Row className="align-items-center">
           <Col lg={6}>محصول</Col>
@@ -45,7 +44,6 @@ function CartStep() {
         </Row>
       </Container>
 
-      {/* Cart items */}
       {items.map((item) => (
         <SelectedProduct
           key={item.id}
@@ -56,54 +54,34 @@ function CartStep() {
         />
       ))}
 
-      {/* Totals */}
       <Container>
         <Row>
-          <Col lg={4}>
-            <div className="total-price-section" dir="rtl">
-              <div className="subPrice text-muted">
-                <p>قیمت کالا‌ها:</p>
-                <span>{toFarsiNumber(subtotal.toLocaleString())} تومان</span>
-              </div>
-
-              {totalDiscount > 0 && (
-                <div className="subPrice text-red">
-                  <p>سود شما از این خرید:</p>
-                  <span>
-                    - {toFarsiNumber(totalDiscount.toLocaleString())} تومان
-                  </span>
-                </div>
-              )}
-
-              <div className="subPrice fw-bold">
-                <p>جمع سبد خرید:</p>
-                <span>{toFarsiNumber(finalTotal.toLocaleString())} تومان</span>
-              </div>
+          <Col lg={6} dir="rtl">
+            {/* <div className="total-price-section" dir="rtl"> */}
+            <div className="subPrice text-muted">
+              <p>قیمت کالا‌ها:</p>
+              <span>{toFarsiNumber(subtotal.toLocaleString())} تومان</span>
             </div>
+            <hr className="p-0 mt-0" />
+            {totalDiscount > 0 && (
+              <div className="subPrice text-success">
+                <p>سود شما از این خرید:</p>
+                <span>
+                 {toFarsiNumber(totalDiscount.toLocaleString())} تومان
+                </span>
+              </div>
+            )}
+            <hr className="p-0 mt-0" />
+            <div className="subPrice fw-bold">
+              <p>جمع سبد خرید:</p>
+              <span>{toFarsiNumber(finalTotal.toLocaleString())} تومان</span>
+            </div>
+       
           </Col>
         </Row>
       </Container>
 
-      {/* Navigation */}
-      <Container>
-        <Row>
-          <Col>
-            <div className="d-flex justify-content-between">
-              <Button
-                className="navigationNext"
-                disabled={items.length === 0}
-                onClick={() => navigate("/checkout/info")}
-              >
-                <ChevronLeft /> ثبت سفارش
-              </Button>
 
-              <Button className="navigationPrev" onClick={() => navigate("/")}>
-                بازگشت <ChevronRight />
-              </Button>
-            </div>
-          </Col>
-        </Row>
-      </Container>
     </>
   );
 }

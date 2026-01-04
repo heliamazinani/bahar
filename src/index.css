@@ -144,26 +144,102 @@ a:active {
 }
 
 .navigationNext {
+  margin-top: 4rem;
+  position: relative;
   background-color: var(--primary-color);
   box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.1), 0 4px 20px 0 rgba(0, 0, 0, 0.1);
   border: none;
   padding: 0.5rem 1.5rem;
-
+  bottom: 0;
+  left: 0;
 }
-.navigationNext:active ,.navigationNext:hover ,.navigationNext:focus {
-background: var(--active-color);
+.navigationNext:active,
+.navigationNext:hover,
+.navigationNext:focus {
+  background: var(--active-color) !important;
 }
 .navigationPrev {
+  margin-top: 4rem;
+  position: relative;
+  bottom: 0;
+  right: 0;
   color: var(--primary-color);
   background-color: white;
   box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.1), 0 4px 20px 0 rgba(0, 0, 0, 0.1);
   border: none;
-    padding: 0.5rem 1.5rem;
+  padding: 0.5rem 1.5rem;
 }
-.navigationPrev:active ,.navigationPrev:hover ,.navigationPrev:focus {
-    background-color: rgb(252, 252, 252);
-color: var(--active-color);
+.navigationPrev:active,
+.navigationPrev:hover,
+.navigationPrev:focus {
+  background-color: rgb(252, 252, 252)!important;
+  color: var(--active-color)!important;
 }
+/* ================= MOBILE HEADER ================= */
+.mobile-checkout-header {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 12px 16px;
+  background: #fff;
+  border-bottom: 1px solid #eee;
+}
+
+.back-icon {
+  background: none;
+  border: none;
+  padding: 4px;
+}
+
+.mobile-step-text {
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ================= CONTENT ================= */
+.checkout-content {
+  padding: 16px;
+  padding-bottom: 110px; 
+}
+
+/* ================= MOBILE FOOTER ================= */
+.mobile-checkout-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 30;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+
+  padding: 12px 16px;
+  background: #fff;
+  border-top: 1px solid #eee;
+}
+
+.mobile-checkout-footer .total {
+  display: flex;
+  flex-direction: column;
+  font-size: 13px;
+}
+
+.next-step-btn {
+  min-width: 120px;
+  padding: 8px 14px;
+  border-radius: 8px;
+}
+
 
 /* Large and down (below 992px) */
 @media (max-width: 992px) {
