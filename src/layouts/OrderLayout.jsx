@@ -67,6 +67,9 @@ function OrderLayoutInner() {
     if (prev) {
       navigate(prev.path);
     }
+    else{
+      navigate("/")
+    }
   };
 
 

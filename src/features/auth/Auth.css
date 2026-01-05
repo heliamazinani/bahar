@@ -1,29 +1,50 @@
 .auth-overlay {
   position: fixed;
   inset: 0;
-  background: linear-gradient(
-    180deg,
-     var(--complement-color),
-   rgba(255, 192, 203, 0.225)
 
-  );
   z-index: 2000;
   display: flex;
   justify-content: center;
   align-items: center;
   overflow-y: auto;
+  background-color: rgb(245, 245, 245);
+  overflow: hidden;
 }
+.flower-divider {
+display: flex;
+align-items: center;
+}
+.flower-divider hr {
+width: 80%;
+background-color: var(--primary-color) !important;
+}
+.flower-divider{
+  color: white}
 
 .auth-page {
-  background: #fff;
   min-height: 100vh;
   width: 100%;
   display: flex;
   align-items: center;
   padding: 2rem 1rem;
   animation: slideIn 0.3s ease;
+  justify-content: space-between;
 }
 
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+}
+
+.auth-container {
+  height: 100%;
+  display: flex;
+}
+
+.auth-container > .row {
+  flex: 1;
+  height: 100%;
+}
 
 
 @keyframes slideIn {
@@ -41,11 +62,11 @@
   min-height: 100vh;
   display: flex;
   align-items: center;
-  background: linear-gradient(
+  /* background: linear-gradient(
     180deg,
     rgba(244, 226, 232, 0.5),
     rgba(255, 255, 255, 1)
-  );
+  ); */
   font-family: "Vazirmatn", sans-serif;
   padding: 2rem 0;
 }
@@ -53,43 +74,106 @@
 
 .auth-container {
   background: transparent;
-  max-width: 1100px;
-  margin: 0 auto;
+  width: 100%;
+  height: 100%;
+  margin: 0 ;
+
+}
+.auth-visual {
+  height: 100vh;
+  padding: 0;
+  overflow: hidden;
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  /* background: linear-gradient(
+    120deg,
+    var(--primary-color),
+    #ffbdd6,
+    var(--primary-color),
+    var(--active-color)
+  ); */
+    background: linear-gradient(
+    120deg,
+    #f7a7e1,
+     #fbb2ce,
+    #ffdef6,
+    #fbb2ce,
+    var(--active-color)
+  );
+  background-size: 300% 300%;
+  animation: authGradient 12s ease infinite;
+}
+@keyframes authGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 
-.auth-visual {
 
+/* 
+.auth-visual {
   align-items: center;
   justify-content: center;
   padding: 2rem;
   min-height: 420px;
-
- 
+  background-color: rgba(255, 255, 255, 0.575);
+  box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.144);
   border-radius: 18px;
-}
+  
+} */
 .auth-logo img{
   max-height: 150px;
 }
 .inner-text {
   padding-right: 10px;
-  color: rgba(136, 11, 128, 0.692);
+  color: white;
   font-style: italic;
 }
 .auth-visual .visual-inner{
     display: flex;
+ color: var(--primary-color);
+    border-radius: 40px;
   flex-direction: row;
   align-items: flex-end;
+
 }
 .auth-visual .inner-text h2 {
   font-size: clamp(1.4rem, 2.6vw, 2rem);
   margin-bottom: 0.6rem;
 }
 .auth-visual .visual-inner p {
-  color: #cea2c1;
+  /* color: #cea2c1; */
+  opacity: 0.6;
   margin-bottom: 1rem;
 }
+.visual-cta{
+  display: flex;
+  align-items: center;
+  margin-top: 2rem;
+}
+.products-btn{
+  background-color:white;
+  padding: 0.5rem;
+  border: none;
+  color:var(--primary-color);
+  border-radius: 8px;
+  margin-left: auto;
+  margin-right: auto;
 
+}
+.products-btn:hover{
+  box-shadow: 0px 0px 10px #f28eb8;
+}
 
 .auth-card {
   background: white;
@@ -129,6 +213,10 @@
   color: white;
   box-shadow: 0px 2px 2px #f28eb8;
  
+}
+.auth-tabs .tab:hover{
+    background-color: #feb9d2;
+      box-shadow: 0px 1px 1px #f28eb8;
 }
 .auth-tabs .tab.active {
   background-color:rgba(255, 255, 255, 0.301);
@@ -171,6 +259,11 @@
   border-radius: 10px;
   box-shadow: 0 8px 18px rgba(234, 76, 137, 0.12);
 }
+.submit-btn:hover , .submit-me:hover{
+  /* background-color: var(--active-color) !important; */
+   background-color: #feb9d2 !important;
+      box-shadow: 0 8px 12px rgba(234, 76, 137, 0.12);
+}
 
 .divider {
   text-align: center;
@@ -201,6 +294,16 @@
 }
 
 @media (max-width: 991px) {
+    .auth-container {
+    height: calc(100vh - 4rem); /* matches auth-page padding */
+    display: flex;
+    align-items: stretch;
+  }
+
+  .auth-container > .row {
+    flex: 1;
+    height: 100%;
+  }
   .auth-visual {
     display: none;
   }

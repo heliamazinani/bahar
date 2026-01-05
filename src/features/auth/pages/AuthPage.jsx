@@ -5,12 +5,12 @@ import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import InputGroup from "react-bootstrap/InputGroup";
-import { Eye, EyeSlash, Google, Facebook } from "react-bootstrap-icons";
+import { Flower3} from "react-bootstrap-icons";
 import "../Auth.css";
 import { useNavigate, useLocation } from "react-router-dom";
 import { registerUser } from "../auth.service";
 import { useAuth } from "../context/AuthContext";
-import logo from "../../../assets/Logo/Logo-small.png"
+import authVisual from "../../../assets/images/Slider/nouri.jpg"
 
 function AuthPage({ onSuccess }) {
   const [tab, setTab] = useState("login");
@@ -46,10 +46,14 @@ const handleLoginSubmit = async (e) => {
   return (
     <div className="auth-overlay">
       <div className="auth-page" dir="rtl">
-        <Container className="auth-container">
-          <Row className="align-items-center">
-            {/* left visual */}
-            <Col lg={6} className="auth-visual d-none d-lg-flex">
+        {/* <Container className="auth-container ">
+          <Row className=" kiri align-items-center">
+            left visual */}
+            <Col
+              lg={6}
+              className="auth-visual d-none d-lg-flex"
+              // style={{ backgroundImage: `url(${authVisual})` }}
+            >
               <div className="visual-inner">
                 {/* <div className="auth-logo">
                   <img src={logo} alt="logo" />
@@ -57,15 +61,27 @@ const handleLoginSubmit = async (e) => {
                 <div className="inner-text">
                   <h2>به بهار بیوتی خوش آمدید</h2>
                   <p>همین حالا عضو شوید و از تخفیفات انحصاری بهره‌مند شوید.</p>
+                  <div className="flower-divider">
+                    <hr />
+                    <Flower3 size={25} />
+                    <hr />
+                  </div>
 
                   <div className="visual-cta">
-                    <Button className="submit-me  me-2">مشاهده محصولات</Button>
+                    <button
+                      className="products-btn"
+                      onClick={() => {
+                        navigate("/products");
+                      }}
+                    >
+                      مشاهده محصولات
+                    </button>
                   </div>
                 </div>
               </div>
             </Col>
 
-            <Col xs={12} lg={6}>
+            <Col xs={12} lg={6} className="p-lg-5 p-3">
               <div className="auth-card">
                 <div className="auth-tabs">
                   <button
@@ -254,8 +270,8 @@ const handleLoginSubmit = async (e) => {
                 )}
               </div>
             </Col>
-          </Row>
-        </Container>
+          {/* </Row>
+        </Container> */}
       </div>
     </div>
   );
