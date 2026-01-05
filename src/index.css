@@ -10,6 +10,7 @@
   --primary-color: #fbb2ce;
   --secondry-color: #ffd8ed;
   --active-color: #f28eb8;
+  --complement-color: #e8f0fe;
 }
 html {
   scroll-behavior: smooth;

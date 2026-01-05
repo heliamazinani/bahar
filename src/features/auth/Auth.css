@@ -1,7 +1,12 @@
 .auth-overlay {
   position: fixed;
   inset: 0;
-  background-color: rgba(255, 255, 255, 0.8);
+  background: linear-gradient(
+    180deg,
+     var(--complement-color),
+   rgba(255, 192, 203, 0.225)
+
+  );
   z-index: 2000;
   display: flex;
   justify-content: center;
@@ -19,17 +24,7 @@
   animation: slideIn 0.3s ease;
 }
 
-.auth-close-btn {
-  position: fixed;
-  top: 1rem;
-  right: 1rem;
-  background: none;
-  color: rgb(0, 0, 0);
-  font-size: 2rem;
-  border: none;
-  cursor: pointer;
-  z-index: 2100;
-}
+
 
 @keyframes slideIn {
   from {
@@ -55,38 +50,47 @@
   padding: 2rem 0;
 }
 
-/* container */
+
 .auth-container {
   background: transparent;
   max-width: 1100px;
   margin: 0 auto;
 }
 
-/* visual panel (left) */
+
 .auth-visual {
+
   align-items: center;
   justify-content: center;
   padding: 2rem;
   min-height: 420px;
-  background: linear-gradient(
-    180deg,
-    rgba(234, 76, 137, 0.06),
-    rgba(244, 226, 232, 0.02)
-  );
+
+ 
   border-radius: 18px;
 }
-
-.auth-visual .visual-inner h2 {
-  color: var(--accent-1);
+.auth-logo img{
+  max-height: 150px;
+}
+.inner-text {
+  padding-right: 10px;
+  color: rgba(136, 11, 128, 0.692);
+  font-style: italic;
+}
+.auth-visual .visual-inner{
+    display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+}
+.auth-visual .inner-text h2 {
   font-size: clamp(1.4rem, 2.6vw, 2rem);
   margin-bottom: 0.6rem;
 }
 .auth-visual .visual-inner p {
-  color: #555;
+  color: #cea2c1;
   margin-bottom: 1rem;
 }
 
-/* card */
+
 .auth-card {
   background: white;
   border-radius: 14px;
@@ -94,17 +98,17 @@
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
 }
 
-/* tabs */
+
 .auth-tabs {
   display: flex;
   gap: 0.5rem;
   margin-bottom: 1rem;
   border-radius: 10px;
-  background: linear-gradient(
+  /* background: linear-gradient(
     90deg,
     rgba(234, 76, 137, 0.06),
     rgba(244, 226, 232, 0.02)
-  );
+  ); */
   padding: 6px;
 }
 .auth-tabs .tab {
@@ -114,22 +118,25 @@
   border-radius: 8px;
   background-image: linear-gradient(
     90deg,
-    rgba(255, 192, 203, 0.315),
-    rgba(255, 255, 255, 0.414),
-    rgba(255, 192, 203, 0.315)
+    rgba(255, 192, 203, 0.15),
+    rgba(255, 255, 255, 0.14),
+    rgba(255, 192, 203, 0.15)
   );
+  background-color: #fbb2ce;
   border: none;
   cursor: pointer;
   font-weight: 600;
-  color: #666;
+  color: white;
+  box-shadow: 0px 2px 2px #f28eb8;
+ 
 }
 .auth-tabs .tab.active {
-  background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
-  color: #332424;
-  box-shadow: 0 6px 18px rgba(234, 76, 137, 0.12);
+  background-color:rgba(255, 255, 255, 0.301);
+  color: gray;
+  box-shadow:none;
 }
 
-/* forms */
+
 .auth-form .form-label {
   font-weight: 600;
   color: #333;
@@ -141,56 +148,38 @@
   border: 1px solid #e9e9e9;
 }
 
-/* input icons button */
+
 .icon-btn {
   border: none;
-  background-color: pink;
+  background-color:  var(--primary-color);
+  color: white;
+  border-radius: 50px;
 }
 
-/* submit */
 .submit-btn {
-  background-color: rgb(255, 0, 43) !important ;
   border: none;
-  color: #c50808 !important;
+  background-color: var(--primary-color)!important;
   padding: 0.6rem;
   border-radius: 10px;
   box-shadow: 0 8px 18px rgba(234, 76, 137, 0.12);
+
 }
 .submit-me {
-  background-color: rgba(255, 0, 43, 0.266) !important ;
+  background-color: var(--primary-color)!important;
   border: none;
-  color: #c50808 !important;
   padding: 0.6rem;
   border-radius: 10px;
   box-shadow: 0 8px 18px rgba(234, 76, 137, 0.12);
 }
 
-/* divider */
 .divider {
   text-align: center;
   color: var(--muted);
   margin: 0.75rem 0;
   position: relative;
 }
-.divider::before,
-.divider::after {
-  content: "";
-  height: 1px;
-  background: #eee;
-  width: 40%;
-  position: absolute;
-  top: 50%;
-}
-.divider::before {
-  left: 0;
-  transform: translateX(-10%);
-}
-.divider::after {
-  right: 0;
-  transform: translateX(10%);
-}
 
-/* socials */
+
 .socials .social-btn {
   width: 48%;
   display: flex;
@@ -201,7 +190,7 @@
   border: 1px solid #eee;
 }
 
-/* small tweaks */
+
 .forgot-link {
   color: var(--muted);
   font-size: 0.9rem;
@@ -211,7 +200,6 @@
   text-decoration: underline;
 }
 
-/* responsive */
 @media (max-width: 991px) {
   .auth-visual {
     display: none;
@@ -221,7 +209,7 @@
   }
 }
 
-/* make sure RTL form spacing looks good */
+
 .auth-form .form-check {
   display: flex;
   justify-content: flex-start;

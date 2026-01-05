@@ -10,7 +10,7 @@ import "../Auth.css";
 import { useNavigate, useLocation } from "react-router-dom";
 import { registerUser } from "../auth.service";
 import { useAuth } from "../context/AuthContext";
-
+import logo from "../../../assets/Logo/Logo-small.png"
 
 function AuthPage({ onSuccess }) {
   const [tab, setTab] = useState("login");
@@ -51,17 +51,20 @@ const handleLoginSubmit = async (e) => {
             {/* left visual */}
             <Col lg={6} className="auth-visual d-none d-lg-flex">
               <div className="visual-inner">
-                <h2>به بهار بیوتی خوش آمدید</h2>
-                <p>همین حالا عضو شوید و از تخفیفات انحصاری بهره‌مند شوید.</p>
-                <div className="visual-cta">
-                  <Button variant="light" className="me-2">
-                    مشاهده محصولات
-                  </Button>
+                {/* <div className="auth-logo">
+                  <img src={logo} alt="logo" />
+                </div> */}
+                <div className="inner-text">
+                  <h2>به بهار بیوتی خوش آمدید</h2>
+                  <p>همین حالا عضو شوید و از تخفیفات انحصاری بهره‌مند شوید.</p>
+
+                  <div className="visual-cta">
+                    <Button className="submit-me  me-2">مشاهده محصولات</Button>
+                  </div>
                 </div>
               </div>
             </Col>
 
-            {/* right: forms */}
             <Col xs={12} lg={6}>
               <div className="auth-card">
                 <div className="auth-tabs">
@@ -109,13 +112,13 @@ const handleLoginSubmit = async (e) => {
                           }
                           required
                         />
-                        <Button
-                          variant="outline-secondary"
+                        {/* <Button
+                        
                           onClick={() => setShowPassword((s) => !s)}
                           className="icon-btn"
                         >
                           {showPassword ? <EyeSlash /> : <Eye />}
-                        </Button>
+                        </Button> */}
                       </InputGroup>
                     </Form.Group>
 
@@ -131,7 +134,7 @@ const handleLoginSubmit = async (e) => {
                       </Button>
                     </div>
 
-                    <div className="divider">یا با</div>
+                    {/* <div className="divider">یا با</div>
 
                     <div className="socials d-flex gap-2">
                       <Button variant="light" className="social-btn">
@@ -140,7 +143,7 @@ const handleLoginSubmit = async (e) => {
                       <Button variant="light" className="social-btn">
                         <Facebook /> فیسبوک
                       </Button>
-                    </div>
+                    </div> */}
                   </Form>
                 )}
 
@@ -205,13 +208,13 @@ const handleLoginSubmit = async (e) => {
                           required
                           minLength={6}
                         />
-                        <Button
+                        {/* <Button
                           variant="outline-secondary"
                           onClick={() => setShowRegPassword((s) => !s)}
                           className="icon-btn"
                         >
                           {showRegPassword ? <EyeSlash /> : <Eye />}
-                        </Button>
+                        </Button> */}
                       </InputGroup>
                       <Form.Text className="text-muted">
                         حداقل ۶ کاراکتر
@@ -237,7 +240,7 @@ const handleLoginSubmit = async (e) => {
                       </Button>
                     </div>
 
-                    <div className="divider">یا با</div>
+                    {/* <div className="divider">یا با</div>
 
                     <div className="socials d-flex gap-2">
                       <Button variant="light" className="social-btn">
@@ -246,7 +249,7 @@ const handleLoginSubmit = async (e) => {
                       <Button variant="light" className="social-btn">
                         <Facebook /> فیسبوک
                       </Button>
-                    </div>
+                    </div> */}
                   </Form>
                 )}
               </div>
