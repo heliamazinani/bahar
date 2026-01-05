@@ -14,12 +14,36 @@ import {
   CheckoutProvider,
   useCheckout,
 } from "../features/orders/context/CheckoutContext";
+import { useCart } from "../features/orders/context/CartContext";
+const toFarsiNumber = (number) => {
+  const farsiDigits = ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"];
+  return number
+    .toString()
+    .split("")
+    .map((char) =>
+      char >= "0" && char <= "9" ? farsiDigits[parseInt(char)] : char
+    )
+    .join("");
+};
 
 function OrderLayoutInner() {
   const location = useLocation();
   const navigate = useNavigate();
   const { isStepValid } = useCheckout();
+  const { items, changeQty, removeItem } = useCart();
+  const subtotal = items.reduce(
+    (sum, item) => sum + item.price * item.quantity,
+    0
+  );
 
+  const totalDiscount = items.reduce((sum, item) => {
+    if (item.onSale && item.newPrice) {
+      return sum + (item.price - item.newPrice) * item.quantity;
+    }
+    return sum;
+  }, 0);
+
+  const finalTotal = subtotal - totalDiscount;
   const stepMap = [
     {
       path: "/checkout",
@@ -168,7 +192,7 @@ function OrderLayoutInner() {
         <div className="mobile-checkout-footer">
           <div className="total">
             <span>مبلغ قابل پرداخت</span>
-            <strong>۱٬۲۴۰٬۰۰۰ تومان</strong>
+            <strong>{toFarsiNumber(finalTotal.toLocaleString())} تومان</strong>
           </div>
 
           <button
